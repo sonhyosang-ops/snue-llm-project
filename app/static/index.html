@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>학교 매뉴얼 도우미</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="layout">
+
+    <!-- 왼쪽: 분야별 데이터셋 ------------------------------------------->
+    <aside class="sidebar">
+      <header class="sidebar-head">
+        <h1>분야</h1>
+        <button id="btn-refresh" class="ghost" title="새로고침">↻</button>
+      </header>
+
+      <button id="topic-all" class="topic active" data-topic="">
+        <span class="topic-name">전체 문서에서 찾기</span>
+        <span class="topic-meta" id="all-meta">—</span>
+      </button>
+
+      <div id="topic-list" class="topic-list"></div>
+
+      <div class="upload-box">
+        <label for="file-input" class="upload-label">＋ 매뉴얼 PDF 추가</label>
+        <input id="file-input" type="file" accept="application/pdf" multiple hidden />
+        <div id="upload-status" class="upload-status"></div>
+      </div>
+
+      <footer class="sidebar-foot">
+        <span id="health-dot" class="dot"></span>
+        <span id="health-text">연결 확인 중…</span>
+      </footer>
+    </aside>
+
+    <!-- 오른쪽: 대화 --------------------------------------------------->
+    <main class="chat">
+      <header class="chat-head">
+        <div>
+          <strong id="scope-title">전체 문서</strong>
+          <span id="scope-sub" class="muted">등록된 매뉴얼 전체에서 근거를 찾습니다</span>
+        </div>
+      </header>
+
+      <div id="messages" class="messages">
+        <div class="empty">
+          <h2>학교 매뉴얼 도우미</h2>
+          <p>등록된 매뉴얼에 <b>실제로 적혀 있는 내용만</b> 근거와 함께 답합니다.<br />
+             근거를 찾지 못하면 답을 지어내지 않고 “확인할 수 없음”으로 알려 줍니다.</p>
+        </div>
+      </div>
+
+      <form id="chat-form" class="composer">
+        <textarea id="input" rows="1" placeholder="예) 화재 발생 시 대피 순서를 알려 주세요"></textarea>
+        <button id="send" type="submit">보내기</button>
+      </form>
+    </main>
+
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

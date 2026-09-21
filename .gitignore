@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+data/chatbot.db
+data/chatbot.db-wal
+data/chatbot.db-shm
+data/raw_pdf/*
+!data/raw_pdf/.gitkeep
+data/extracted/*
