@@ -19,8 +19,8 @@ returns boolean
 language sql
 immutable
 as $$
-  select lower(value) ~ '@baegotnuri\\.es\\.kr$'
-      or lower(value) ~ '@([a-z0-9-]+\\.)*snue\\.ac\\.kr$';
+  select lower(value) ~ '@baegotnuri\.es\.kr$'
+      or lower(value) ~ '@([a-z0-9-]+\.)*snue\.ac\.kr$';
 $$;
 
 create or replace function public.handle_new_user()
