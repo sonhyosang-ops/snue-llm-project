@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useEffect, useState } from "react";
+import Link from "next/link";
 import type { User } from "@supabase/supabase-js";
 import { createClient } from "@/lib/supabase/client";
 
@@ -194,7 +195,10 @@ export default function Home() {
       <header className="border-b border-slate-200 bg-white">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-4">
           <div><p className="text-sm font-semibold text-blue-700">학교 업무 지식 도우미</p><p className="text-sm text-slate-500">{profile ? `${profile.email} · ${roleLabel[profile.role]}` : "권한 확인 중"}</p></div>
-          <button className="rounded-lg border border-slate-300 px-3 py-2 text-sm" onClick={() => void supabase.auth.signOut()}>로그아웃</button>
+          <div className="flex items-center gap-2">
+            {canManageAccess && <Link className="rounded-lg bg-slate-900 px-3 py-2 text-sm font-semibold text-white" href="/admin">관리자 페이지</Link>}
+            <button className="rounded-lg border border-slate-300 px-3 py-2 text-sm" onClick={() => void supabase.auth.signOut()}>로그아웃</button>
+          </div>
         </div>
       </header>
       <div className="mx-auto grid max-w-7xl gap-6 px-6 py-8 lg:grid-cols-[320px_1fr]">
