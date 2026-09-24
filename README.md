@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 학교 업무 지식 도우미
 
-## Getting Started
+학교 업무 PDF를 주제(챕터)별로 관리하고, 선택한 주제의 공식 자료를 근거로 질문에 답변하도록 만드는 Next.js 웹 애플리케이션입니다.
 
-First, run the development server:
+## 시작하기
+
+필요한 패키지를 설치한 뒤 개발 서버를 실행합니다.
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+브라우저에서 [http://localhost:3000](http://localhost:3000)을 열면 됩니다. 화면 코드는 `app/page.tsx`에서 수정하며, 저장하면 개발 화면에 자동으로 반영됩니다.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 환경 변수
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+프로젝트 최상위에 `.env.local` 파일을 만들고 다음 값을 설정합니다.
 
-## Learn More
+```env
+NEXT_PUBLIC_SUPABASE_URL=https://프로젝트ID.supabase.co
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=Supabase_공개_키
+UPSTAGE_API_KEY=Upstage_API_키
+```
 
-To learn more about Next.js, take a look at the following resources:
+`UPSTAGE_API_KEY`는 비밀값입니다. GitHub에 올리거나 브라우저에서 사용하는 `NEXT_PUBLIC_` 변수로 만들지 마세요.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 주요 기능
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `@baegotnuri.es.kr` 및 `snue.ac.kr` 계열 이메일 로그인
+- 역할별 접근 권한: 일반 교사, 교감, 교무, 시스템 개발자
+- 관리자의 추가 업로드 권한 부여
+- PDF 업로드와 챕터별 업무 주제 관리 기반
+- 선택한 주제의 근거 자료를 표시하는 질의응답 화면
 
-## Deploy on Vercel
+## 배포
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Vercel 프로젝트에 연결되어 있으며, 환경 변수는 Vercel의 Production, Preview, Development 환경에 각각 등록해야 합니다. 배포 전에는 다음 명령으로 프로덕션 빌드를 확인합니다.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run build
+```
+
+## 기술 구성
+
+- [Next.js](https://nextjs.org)
+- [Supabase](https://supabase.com)
+- [Vercel](https://vercel.com)
+- Upstage API
