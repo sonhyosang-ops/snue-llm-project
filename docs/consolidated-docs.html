@@ -1,0 +1,1089 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>LLM_RAG_PROJECT 문서 모음</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+<style>
+  :root {
+    --bg: #f7f7f8;
+    --panel: #ffffff;
+    --text: #1c1c1f;
+    --muted: #6b6b73;
+    --border: #e4e4e8;
+    --accent: #2f6fed;
+    --accent-bg: #eaf1ff;
+    --code-bg: #f2f2f5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #17181c;
+      --panel: #1f2025;
+      --text: #eaeaef;
+      --muted: #9a9aa5;
+      --border: #303138;
+      --accent: #6ea2ff;
+      --accent-bg: #23324f;
+      --code-bg: #2a2b31;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Segoe UI", "Malgun Gothic", -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.6;
+  }
+  header {
+    padding: 24px 20px 0;
+    max-width: 920px;
+    margin: 0 auto;
+  }
+  header h1 {
+    font-size: 1.3rem;
+    margin: 0 0 4px;
+  }
+  header p {
+    margin: 0 0 16px;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+  .tabs {
+    display: flex;
+    gap: 4px;
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 20px;
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+  }
+  .tab-button {
+    appearance: none;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 10px 16px;
+    cursor: pointer;
+    border-radius: 8px 8px 0 0;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -1px;
+  }
+  .tab-button:hover {
+    color: var(--text);
+    background: var(--accent-bg);
+  }
+  .tab-button.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+    background: var(--accent-bg);
+  }
+  main {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 24px 20px 60px;
+  }
+  .panel {
+    display: none;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 32px;
+  }
+  .panel.active {
+    display: block;
+  }
+  .panel .source {
+    display: inline-block;
+    font-size: 0.78rem;
+    color: var(--muted);
+    background: var(--code-bg);
+    border-radius: 6px;
+    padding: 2px 8px;
+    margin-bottom: 16px;
+  }
+  .markdown-body h1 { font-size: 1.5rem; margin-top: 0; }
+  .markdown-body h2 { font-size: 1.2rem; margin-top: 2em; border-top: 1px solid var(--border); padding-top: 1em; }
+  .markdown-body h3 { font-size: 1.05rem; margin-top: 1.6em; }
+  .markdown-body table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1em 0;
+    font-size: 0.92rem;
+  }
+  .markdown-body th, .markdown-body td {
+    border: 1px solid var(--border);
+    padding: 6px 10px;
+    text-align: left;
+  }
+  .markdown-body th {
+    background: var(--code-bg);
+  }
+  .markdown-body code {
+    background: var(--code-bg);
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+  .markdown-body pre {
+    background: var(--code-bg);
+    padding: 14px 16px;
+    border-radius: 8px;
+    overflow-x: auto;
+    line-height: 1.5;
+  }
+  .markdown-body pre code {
+    background: none;
+    padding: 0;
+  }
+  .markdown-body blockquote {
+    margin: 1em 0;
+    padding: 4px 16px;
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    background: var(--accent-bg);
+    border-radius: 0 8px 8px 0;
+  }
+  .markdown-body a { color: var(--accent); }
+  .markdown-body hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 2em 0;
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>LLM_RAG_PROJECT 문서 모음</h1>
+  <p>docs 폴더의 세 문서를 탭으로 묶은 통합 보기 (아키텍처 · 인수인계 · 결과 보고서)</p>
+</header>
+
+<nav class="tabs" role="tablist">
+  <button class="tab-button active" data-tab="architecture" role="tab">아키텍처</button>
+  <button class="tab-button" data-tab="handoff" role="tab">인수인계</button>
+  <button class="tab-button" data-tab="report" role="tab">결과 보고서</button>
+</nav>
+
+<main>
+  <section class="panel active" id="panel-architecture">
+    <span class="source">docs/ARCHITECTURE.md</span>
+    <div class="markdown-body" id="content-architecture"></div>
+  </section>
+  <section class="panel" id="panel-handoff">
+    <span class="source">docs/PROJECT_HANDOFF.md</span>
+    <div class="markdown-body" id="content-handoff"></div>
+  </section>
+  <section class="panel" id="panel-report">
+    <span class="source">docs/PROJECT_RESULT_REPORT.md</span>
+    <div class="markdown-body" id="content-report"></div>
+  </section>
+</main>
+
+<script type="text/markdown" id="md-architecture">
+# 핵심 아키텍처 — 장(목차) 선택형 교육공무원 인사실무편람 RAG
+
+이 문서는 **빠르게 구현할 수 있는 첫 번째 웹앱(MVP)** 의 구조를 정의한다.
+
+목표는 허용된 사용자가 로그인한 뒤, 인사실무편람의 장을 선택해 질문하고,
+선택한 장의 근거를 바탕으로 답을 받는 것이다.
+
+초기 버전에서는 파인튜닝, 복잡한 자동 토픽 군집화, 물리적인 장별 데이터베이스는 만들지 않는다.
+
+---
+
+## 1. 핵심 원칙
+
+1. **장 하나는 검색 범위 하나다.**
+   - 사용자가 선택한 장의 청크만 검색한다.
+2. **장별 핵심어 사전은 검색 경로를 확인하는 용도다.**
+   - 선택한 장에 질문의 핵심어가 없으면 다른 장의 사전만 확인한다.
+3. **다른 장의 본문 검색과 답변은 사용자 동의 후에만 한다.**
+4. **답변에는 반드시 PDF 페이지 근거를 표시한다.**
+5. **단순하게 시작한다.**
+   - 하나의 Supabase 데이터베이스와 몇 개의 테이블만 사용한다.
+   - 장별로 실제 데이터베이스를 따로 만들지 않고 `chapter_id`로 구분한다.
+   - 파인튜닝 대신 최신 PDF를 다시 색인한다.
+
+---
+
+## 2. 사용자 역할
+
+| 역할 | 할 수 있는 일 |
+|---|---|
+| 관리자/운영자 | 허용 사용자 등록, PDF 업로드, 장 제목·범위 확인, 문서 활성화/비활성화 |
+| 일반 사용자 | 로그인, 장 선택, 질문, 장 변경 제안 수락/거절, 답변·페이지 근거 확인 |
+
+사용자는 다음 두 조건을 모두 만족해야 이용할 수 있다.
+
+```text
+1. 이메일이 @baegotnuri.es.kr 도메인이다.
+2. 관리자가 미리 등록한 허용 사용자 목록에 있다.
+```
+
+도메인만 검사하면 같은 도메인의 모든 계정이 접근할 수 있으므로, 사전 등록 목록도 반드시 확인한다.
+
+관리자는 `allowed_users.role = admin`인 계정만 사용할 수 있다. 기존 관리자 이메일을 다시 등록해도 권한이 일반 사용자(`user`)로 낮아지지 않도록 기존 역할을 유지한다.
+
+---
+
+## 3. 전체 구조
+
+```text
+관리자
+  │ PDF 업로드
+  ▼
+Vercel 웹앱
+  │
+  ├─ Supabase Storage : 원본 PDF 저장
+  ├─ Upstage API      : PDF 파싱, 임베딩, 답변 생성
+  └─ Supabase DB      : 사용자·장·청크·핵심어·임베딩 저장
+                                │
+                                ▼
+사용자
+  │ 로그인 → 장 버튼 선택 → 질문
+  ▼
+Vercel 웹앱
+  │ 선택한 chapter_id로 검색 범위 제한
+  ▼
+Supabase 검색 결과 + Upstage 답변
+  ▼
+답변과 번호가 연결된 근거 표시
+```
+
+Vercel은 웹 화면과 요청 처리를 담당한다.
+PDF 원본은 Supabase Storage에, 검색 데이터는 Supabase Database에 저장한다.
+
+---
+
+## 4. 관리자 PDF 등록 흐름
+
+관리자가 다음 문서를 업로드한다.
+
+```text
+2025 교육공무원 인사실무편람(초등·유아).pdf
+```
+
+처리 순서는 다음과 같다.
+
+```text
+PDF 업로드
+  → Supabase Storage에 원본 저장
+  → Upstage Document Parse로 페이지·제목·본문 추출
+  → 목차와 제목을 기준으로 장 범위 분리
+  → 각 장의 본문을 작은 청크로 분할
+  → 청크 임베딩 생성
+  → 장별 핵심어 사전 생성
+  → Supabase에 저장
+  → 관리자가 장 제목·페이지 범위를 확인
+  → 문서 활성화
+```
+
+### 장 분리 기준
+
+목차와 본문의 장 제목을 기준으로 장을 나눈다.
+
+```text
+제1장 총칙       1~30쪽
+제2장 임용       31~91쪽
+제3장 승진       92~143쪽
+제4장 복무       144~200쪽
+```
+
+Upstage는 PDF의 구조와 텍스트 추출을 돕는다. 실제 장 경계와 청킹 결과는 관리자가 확인·수정할 수 있게 한다.
+
+### 청킹 기준
+
+- 청크는 같은 장 안에서만 만든다.
+- 제목과 문단 경계를 우선 존중한다.
+- 청크마다 `chapter_id`, 제목, 시작·끝 페이지를 저장한다.
+- 한 청크가 다른 장에 걸치지 않게 한다.
+
+---
+
+## 5. 장별 핵심어 사전
+
+각 장에는 별도의 핵심어 사전(Dictionary)을 만든다.
+
+```text
+제3장 승진
+  승진후보자명부
+  경력평정
+  근무성적평정
+  가산점
+  승진임용
+
+제4장 복무
+  휴가
+  휴직
+  육아휴직
+  출장
+  겸직
+```
+
+사전에는 다음 정보를 저장한다.
+
+| 정보 | 설명 |
+|---|---|
+| term | 정규화된 핵심 낱말 |
+| frequency | 해당 장에서의 출현 횟수 |
+| score | 해당 장을 대표하는 정도 |
+| chapter_id | 어느 장의 사전인지 |
+
+중요어는 단순 출현 빈도만으로 고르지 않는다. `교육`, `교원`, `업무`처럼 모든 장에 흔한 단어를 줄이기 위해,
+명사 추출·불용어 제거 후 장별 TF-IDF 점수를 함께 사용한다.
+
+핵심어 사전은 **답변을 만드는 근거가 아니라, 어느 장을 검색할지 판단하는 보조 장치**다.
+
+---
+
+## 6. 사용자 질문 흐름
+
+### A. 선택한 장에 핵심어가 있는 경우
+
+```text
+사용자 선택: 제3장 승진
+질문: 승진후보자명부는 어떤 기준으로 작성하나요?
+핵심어: 승진후보자명부, 작성기준
+```
+
+`승진후보자명부`가 제3장 사전에 있으므로 다음과 같이 처리한다.
+
+```text
+제3장 청크만 벡터 검색
+  → 관련 근거 청크 선택
+  → Upstage에 질문 원문 + 근거 청크 전달
+  → 답변 생성
+  → 인용 페이지와 함께 표시
+```
+
+### B. 선택한 장에 핵심어가 없는 경우
+
+```text
+사용자 선택: 제3장 승진
+질문: 육아휴직은 최대 몇 년까지 가능한가요?
+핵심어: 육아휴직, 휴직기간
+```
+
+제3장 사전에 해당 낱말이 없으면, 다른 장의 **핵심어 사전만** 확인한다.
+
+```text
+제4장 복무 사전에 “육아휴직” 존재
+```
+
+이때 다른 장의 본문을 바로 검색하거나 답변하지 않는다. 먼저 사용자에게 묻는다.
+
+```text
+“육아휴직”은 제4장 복무에 포함된 내용으로 보입니다.
+제4장 복무에서 검색하여 답변해 드릴까요?
+
+[예] [아니오]
+```
+
+사용자가 `예`를 선택한 경우에만 제4장 복무를 검색해 답변한다.
+
+### C. 어느 장의 사전에도 없는 경우
+
+```text
+선택한 장과 다른 장에서 관련 핵심어를 찾지 못했습니다.
+질문을 더 구체적으로 입력하거나, 다른 장을 선택해 주세요.
+```
+
+### D. 로그인 링크 흐름
+
+```text
+처음 창: 학교 이메일 입력 → 로그인 링크 발송 대기
+메일 링크를 클릭한 확인 창: 로그인 세션 저장 → 로그인 완료 안내 → 자동 닫기 시도
+처음 창: 같은 브라우저의 로그인 세션을 감지 → 채팅 화면으로 전환
+```
+
+메일 앱이 링크를 다른 브라우저로 여는 경우에는 브라우저별 세션이 분리되므로, 처음 로그인 요청을 한 브라우저와 같은 브라우저에서 링크를 열어야 한다. 이메일 앱이 직접 연 창은 브라우저 정책상 자동 닫기가 막힐 수 있으므로 닫기 버튼을 함께 제공한다.
+
+---
+
+## 7. 검색과 답변의 역할 분리
+
+```text
+핵심어 1~2개
+  → 장 선택 확인 및 장 변경 제안용
+
+사용자의 원문 질문 전체
+  → 선택된 장 안의 실제 벡터 검색용
+```
+
+질문을 핵심어만으로 축약해 답변 검색에 사용하지 않는다.
+예를 들어 “승진후보자명부 작성 기준과 경력평정 반영 방법”은 핵심어만 남기면 세부 조건이 사라질 수 있다.
+
+답변은 다음 조건을 모두 만족할 때만 생성한다.
+
+```text
+1. 허용된 사용자가 로그인했다.
+2. 사용자가 선택했거나, 장 변경을 허락한 chapter_id가 있다.
+3. 해당 장에서 충분한 검색 근거를 찾았다.
+```
+
+근거가 약하면 답변을 추측하지 않고 “선택한 장에서 확인할 수 없습니다”라고 응답한다.
+
+### 답변 인용 표시
+
+답변 생성에 전달하는 검색 근거는 순서대로 `[1]`, `[2]`처럼 번호를 부여한다. 모델은 사실 문장 뒤에 해당 번호만 붙이고, 화면 하단의 **확인한 근거**도 같은 번호를 표시한다.
+
+```text
+답변: 승진후보자명부는 …에 따라 작성합니다. [2]
+
+확인한 근거:
+[1] 소제목 · 34~35쪽 · 원문 일부
+[2] 승진후보자명부 작성 · 36~38쪽 · 원문 일부
+```
+
+따라서 본문의 `[2]`는 하단의 `[2]` 근거 청크와 반드시 대응한다. 페이지 번호만 표시하지 않고 검색에 사용한 원문 일부도 함께 보여 준다.
+
+---
+
+## 8. 최소 데이터 구조
+
+```text
+allowed_users
+  email, role, enabled
+
+profiles
+  id, email, role, display_name
+
+documents
+  id, title, year, storage_path, status, is_active
+
+chapters
+  id, document_id, chapter_number, title, page_from, page_to, display_order
+
+chunks
+  id, document_id, chapter_id, heading, page_from, page_to, content
+
+embeddings
+  chunk_id, embedding, embedding_model
+
+chapter_keywords
+  id, chapter_id, term, frequency, score
+
+messages
+  id, user_id, chapter_id, question, answer, citations, created_at
+```
+
+하나의 Supabase 프로젝트와 위 테이블만으로 시작한다.
+장마다 데이터베이스나 Storage 버킷을 새로 만들지 않는다.
+
+---
+
+## 9. 화면 구성
+
+### 관리자 화면
+
+```text
+[허용 사용자 관리]
+[문서 업로드]
+[처리 상태]
+[장 제목·페이지 범위 확인]
+[장별 핵심어 확인]
+[문서 활성화/비활성화]
+```
+
+### 사용자 화면
+
+```text
+로그인
+  ↓
+현재 활성 문서 선택
+  ↓
+[총칙] [임용] [승진] [복무] ...
+  ↓
+질문 입력
+  ↓
+답변의 [번호] + 같은 번호의 PDF 근거·원문 일부
+```
+
+---
+
+## 10. MVP에서 하지 않는 일
+
+- LLM 파인튜닝
+- 자동 토픽 군집화
+- 장마다 독립 데이터베이스 생성
+- 여러 PDF를 한 답변에서 자동으로 섞어 검색
+- 음성, 이미지, 복잡한 에이전트 기능
+- 사용자가 동의하지 않은 다른 장의 본문 검색
+
+이 기능들은 첫 번째 서비스가 안정적으로 동작한 뒤 필요할 때 추가한다.
+
+---
+
+## 11. 구현 순서
+
+1. Supabase Auth와 허용 사용자 목록을 만든다.
+2. 관리자 PDF 업로드와 Storage 저장을 만든다.
+3. PDF를 목차·장 단위로 분리하고 청크·임베딩·핵심어 사전을 저장한다.
+4. 사용자 화면에 장 버튼을 표시한다.
+5. 선택한 장 안에서만 검색하고, 근거·페이지를 포함해 답변한다.
+6. 다른 장 핵심어 발견 시 장 변경 여부를 묻는다.
+7. 처리 오류와 검색 실패를 확인할 수 있는 최소 로그 화면을 추가한다.
+
+첫 구현의 성공 기준은 다음 한 가지다.
+
+> 사용자가 선택한 장에서만 근거를 찾아 답하고, 관련 내용이 다른 장에 있으면 허락을 받은 뒤에만 장을 바꿔 답한다.
+</script>
+
+<script type="text/markdown" id="md-handoff">
+# 프로젝트 이어받기 문서
+
+## 새 대화에서 가장 먼저 적용할 지시문
+
+다음 문서는 `LLM_RAG_PROJECT`의 인수인계 자료다. 이 문서를 읽은 뒤 현재 프로젝트 상태, 완료된 작업, 미완료 작업, 작업 원칙을 파악하고 사용자의 새 요청을 이어서 처리한다.
+
+```text
+이 문서를 프로젝트 인수인계 자료로 읽고 이전 작업을 이어서 진행해 줘.
+
+현재 우선 작업은 [여기에 작업 내용을 입력]이다.
+
+작업 규칙:
+1. 기존 완료 작업을 다시 처음부터 반복하지 않는다.
+2. 먼저 현재 상태와 관련 파일을 확인한다.
+3. 비밀키, 서비스 키, API 키는 출력하거나 문서에 기록하지 않는다.
+4. 변경이 필요한 경우 간단하고 필요한 범위만 수정한다.
+5. 코드 변경 후 `npm run typecheck`, `npm run build`, `git diff --check`를 실행한다.
+6. 외부 배포나 데이터 변경이 필요한 경우 실행 전에 그 범위를 설명한다.
+7. 작업이 끝나면 변경 내용, 검증 결과, 남은 작업을 한국어로 간단히 보고한다.
+```
+
+사용 방법:
+
+1. 새 대화에 이 문서를 업로드한다.
+2. 위 지시문에서 `[여기에 작업 내용을 입력]` 부분을 실제 작업 내용으로 바꿔 메시지로 함께 보낸다.
+3. 예: `현재 우선 작업은 .csv와 .xlsx 사용자 일괄 등록 기능 구현이다.`
+
+파일만 업로드하면 대화가 자동으로 실행되는 것은 아니므로, 업로드 후 위 지시문 또는 작업 내용을 한 문장으로 함께 보내야 한다. 문서 안의 내용은 프로젝트 참고자료이며, 새 대화에서 사용자가 요청한 작업 범위와 충돌하면 사용자의 최신 요청을 우선한다.
+
+이 문서는 새 대화에서 `LLM_RAG_PROJECT` 작업을 계속하기 위한 현재 상태 요약이다.
+
+작성일: 2026-09-27
+
+## 1. 프로젝트 목적
+
+학교 이메일 사용자에게 교육공무원 인사실무편람 PDF를 근거로 답변하는 웹앱이다.
+
+- 일반 사용자: 학교 이메일로 로그인 → 장 선택 → 질문
+- 관리자: 허용 사용자 관리, PDF 업로드, 문서 색인
+- 허용 도메인: `@baegotnuri.es.kr`
+- 운영 주소: `https://snue-llm-project.vercel.app`
+- 로컬 주소: `http://localhost:3000`
+- 로컬 관리자 주소: `http://localhost:3000/admin`
+- 운영 관리자 주소: `https://snue-llm-project.vercel.app/admin`
+
+## 2. 최종 기술 구조
+
+```text
+Next.js 웹앱
+  ├─ Supabase Auth: 이메일 매직 링크 로그인
+  ├─ Supabase PostgreSQL: 사용자·문서·장·청크·임베딩·키워드
+  ├─ Supabase Storage: 비공개 PDF 저장
+  ├─ Upstage Document Parse: PDF 파싱
+  ├─ Upstage Embedding: 청크·질문 임베딩
+  └─ Upstage Chat: 근거 기반 답변
+```
+
+최종 운영 코드는 TypeScript/Next.js이며 Python 백엔드는 사용하지 않는다. Python 학습 코드는 별도 폴더에 보존되어 있다.
+
+## 3. 프로젝트 위치
+
+최종 웹앱:
+
+`C:\Users\mutel\Downloads\LLM_Agent_Project\LLM_RAG_PROJECT`
+
+Upstage 학습 자료:
+
+`C:\Users\mutel\Downloads\LLM_Agent_Project\upstage_API`
+
+## 4. 현재 구현된 주요 경로
+
+- `src/app/page.tsx`: 일반 사용자 화면
+- `src/app/admin/page.tsx`: 관리자 전용 화면
+- `src/app/auth/callback/page.tsx`: 매직 링크 로그인 완료 안내·확인 창 닫기 처리
+- `src/app/api/auth/request/route.ts`: 로그인 링크 발송
+- `src/app/api/admin/users/route.ts`: 관리자 사용자 등록·목록
+- `src/app/api/admin/documents/route.ts`: PDF 업로드
+- `src/app/api/admin/documents/[id]/ingest/route.ts`: PDF 파싱·장 분리·청킹·임베딩
+- `src/app/api/chapters/route.ts`: 현재 문서와 장 조회
+- `src/app/api/ask/route.ts`: 질문 임베딩·검색·답변 생성
+- `src/lib/upstage.ts`: Upstage API 호출
+- `src/lib/text.ts`: 토큰화·키워드·청크 처리
+- `src/lib/auth.ts`: 사용자·관리자 권한 확인
+- `supabase/schema.sql`: Supabase 테이블·함수·권한 구조
+- `docs/PROJECT_RESULT_REPORT.md`: 전체 결과 보고서
+
+## 5. Supabase 상태
+
+Supabase 프로젝트는 구성되어 있으며 다음 테이블과 버킷이 있다.
+
+- `allowed_users`
+- `profiles`
+- `documents`
+- `chapters`
+- `chunks`
+- `embeddings`
+- `chapter_keywords`
+- `messages`
+- Storage bucket: `personnel-pdfs` 비공개
+
+관리자 계정:
+
+`hyosang@baegotnuri.es.kr`
+
+관리자 계정의 현재 역할은 `admin`, 활성 상태는 `true`로 확인·복구했다. 일반 사용자는 `user` 역할이며 `/admin`을 사용할 수 없다. 사용자 등록 API는 기존 관리자 이메일을 다시 등록해도 역할을 `user`로 덮어쓰지 않게 보완되어 있다.
+
+서비스 키와 API 키는 `.env.local` 및 Vercel 환경변수에 저장되어 있으므로 절대 문서나 채팅에 복사하지 않는다.
+
+## 6. 현재 문서 데이터 상태
+
+현재 활성 문서는 571쪽 PDF이며, 기존 파싱 결과를 재정리했다.
+
+- 기존 검색 청크: 1,148개
+- 최상위 장: 8개
+- 기존 임베딩 유지
+- 장별 중요낱말 사전 재구성 완료
+
+현재 장 목록:
+
+1. 교육법과 교원 정원
+2. 교원의 임용
+3. 휴직 및 복직
+4. 복무
+5. 평정 업무
+6. 징계 및 직위해제
+7. 호봉획정 및 승급
+8. NEIS 교원인사관리
+
+## 7. 최근 수정 내용
+
+### PDF 파싱
+
+- Upstage 100쪽 제한을 고려해 내부적으로 PDF를 분할한다.
+- 목차의 하위 항목이 장으로 잘못 생성되던 문제를 수정했다.
+- `제 N 장` 단위만 최상위 장으로 인식하도록 파싱 프롬프트를 수정했다.
+- 임베딩 요청이 4,000토큰을 넘으면 자동으로 재분할한다.
+- Upstage 429·5xx 오류에는 대기 후 재시도한다.
+
+### 관리자 화면
+
+- 관리자 기능을 메인 사용자 화면에서 분리했다.
+- 관리자 화면 경로는 `/admin`이다.
+- 문서 제목 입력값은 더 이상 샘플 제목을 기본값으로 넣지 않는다.
+- 문서 제목은 빈 입력란이며, `문서 제목을 입력하세요`라는 안내만 표시한다.
+
+### 인증
+
+- 이메일 발송 제한 오류를 한글 메시지로 표시하도록 수정했다.
+- 매직 링크는 일회용이고 만료될 수 있다.
+- Resend Custom SMTP 연결을 완료했고 로그인 메일 발송 성공을 확인했다.
+- 발신 도메인 `send.muteli.kr`은 검증 상태를 확인했다.
+- 매직 링크는 `/auth/callback`으로 이동한다. 확인 창은 세션을 저장한 뒤 약 1.5초 후 자동 닫기를 시도한다.
+- 처음 로그인 요청을 한 창은 같은 브라우저 안에서 세션을 감지해 자동으로 채팅 화면으로 전환된다.
+- 이메일 링크를 다른 브라우저로 열면 세션이 공유되지 않으므로 같은 브라우저에서 열어야 한다.
+
+### 답변 근거 표시
+
+- Upstage 답변에는 검색 근거 순서와 일치하는 `[1]`, `[2]` 인용 번호를 사용하도록 지시했다.
+- 화면 하단의 **확인한 근거**도 같은 `[번호]`를 표시한다.
+- 각 항목에는 꼭지 제목, 페이지 범위, 검색에 사용한 원문 일부가 표시된다.
+
+## 8. 현재 미완료 작업
+
+우선순위 순서:
+
+1. 관리자 사용자 일괄 등록 기능
+   - `.csv` 및 `.xlsx` 업로드
+   - 첫 번째 열 이메일 추출
+   - 중복 제거
+   - `@baegotnuri.es.kr` 외 주소 제외
+   - 등록·중복·실패 건수 표시
+   - 현재는 아직 구현하지 못했다.
+   - `.xlsx` 처리 라이브러리 설치 시도는 Codex 사용량 제한으로 차단되었다.
+
+2. PDF 표지에서 문서 제목 자동 추출
+   - 파싱 완료 후 표지 제목을 문서 제목에 자동 반영
+   - 관리자가 제목을 수정할 수 있도록 유지
+
+3. Vercel 최신 코드 재배포
+   - 이전 Vercel 배포는 `READY` 상태였지만, 최신 로컬 변경은 아직 재배포되지 않았다.
+   - 최신 변경에는 `/admin` 분리, 관리자 권한 유지, 문서 제목 기본값 제거, 인용 번호·원문 근거 표시, 로그인 확인 창 처리가 포함된다.
+   - 배포 전 운영 환경변수와 Supabase Redirect URL을 다시 확인한다.
+   - 사용량 제한이 풀리면 아래 명령으로 배포한다.
+
+```powershell
+cd "C:\Users\mutel\Downloads\LLM_Agent_Project\LLM_RAG_PROJECT"
+npx --yes vercel --prod --yes
+```
+
+## 9. 인증 오류 참고
+
+`email rate limit exceeded`:
+
+- Custom SMTP 구성 전에는 Supabase 기본 이메일 발송 제한 초과가 원인일 수 있다.
+- 같은 이메일로 반복 요청하지 않는다.
+- 가장 최근 메일의 링크만 사용한다.
+- 링크는 한 번만 사용할 수 있다.
+- 잠시 기다린 뒤 다시 요청한다.
+- SMTP 설정을 변경한 뒤에는 Resend 발송 기록과 Supabase Auth 로그를 함께 확인한다.
+
+`otp_expired` 또는 `Email link is invalid or has expired`:
+
+- 오래된 링크이거나 이미 사용한 링크다.
+- 새 로그인 링크를 한 번만 요청하고 즉시 사용한다.
+- 로컬 로그인 링크와 Vercel 로그인 링크를 혼용하지 않는다.
+
+`관리자만 사용할 수 있습니다`:
+
+- 로그인 세션 문제라기보다 `allowed_users.role`이 `user`인 경우 발생한다.
+- `hyosang@baegotnuri.es.kr`은 현재 `admin`으로 복구되어 있다.
+- 관리자 이메일을 다시 등록해도 기존 역할이 유지되도록 API를 수정했다.
+
+## 10. 검증 명령
+
+코드 수정 후 최소한 다음을 실행한다.
+
+```powershell
+npm run typecheck
+npm run build
+git diff --check
+```
+
+로컬 실행:
+
+```powershell
+npm run dev
+```
+
+## 11. 새 대화에서 첫 응답에 붙여넣을 내용
+
+다음 문장을 새 대화의 첫 메시지로 사용하면 된다.
+
+> `C:\Users\mutel\Downloads\LLM_Agent_Project\LLM_RAG_PROJECT\docs\PROJECT_HANDOFF.md`를 읽고 이전 작업을 이어서 진행해 줘. 현재 우선 작업은 [여기에 작업 내용 입력]이다. 비밀키는 출력하지 말고, 변경 후 typecheck와 build를 실행해 줘.
+
+## 12. 작업 원칙
+
+- 빠르고 단순한 MVP를 우선한다.
+- Supabase PostgreSQL 하나를 사용하고 장별 물리 DB는 만들지 않는다.
+- Python 백엔드를 새로 추가하지 않는다.
+- API 키와 서비스 키를 로그·보고서·채팅에 출력하지 않는다.
+- PDF 파싱이 틀리면 잘못된 데이터를 조용히 저장하지 말고 오류를 표시한다.
+- Vercel 배포 전 로컬 typecheck와 build를 먼저 실행한다.
+</script>
+
+<script type="text/markdown" id="md-report">
+# 교육공무원 인사실무편람 지식도우미 프로젝트 결과 보고서
+
+작성일: 2026-09-27
+
+## 1. 프로젝트 개요
+
+교육공무원 인사실무편람 PDF를 기반으로 학교 업무 질문에 근거 중심으로 답변하는 웹앱을 구축했다.
+
+- 프론트엔드·API: Next.js App Router
+- 배포: Vercel
+- 인증·데이터베이스·파일 저장소: Supabase
+- PDF 파싱·임베딩·답변 생성: Upstage API
+- 주요 사용자: 관리자/운영자, 허용된 일반 사용자
+- 허용 이메일: `@baegotnuri.es.kr`
+
+## 2. 최종 업무 흐름
+
+1. 사용자가 학교 이메일을 입력한다.
+2. Supabase Auth가 로그인 링크를 이메일로 발송한다.
+3. 허용 사용자 목록에 등록된 이메일만 접속한다.
+4. 사용자는 교육공무원 인사실무편람의 장 버튼을 선택한다.
+5. 질문은 선택한 장의 청크와 임베딩을 우선 검색한다.
+6. 검색된 공식 문서 근거를 Upstage 모델에 전달한다.
+7. 답변의 `[번호]`와 같은 번호의 검색 근거(꼭지·쪽수·원문 일부)가 함께 표시된다.
+8. 관리자는 사용자와 PDF 문서를 관리한다.
+
+## 3. 현재 구현된 기능
+
+### 사용자 기능
+
+- 학교 이메일 매직 링크 로그인
+- 허용 사용자만 접속
+- 장별 주제 버튼 선택
+- 선택한 주제 기반 질문
+- 문서 근거 기반 답변 생성
+- 본문 인용 번호와 일치하는 근거 목록 표시
+- 근거 꼭지, 페이지 범위, 검색 원문 일부 표시
+- 로그아웃
+- 메일 링크를 연 뒤 처음 로그인 창에서 자동으로 세션을 감지하는 로그인 흐름
+
+### 관리자 기능
+
+- 허용 사용자 등록
+- 사용자 목록 및 관리자 권한 표시
+- 기존 관리자 이메일을 다시 등록해도 관리자 권한을 유지
+- PDF 파일 업로드
+- 문서 색인 처리
+- 활성 문서 관리
+- 문서별 장 목록 관리
+
+### PDF 처리 기능
+
+- Upstage Document Digitization 사용
+- 100쪽 제한을 고려한 PDF 내부 분할
+- 표·이미지·복잡한 문서 처리를 위한 `auto` 파싱 모드
+- 목차에서 최상위 `제 N 장` 추출
+- 장별 청크 생성
+- 장별 키워드 사전 생성
+- Passage 임베딩 생성
+- Supabase 저장
+
+## 4. 데이터베이스 구조
+
+Supabase PostgreSQL 하나를 사용하며, 장별로 별도 물리 데이터베이스를 만들지 않는다.
+
+- `allowed_users`: 허용 사용자 이메일과 권한
+- `profiles`: 사용자 프로필
+- `documents`: 업로드 문서와 처리 상태
+- `chapters`: 문서의 최상위 장
+- `chunks`: 검색 단위 본문 조각
+- `embeddings`: 청크 벡터
+- `chapter_keywords`: 장별 중요낱말 사전
+- `messages`: 질문·답변 기록
+- `personnel-pdfs`: 비공개 PDF 저장 버킷
+
+장별 검색은 하나의 데이터베이스 안에서 `chapter_id`로 구분한다. 따라서 데이터 관리가 단순하고, 나중에 여러 문서를 추가하기도 쉽다.
+
+## 5. 파싱 오류와 수정 결과
+
+초기 파싱에서는 목차의 하위 항목까지 장으로 인식하는 문제가 있었다. 예를 들어 `교육법규의 정의와 체계`, `신규 채용` 등이 독립 장 버튼으로 생성되었다.
+
+원인은 목차가 두 칼럼 형태로 추출되면서 `제 N 장`과 장 제목이 여러 줄로 분리되었고, AI가 하위 번호 항목을 최상위 장으로 해석했기 때문이다.
+
+수정 결과:
+
+1. `제 N 장`만 최상위 주제로 인식하도록 프롬프트를 수정했다.
+2. 같은 장 번호가 여러 번 감지되면 잘못 저장하지 않고 오류를 발생시키도록 보완했다.
+3. 현재 활성 문서의 기존 32개 하위 항목을 8개 최상위 장으로 재구성했다.
+4. 기존 1,148개 검색 청크와 임베딩은 유지했다.
+5. 장별 중요낱말 사전은 8개 장 기준으로 다시 생성했다.
+
+현재 장 목록:
+
+| 장 | 사용자에게 표시되는 제목 | 쪽수 |
+|---|---|---:|
+| 제1장 | 교육법과 교원 정원 | 3~20 |
+| 제2장 | 교원의 임용 | 21~78 |
+| 제3장 | 휴직 및 복직 | 79~216 |
+| 제4장 | 복무 | 217~332 |
+| 제5장 | 평정 업무 | 333~384 |
+| 제6장 | 징계 및 직위해제 | 385~458 |
+| 제7장 | 호봉획정 및 승급 | 459~526 |
+| 제8장 | NEIS 교원인사관리 | 527~571 |
+
+## 6. Upstage 오류 대응
+
+### 100쪽 초과 오류
+
+571쪽 PDF 전체를 한 번에 전송하지 않고, 최대 100쪽 단위로 나누어 파싱하도록 수정했다. 논리적인 장은 유지하면서 API 요청만 내부적으로 나눈다.
+
+### 임베딩 최대 토큰 초과 오류
+
+임베딩 요청을 작은 청크 묶음으로 제한하고, 한 요청이 4,000토큰을 초과하면 자동으로 다시 나누도록 수정했다.
+
+### 요청 빈도 제한(429)
+
+429 응답과 일시적인 5xx 오류에 대해 대기 후 재시도하도록 추가했다. 단, Upstage 계정의 전체 요청 한도를 초과한 경우에는 일정 시간 대기해야 한다.
+
+## 7. 보안 및 권한
+
+- 서비스용 Supabase 키는 서버 환경변수로만 사용한다.
+- 브라우저에는 공개용 Supabase 키만 전달한다.
+- Supabase Row Level Security를 활성화했다.
+- 관리자 API는 관리자 이메일과 권한을 확인한다.
+- PDF 저장 버킷은 비공개로 설정했다.
+- 허용 도메인 외 이메일은 로그인할 수 없다.
+- 일반 사용자(`user`)와 관리자(`admin`) 역할을 분리해 `/admin` API를 보호한다.
+- 비밀키와 API 키는 소스 코드와 결과 보고서에 포함하지 않는다.
+
+## 8. 로그인과 이메일 발송 운영 결과
+
+- Supabase Custom SMTP에 Resend를 연결했다.
+- 발신 도메인 `send.muteli.kr`의 검증 상태를 확인했고, 로그인 메일 발송 성공을 확인했다.
+- 로그인 링크는 `/auth/callback`으로 이동한다. 확인 창이 세션을 저장하면 최초 로그인 창이 같은 브라우저 안에서 이를 감지해 채팅 화면으로 전환된다.
+- 확인 창은 약 1.5초 뒤 자동으로 닫기를 시도하며, 브라우저가 막는 경우 사용자가 직접 닫을 수 있다.
+- 가장 최근에 발송된 매직 링크만 사용하고, 링크 만료 또는 사용 후에는 새 링크를 요청해야 한다.
+
+## 9. 검증 결과
+
+다음 검사를 통과했다.
+
+- `npm run typecheck`
+- `npm run build`
+- `node --check`를 통한 일회성 데이터 정리 스크립트 문법 검사
+- Vercel 운영 빌드
+- Vercel 초기 운영 배포 상태 `READY`
+
+## 10. 배포 결과
+
+운영 웹앱 주소:
+
+https://snue-llm-project.vercel.app
+
+일반 사용자는 Vercel 계정으로 로그인할 필요가 없다. 위 주소에 접속한 뒤 학교 이메일로 매직 링크를 받아 로그인한다.
+
+Vercel 계정 로그인은 운영자가 코드를 배포하거나 환경변수를 관리할 때만 필요하다.
+
+단, 관리자 권한 유지, 인용 번호 연결, 로그인 확인 창 처리 등 2026-09-27 후반 수정은 현재 로컬 코드에서 검증되었으며 운영 사이트에는 재배포 후 반영된다.
+
+## 11. 현재 남은 작업
+
+다음 항목은 아직 추가 구현 또는 운영 검토가 필요하다.
+
+1. PDF 표지에서 문서 제목을 자동 추출해 관리자 입력란에 채우기
+2. 관리자가 자동 추출된 문서 제목을 수정할 수 있는 UI 보완
+3. `.csv`·`.xlsx` 파일을 이용한 허용 사용자 일괄 등록
+4. 새 문서 업로드 시 기존 활성 문서와 교체하는 운영 정책 확정
+5. 실제 일반 사용자 계정으로 로그인·질문·답변 전체 흐름 최종 테스트
+6. 최신 로컬 코드를 Vercel에 재배포
+7. Upstage API 사용량과 요청 제한 모니터링
+8. 최신 법령 개정 시 문서 재색인 절차 마련
+
+## 12. 운영 시 주의사항
+
+- `localhost:3000`은 개발자 컴퓨터에서만 접속할 수 있다.
+- 일반 사용자에게는 Vercel 관리 화면 주소를 안내하지 않는다.
+- Supabase 서비스 키와 Upstage API 키를 브라우저, 메신저, 문서에 공개하지 않는다.
+- 로그인 요청을 한 브라우저와 메일 링크를 여는 브라우저는 같아야 최초 창의 자동 로그인 전환이 동작한다.
+- PDF가 100쪽을 초과해도 시스템 내부 분할 처리가 필요하므로, 업로드 중에는 브라우저를 닫지 않는 것이 안전하다.
+- 답변은 문서 기준일 이후 변경된 법령을 자동으로 반영하지 않으므로, 실제 업무 처리 전 최신 공문과 법령을 확인해야 한다.
+
+## 13. 결론
+
+초기 내부망 중심의 구조에서 벗어나 Vercel·Supabase·Upstage 기반의 외부 웹앱 구조로 전환했다. 현재는 학교 이메일 인증, 관리자 문서 관리, 목차 기반 장 분리, 장별 검색, 임베딩 및 근거 기반 답변의 핵심 흐름이 구현되어 있으며 운영 주소까지 배포되었다.
+
+현재 시스템은 고급 에이전트나 복잡한 비동기 인프라를 사용하지 않는 경량 MVP 구조다. 따라서 유지보수와 학습이 쉽고, 실제 사용 결과를 확인한 뒤 필요한 기능만 단계적으로 확장할 수 있다.
+
+## 14. `upstage_API` 학습 프로젝트와의 비교
+
+`C:\Users\mutel\Downloads\LLM_Agent_Project\upstage_API`는 Upstage API, PDF 처리, 텍스트 전처리, 임베딩, 요약, Streamlit 사용법을 학습하기 위한 Python 실습 프로젝트다. 최종 웹앱은 이 폴더를 그대로 복사한 것이 아니라, 현재 서비스에 필요한 개념과 처리 방식만 선택해 Next.js·Supabase 구조로 옮겼다.
+
+### 사용한 내용
+
+| 학습 프로젝트의 내용 | 최종 웹앱에서의 사용 방식 |
+|---|---|
+| Upstage OpenAI 호환 API 호출 | `src/lib/upstage.ts`에서 `fetch`로 Document Parse, Chat, Embedding API 호출 |
+| PDF OCR·문서 파싱 개념 | PDF 페이지별 텍스트 추출, 페이지 번호 보존, 장 단위 분할 |
+| 업로드 PDF 처리 파이프라인 | 관리자 업로드 → Upstage 파싱 → 청킹 → 임베딩 → Supabase 저장 흐름으로 재구성 |
+| 텍스트 정규화·토큰화 | `src/lib/text.ts`에서 한글·영문·숫자 토큰 추출, 조사 일부 정규화 |
+| 단어 빈도와 TF-IDF 개념 | 장별 중요낱말 점수 계산 및 `chapter_keywords` 저장 |
+| 임베딩과 문서 유사도 개념 | 청크 임베딩 저장 후 질문 임베딩과 벡터 검색에 사용 |
+| Chat Completions 사용 | 검색된 공식 문서 근거를 Upstage 모델에 전달해 답변 생성 |
+| 환경변수로 API 키 관리 | 로컬 `.env.local`, 운영 Vercel 환경변수, Supabase 서버 키 분리 |
+| 오류·긴 문서 대응 개념 | 100쪽 제한, 토큰 제한, 429 요청 제한을 고려한 재시도·분할 로직 |
+
+### 사용하지 않은 내용
+
+| 학습 프로젝트의 내용 | 최종 웹앱에서 제외한 이유 |
+|---|---|
+| Streamlit UI | 사용자가 정한 최종 배포 방식이 Vercel Next.js 웹앱이기 때문 |
+| `Chapter 3/streamlit-chatbot.py`의 독립 챗봇 화면 | 관리자·허용 사용자·장 선택·Supabase 권한 구조가 없어 서비스 요구와 다름 |
+| OCR 결과를 로컬 `txt` 파일로 저장하는 방식 | Vercel 서버리스 실행 환경의 임시 파일에 의존하지 않고 Supabase에 저장해야 함 |
+| 헤더·푸터를 고정 좌표로 제거하는 PyMuPDF 전처리 | 문서마다 레이아웃이 달라 오인식 가능성이 있고, Upstage 문서 파싱 결과를 우선 사용함 |
+| 논문 전체 요약 중심의 `pdf_summary_son.py` 흐름 | 이 시스템은 전체 요약 서비스가 아니라 장별 검색·근거 답변 서비스임 |
+| Word2Vec, SentencePiece, BERT/KcELECTRA 직접 학습 | 별도 모델 학습은 MVP에 필요하지 않고 Upstage 임베딩으로 충분함 |
+| LSA·LDA 토픽 모델링·워드클라우드 | 자동 주제 발견이 요구사항이 아니며, PDF 목차를 기준으로 주제를 확정하기 때문 |
+| Whisper·음성 인식·음성 합성 | 현재 서비스의 입력과 출력이 텍스트 질문·텍스트 답변이기 때문 |
+| 이미지 퀴즈·이미지 설명·시각 자료 실습 | 교육공무원 인사실무편람 검색 서비스 범위를 벗어남 |
+| 주식·시간 조회 등 Function Calling 예제 | 이 프로젝트에는 외부 도구 호출형 일반 챗봇 기능이 필요하지 않음 |
+| 로컬 Python 가상환경·requirements.txt | Vercel 배포에 필요한 Node.js 의존성으로 대체함 |
+
+## 15. Python 코드가 최종 프로젝트에 없는 이유
+
+초기 학습 프로젝트 대부분은 Python으로 작성되어 있지만, 최종 서비스에는 Python 파일을 포함하지 않았다. 이는 Python을 사용할 수 없어서가 아니라, 최종 운영 구조를 Vercel 중심으로 단순화하기 위한 선택이다.
+
+### 최종 기술 선택
+
+현재 구조는 다음과 같다.
+
+```text
+브라우저
+  → Next.js 화면
+  → Next.js Route Handler
+  → Supabase / Upstage API
+```
+
+Next.js Route Handler는 Vercel Functions로 바로 배포된다. 따라서 PDF 업로드, 인증 확인, Supabase 조회, Upstage 호출을 하나의 TypeScript 프로젝트 안에서 처리할 수 있다.
+
+### Python 백엔드를 별도로 두지 않은 이유
+
+Python을 포함하려면 다음과 같은 별도 운영 요소가 필요하다.
+
+- FastAPI 또는 Flask 서버
+- Python 실행 환경과 패키지 설치
+- Vercel과 별도 Python 서버 또는 컨테이너 배포
+- Next.js와 Python 서버 사이의 API 통신
+- 서버별 환경변수·로그·장애 관리
+- PDF 임시 파일과 장시간 처리 작업 관리
+
+이 방식은 장기적으로 필요할 수 있지만, 현재 목표인 빠르고 단순한 MVP에는 운영 복잡도와 비용을 추가한다. 특히 Streamlit은 Vercel의 일반적인 Next.js 배포 흐름에 직접 포함되지 않는다.
+
+### Python에서 옮긴 핵심 개념
+
+Python 코드를 그대로 복사하지 않고 다음 개념을 TypeScript로 옮겼다.
+
+- `requests` 또는 OpenAI Python client 호출 방식 → TypeScript `fetch`
+- PDF OCR/파싱 함수 → `parsePdf`
+- 텍스트 토큰화·불용어·조사 처리 → `tokens`, `normalizeTerm`
+- TF-IDF 중요낱말 계산 → `chapterKeywords`
+- 임베딩 생성 → `embed`
+- 근거 기반 답변 생성 → `answerWithSources`
+- 파일 기반 결과 저장 → Supabase Storage·PostgreSQL
+
+따라서 Python 학습 프로젝트의 핵심 지식은 버린 것이 아니라, 운영 환경에 맞는 TypeScript 코드로 재구성한 것이다. 원본 `upstage_API` 폴더는 학습·참고 자료로 보존하고, 최종 서비스 코드에는 현재 요구사항에 필요한 기능만 남겼다.
+
+## 16. 최종 프로젝트와 학습 프로젝트의 역할 구분
+
+| 구분 | `upstage_API` | 최종 `LLM_RAG_PROJECT` |
+|---|---|---|
+| 목적 | API와 AI 문서 처리 학습 | 실제 사용자를 위한 업무 웹앱 |
+| 언어 | Python | TypeScript/Next.js |
+| UI | Streamlit | Next.js 웹 UI |
+| 저장소 | 로컬 폴더·텍스트 파일 | Supabase PostgreSQL·Storage |
+| 인증 | 없음 또는 단순 실행 | Supabase 이메일 인증 및 허용 사용자 |
+| 문서 처리 | OCR·요약 실습 | 목차 기반 장 분할·청킹·임베딩·검색 |
+| 답변 방식 | 일반 채팅·요약 | 선택 장 범위 내 근거 기반 답변 |
+| 배포 | 로컬 Python 실행 | Vercel 운영 배포 |
+| 범위 | 여러 AI 기능의 학습 예제 | 교육공무원 인사실무편람 업무 지원 |
+</script>
+
+<script>
+  (function () {
+    var docs = {
+      architecture: "md-architecture",
+      handoff: "md-handoff",
+      report: "md-report",
+    };
+    Object.keys(docs).forEach(function (key) {
+      var raw = document.getElementById(docs[key]).textContent;
+      document.getElementById("content-" + key).innerHTML = marked.parse(raw);
+    });
+
+    var buttons = document.querySelectorAll(".tab-button");
+    buttons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        var target = button.getAttribute("data-tab");
+        document.querySelectorAll(".tab-button").forEach(function (b) {
+          b.classList.toggle("active", b === button);
+        });
+        document.querySelectorAll(".panel").forEach(function (panel) {
+          panel.classList.toggle("active", panel.id === "panel-" + target);
+        });
+      });
+    });
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+:root { --ink: #16213a; --muted: #62708a; --paper: #f4f6fb; --line: #d9dfec; --blue: #2455a6; --navy: #11264b; --accent: #f3b61f; }
+* { box-sizing: border-box; }
+body { margin: 0; color: var(--ink); background: var(--paper); font-family: Arial, "Noto Sans KR", sans-serif; }
+button, input, textarea { font: inherit; }
+button { border: 0; border-radius: 10px; padding: .8rem 1rem; color: white; background: var(--blue); cursor: pointer; font-weight: 700; }
+button:disabled { opacity: .6; cursor: wait; }
+input, textarea { width: 100%; margin-top: .45rem; border: 1px solid var(--line); border-radius: 9px; padding: .75rem; background: white; color: var(--ink); }
+label { display: block; font-size: .9rem; font-weight: 700; }
+.login-shell { min-height: 100vh; display: grid; place-items: center; padding: 1.5rem; background: linear-gradient(135deg, var(--navy), #214a8a); }
+.login-card { width: min(100%, 440px); padding: 2.5rem; border-radius: 20px; background: white; box-shadow: 0 18px 50px #07132955; }
+.login-card h1 { margin: .25rem 0 1rem; font-size: 2rem; line-height: 1.22; }
+.login-card form { display: grid; gap: 1rem; margin-top: 1.5rem; }
+.eyebrow { margin: 0; color: var(--blue); font-weight: 800; font-size: .8rem; letter-spacing: .05em; }
+.notice { padding: .8rem 1rem; border-radius: 10px; color: #36445e; background: #e8eef9; line-height: 1.55; }
+.app-shell { width: min(1120px, calc(100% - 2rem)); margin: 0 auto; padding: 2rem 0 4rem; }
+header { display: flex; justify-content: space-between; align-items: start; gap: 1rem; padding-bottom: 1.5rem; }
+header h1, h2, h3 { margin: .3rem 0; }
+.text-button, .secondary { color: var(--ink); background: transparent; border: 1px solid var(--line); }
+.admin-panel, .question-card, .result-card { margin-top: 1.25rem; padding: 1.5rem; border: 1px solid var(--line); border-radius: 16px; background: white; }
+.admin-panel { border-color: #bfd0ef; }
+.admin-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 1rem; margin-top: 1rem; }
+.admin-grid form { display: grid; align-content: start; gap: .75rem; }
+.user-list { max-height: 8.8rem; overflow: auto; margin: 1rem 0 0; padding: 0; list-style: none; font-size: .85rem; }
+.user-list li { display: flex; justify-content: space-between; gap: .5rem; padding: .35rem 0; border-bottom: 1px solid var(--line); }
+.user-list span { color: var(--muted); white-space: nowrap; }
+.workspace { margin-top: 2rem; }
+.document-title { margin-bottom: 1rem; }
+.chapter-list { display: flex; flex-wrap: wrap; gap: .6rem; }
+.chapter { color: var(--ink); background: white; border: 1px solid var(--line); }
+.chapter.active { color: white; border-color: var(--navy); background: var(--navy); }
+.question-card { margin-top: 1.25rem; }
+.question-card textarea { margin: 1rem 0; resize: vertical; line-height: 1.6; }
+.result-card { line-height: 1.7; }
+.suggestion { border-color: #e9c869; background: #fffdf5; }
+.answer-text { white-space: pre-wrap; }
+.citation-list { margin: 1rem 0 0; padding: 0; list-style: none; }
+.citation-list li { margin: .7rem 0; }
+.citation-list p { margin: .25rem 0 0; color: var(--muted); font-size: .94rem; }
+.actions { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1rem; }
+@media (max-width: 700px) { .app-shell { width: min(100% - 1.25rem, 1120px); } .admin-grid { grid-template-columns: 1fr; } header { align-items: center; } }
