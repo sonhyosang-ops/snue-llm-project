@@ -699,6 +699,10 @@ Supabase 프로젝트는 구성되어 있으며 다음 테이블과 버킷이 �
 
 우선순위 순서:
 
+완료된 최종 사용자 흐름 테스트:
+
+- 일반 사용자 계정으로 로그인 링크 요청 → 이메일 확인 → 로그인 → 장 선택 → 질문 → 답변 확인을 완료했다.
+
 1. 관리자 사용자 일괄 등록 기능
    - `.csv` 및 `.xlsx` 업로드
    - 첫 번째 열 이메일 추출
@@ -716,14 +720,25 @@ Supabase 프로젝트는 구성되어 있으며 다음 테이블과 버킷이 �
    - 이전 Vercel 배포는 `READY` 상태였지만, 최신 로컬 변경은 아직 재배포되지 않았다.
    - 최신 변경에는 `/admin` 분리, 관리자 권한 유지, 문서 제목 기본값 제거, 인용 번호·원문 근거 표시, 로그인 확인 창 처리가 포함된다.
    - 배포 전 운영 환경변수와 Supabase Redirect URL을 다시 확인한다.
-   - 사용량 제한이 풀리면 아래 명령으로 배포한다.
+   - 사용자가 배포를 진행 중이라고 알렸으나, 이 문서 작성 시점에는 운영 배포 완료(`Ready`) 여부를 별도로 확인하지 않았다.
 
 ```powershell
 cd "C:\Users\mutel\Downloads\LLM_Agent_Project\LLM_RAG_PROJECT"
 npx --yes vercel --prod --yes
 ```
 
-## 9. 인증 오류 참고
+## 9. GitHub 저장소 및 커밋 상태
+
+- 현재 원격 저장소(`origin`): `https://github.com/sonhyosang-ops/snue-llm-project.git`
+- 원격 기본 브랜치: `master`
+- 로컬 작업 브랜치: `main`
+- 2026-09-27에 기존 원격 `master` 내용은 사용자의 명시적 요청에 따라 현재 로컬 Next.js·Supabase·Upstage 프로젝트 구조로 강제 교체했다.
+- 교체 기준 커밋: `cc42cdd feat: deploy personnel guide RAG web app`
+- 이전 Python·FastAPI 중심 파일은 현재 로컬 구조에 없으므로 원격 저장소에서도 제거되었다.
+- 실행 로그 `dev.log`와 `.env.local` 등 비밀·로컬 파일은 GitHub에 올리지 않는다.
+- 이후 변경은 `git status` 확인 후 `git add -A`, `git commit`, `git push origin main:master` 순서로 반영한다. 원격 `master`에 다른 사람이 변경한 경우 강제 전송 전에는 반드시 사용자에게 확인한다.
+
+## 10. 인증 오류 참고
 
 `email rate limit exceeded`:
 
@@ -746,7 +761,7 @@ npx --yes vercel --prod --yes
 - `hyosang@baegotnuri.es.kr`은 현재 `admin`으로 복구되어 있다.
 - 관리자 이메일을 다시 등록해도 기존 역할이 유지되도록 API를 수정했다.
 
-## 10. 검증 명령
+## 11. 검증 명령
 
 코드 수정 후 최소한 다음을 실행한다.
 
@@ -762,13 +777,13 @@ git diff --check
 npm run dev
 ```
 
-## 11. 새 대화에서 첫 응답에 붙여넣을 내용
+## 12. 새 대화에서 첫 응답에 붙여넣을 내용
 
 다음 문장을 새 대화의 첫 메시지로 사용하면 된다.
 
 > `C:\Users\mutel\Downloads\LLM_Agent_Project\LLM_RAG_PROJECT\docs\PROJECT_HANDOFF.md`를 읽고 이전 작업을 이어서 진행해 줘. 현재 우선 작업은 [여기에 작업 내용 입력]이다. 비밀키는 출력하지 말고, 변경 후 typecheck와 build를 실행해 줘.
 
-## 12. 작업 원칙
+## 13. 작업 원칙
 
 - 빠르고 단순한 MVP를 우선한다.
 - Supabase PostgreSQL 하나를 사용하고 장별 물리 DB는 만들지 않는다.
@@ -776,6 +791,7 @@ npm run dev
 - API 키와 서비스 키를 로그·보고서·채팅에 출력하지 않는다.
 - PDF 파싱이 틀리면 잘못된 데이터를 조용히 저장하지 말고 오류를 표시한다.
 - Vercel 배포 전 로컬 typecheck와 build를 먼저 실행한다.
+- GitHub 원격 `master`를 강제 교체하는 작업은 사용자의 명시적 요청이 있을 때만 수행한다.
 </script>
 
 <script type="text/markdown" id="md-report">
@@ -925,6 +941,7 @@ Supabase PostgreSQL 하나를 사용하며, 장별로 별도 물리 데이터베
 - `node --check`를 통한 일회성 데이터 정리 스크립트 문법 검사
 - Vercel 운영 빌드
 - Vercel 초기 운영 배포 상태 `READY`
+- 일반 사용자 계정으로 로그인 링크 요청 → 이메일 확인 → 로그인 → 장 선택 → 질문 → 근거 기반 답변 확인까지 전체 흐름 테스트 완료
 
 ## 10. 배포 결과
 
@@ -946,10 +963,9 @@ Vercel 계정 로그인은 운영자가 코드를 배포하거나 환경변수�
 2. 관리자가 자동 추출된 문서 제목을 수정할 수 있는 UI 보완
 3. `.csv`·`.xlsx` 파일을 이용한 허용 사용자 일괄 등록
 4. 새 문서 업로드 시 기존 활성 문서와 교체하는 운영 정책 확정
-5. 실제 일반 사용자 계정으로 로그인·질문·답변 전체 흐름 최종 테스트
-6. 최신 로컬 코드를 Vercel에 재배포
-7. Upstage API 사용량과 요청 제한 모니터링
-8. 최신 법령 개정 시 문서 재색인 절차 마련
+5. 최신 로컬 코드를 Vercel에 재배포
+6. Upstage API 사용량과 요청 제한 모니터링
+7. 최신 법령 개정 시 문서 재색인 절차 마련
 
 ## 12. 운영 시 주의사항
 
