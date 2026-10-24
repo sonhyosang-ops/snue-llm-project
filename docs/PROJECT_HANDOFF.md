@@ -200,7 +200,8 @@ Supabase 프로젝트는 구성되어 있으며 다음 테이블과 버킷이 �
 
 ### 2026-10-24 장애 기록
 
-- 로컬 로그인 시 `TypeError: fetch failed`: Supabase 무료 플랜이 7일 미사용으로 프로젝트를 일시정지해 주소가 DNS에서 사라졌다. 대시보드에서 Restore 후 약 25분 뒤 복구되었다. 운영을 계속하려면 Pro 플랜이나 주기적 접속이 필요하다.
+- 로컬 로그인 시 `TypeError: fetch failed`: Supabase 무료 플랜이 7일 미사용으로 프로젝트를 일시정지해 주소가 DNS에서 사라졌다. 대시보드에서 Restore 후 약 25분 뒤 복구되었다.
+- 재발 방지: Vercel Cron(`vercel.json`)이 매일 00:00 UTC(09:00 KST)에 `/api/keepalive`를 호출해 Supabase를 한 번 조회한다. 호출에는 `CRON_SECRET`(Vercel 운영 환경변수·`.env.local`)이 필요하고, 없으면 401로 거부한다. 실행 기록은 Vercel 대시보드 Settings → Cron Jobs에서 확인한다.
 - `snue-llm-project-t1zs`(현재 삭제됨) 첫 배포 실패(`supabaseUrl is required`): 환경변수가 이름만 있고 값이 비어 있었다. `.env.local` 값으로 덮어써 해결했다. Vercel의 sensitive 값은 저장 후 다시 볼 수 없으므로 값을 바꿀 때는 `.env.local`을 기준으로 덮어쓴다.
 - 같은 실패가 빌드를 막지 않도록 `src/lib/browser-supabase.ts`의 대체값 처리를 `??`에서 `||`로 바꿨다(빈 문자열도 대체값 사용).
 - 개발 화면의 hydration 경고는 브라우저 확장(Liner 등)이 `<html>`·`<body>`에 속성을 붙여서 생긴다. `layout.tsx`에 `suppressHydrationWarning`을 추가했다.
