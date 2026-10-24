@@ -10,3 +10,4 @@ dev.log
 
 .vercel
 .env*
+next-env.d.ts

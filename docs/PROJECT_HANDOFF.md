@@ -29,7 +29,7 @@
 
 이 문서는 새 대화에서 `LLM_RAG_PROJECT` 작업을 계속하기 위한 현재 상태 요약이다.
 
-작성일: 2026-09-27
+작성일: 2026-09-27 (최종 갱신: 2026-10-24)
 
 ## 1. 프로젝트 목적
 
@@ -153,6 +153,13 @@ Supabase 프로젝트는 구성되어 있으며 다음 테이블과 버킷이 �
 - 처음 로그인 요청을 한 창은 같은 브라우저 안에서 세션을 감지해 자동으로 채팅 화면으로 전환된다.
 - 이메일 링크를 다른 브라우저로 열면 세션이 공유되지 않으므로 같은 브라우저에서 열어야 한다.
 
+### 답변 형식 (2026-10-24)
+
+- 답변은 eDASAN 교원인사 답변사례 형식(`○` 항목, 존댓말 공문체, 질문이 여러 개면 `<답변1>`·`<답변2>`)을 따른다.
+- 퓨샷 예시는 `src/lib/answer-examples.ts`에 있다: 호봉획정 1건 + eDASAN 세부분야별 최신 답변 7건.
+- 형식을 바꿀 때는 `src/lib/upstage.ts`의 시스템 프롬프트와 예시를 함께 바꾼다. 둘이 어긋나면 모델은 예시를 따른다.
+- 기본 답변 모델은 `solar-pro4`다(`UPSTAGE_CHAT_MODEL`로 변경 가능).
+
 ### 답변 근거 표시
 
 - Upstage 답변에는 검색 근거 순서와 일치하는 `[1]`, `[2]` 인용 번호를 사용하도록 지시했다.
@@ -180,17 +187,23 @@ Supabase 프로젝트는 구성되어 있으며 다음 테이블과 버킷이 �
    - 파싱 완료 후 표지 제목을 문서 제목에 자동 반영
    - 관리자가 제목을 수정할 수 있도록 유지
 
-3. Vercel 최신 코드 재배포
-   - 이전 Vercel 배포는 `READY` 상태였지만, 최신 로컬 변경은 아직 재배포되지 않았다.
-   - 최신 변경에는 `/admin` 분리, 관리자 권한 유지, 문서 제목 기본값 제거, 인용 번호·원문 근거 표시, 로그인 확인 창 처리가 포함된다.
-   - 배포 전 운영 환경변수와 Supabase Redirect URL을 다시 확인한다.
-   - 사용자가 배포를 진행 중이라고 알렸으나, 이 문서 작성 시점에는 운영 배포 완료(`Ready`) 여부를 별도로 확인하지 않았다.
-   - 사용량 제한이 풀리면 아래 명령으로 배포한다.
+3. ~~Vercel 최신 코드 재배포~~ (2026-10-24 완료, 아래 "배포 방식" 참고)
 
-```powershell
-cd "C:\Users\mutel\Downloads\LLM_Agent_Project\LLM_RAG_PROJECT"
-npx --yes vercel --prod --yes
-```
+### 배포 방식 (2026-10-24 갱신)
+
+- Vercel 프로젝트 `snue-llm-project`(운영 주소 `https://snue-llm-project.vercel.app`)가 GitHub `sonhyosang-ops/snue-llm-project`의 `master`에 연결되어 있다.
+- `git push origin main:master`만 하면 Vercel이 자동으로 빌드·배포한다. CLI 배포(`vercel --prod`)는 더 이상 필요 없다.
+- 배포 결과는 Vercel 대시보드 또는 GitHub 커밋 옆 Vercel 상태 표시로 확인한다.
+- 별도 프로젝트 `snue-llm-project-t1zs`도 같은 저장소에 연결되어 있어 푸시마다 함께 배포된다. 운영 주소가 아니므로 정리(삭제 또는 Git 연결 해제) 대상이다.
+- Supabase와 Resend SMTP 설정은 각 대시보드에 저장된 설정이라 푸시로 배포되지 않는다.
+
+### 2026-10-24 장애 기록
+
+- 로컬 로그인 시 `TypeError: fetch failed`: Supabase 무료 플랜이 7일 미사용으로 프로젝트를 일시정지해 주소가 DNS에서 사라졌다. 대시보드에서 Restore 후 약 25분 뒤 복구되었다. 운영을 계속하려면 Pro 플랜이나 주기적 접속이 필요하다.
+- `snue-llm-project-t1zs` 첫 배포 실패(`supabaseUrl is required`): 환경변수가 이름만 있고 값이 비어 있었다. `.env.local` 값으로 덮어써 해결했다. Vercel의 sensitive 값은 저장 후 다시 볼 수 없으므로 값을 바꿀 때는 `.env.local`을 기준으로 덮어쓴다.
+- 같은 실패가 빌드를 막지 않도록 `src/lib/browser-supabase.ts`의 대체값 처리를 `??`에서 `||`로 바꿨다(빈 문자열도 대체값 사용).
+- 개발 화면의 hydration 경고는 브라우저 확장(Liner 등)이 `<html>`·`<body>`에 속성을 붙여서 생긴다. `layout.tsx`에 `suppressHydrationWarning`을 추가했다.
+- `next-env.d.ts`는 `next dev`·`next build`가 실행할 때마다 다시 만들어 Git 변경이 계속 생기므로, Next.js 문서 권장대로 Git 추적에서 제외했다.
 
 ## 9. GitHub 저장소 및 커밋 상태
 

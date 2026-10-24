@@ -11,6 +11,7 @@ export function browserSupabase() {
   const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
   // The placeholder lets `next build` run before deployment variables exist.
   // Actual sign-in will fail clearly until the documented variables are configured.
-  client = createClient(url ?? "https://placeholder.supabase.co", key ?? "placeholder-anon-key");
+  // `||` (not `??`) so variables that exist but are empty also fall back.
+  client = createClient(url || "https://placeholder.supabase.co", key || "placeholder-anon-key");
   return client;
 }
