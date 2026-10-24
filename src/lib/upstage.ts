@@ -1,3 +1,5 @@
+import { ANSWER_EXAMPLES } from "@/lib/answer-examples";
+
 export type ParsedPage = { page: number; text: string };
 export type ChapterHeading = { title: string; chapterNumber: string; pageFrom: number };
 
@@ -55,11 +57,11 @@ export async function parsePdf(pdf: Blob, filename: string, pageOffset = 0): Pro
   return pages;
 }
 
-async function chat(messages: { role: "system" | "user"; content: string }[]) {
+async function chat(messages: { role: "system" | "user" | "assistant"; content: string }[]) {
   const response = await fetch(`${baseUrl}/chat/completions`, {
     method: "POST",
     headers: { Authorization: `Bearer ${apiKey()}`, "Content-Type": "application/json" },
-    body: JSON.stringify({ model: process.env.UPSTAGE_CHAT_MODEL ?? "solar-pro2", temperature: 0.1, messages }),
+    body: JSON.stringify({ model: process.env.UPSTAGE_CHAT_MODEL ?? "solar-pro4", temperature: 0.1, messages }),
   });
   if (!response.ok) throw new Error(`Upstage 답변 생성 실패: ${await response.text()}`);
   const payload = await response.json() as { choices?: { message?: { content?: string } }[] };
@@ -125,7 +127,11 @@ export async function embed(texts: string[], model: string) {
 export async function answerWithSources(question: string, sources: { content: string; page_from: number; page_to: number; heading: string }[]) {
   const context = sources.map((source, index) => `[${index + 1}] ${source.heading || "본문"} (${source.page_from}~${source.page_to}쪽)\n${source.content}`).join("\n\n");
   return chat([
-    { role: "system", content: "당신은 교육공무원 인사실무편람 안내 도우미입니다. 제공된 근거 안에서만 한국어로 답하세요. 근거가 부족하면 확인할 수 없다고 말하세요. 사실 문장마다 [1]처럼 근거 번호를 붙이세요. 번호는 제공된 근거의 같은 번호만 사용하고, 존재하지 않는 번호를 만들지 마세요. 일반 지식이나 추측을 사용하지 마세요." },
+    { role: "system", content: "당신은 교육공무원 인사실무편람 안내 도우미입니다. 제공된 근거 안에서만 한국어로 답하세요. 근거가 부족하면 확인할 수 없다고 말하세요. 사실 문장마다 [1]처럼 근거 번호를 붙이세요. 번호는 제공된 근거의 같은 번호만 사용하고, 존재하지 않는 번호를 만들지 마세요. 일반 지식이나 추측을 사용하지 마세요.\n\n답변 작성 방식: 문장을 '○ '로 시작하는 항목으로 나누어 줄을 바꿔 쓰고, '~합니다', '~할 수 있습니다', '~함을 안내드립니다'와 같은 존댓말 공문체로 쓰세요. 먼저 적용되는 법령·규정·지침을 「」로 표기하고 조문이나 별표 단위로 특정한 뒤, 일반 원칙을 밝히고 질문의 사례에 적용하여 '○ 따라서, ~'로 결론을 맺으세요. 예외나 단서는 '다만,'으로 구분하세요. 질문이 여러 개이면 <답변1>, <답변2>처럼 질문 번호별로 나누어 답하고, 근거로 확인할 수 없는 질문은 해당 번호 아래에 확인할 수 없다고 쓰세요. 근거가 단정을 뒷받침하지 않으면 '~로 보입니다', '~보기 어렵습니다'처럼 유보하세요. 앞선 대화의 문답은 이 작성 방식을 보여 주는 예시일 뿐이므로, 그 내용을 현재 질문의 근거로 인용하거나 섞지 마세요." },
+    ...ANSWER_EXAMPLES.flatMap((example) => [
+      { role: "user" as const, content: `질문: ${example.question}\n\n근거:\n${example.sources}` },
+      { role: "assistant" as const, content: example.answer },
+    ]),
     { role: "user", content: `질문: ${question}\n\n근거:\n${context}` },
   ]);
 }
