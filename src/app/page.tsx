@@ -8,9 +8,17 @@
 // "use client": 이 화면은 브라우저에서 실행되는 컴포넌트다(입력·클릭 같은 상호작용이 필요하기 때문).
 // 데이터는 모두 서버 API(/api/chapters, /api/ask)를 통해 받는다. 브라우저는 DB에 직접 접근하지 않는다.
 // ─────────────────────────────────────────────────────────────────────────────
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, KeyboardEvent, useEffect, useState } from "react";
+import ReactMarkdown, { type Components } from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { browserSupabase } from "@/lib/browser-supabase";
 import type { AskResult, Chapter, Role } from "@/lib/types";
+
+// "확인한 근거" 원문을 마크다운으로 그린다. remark-gfm은 표(| a | b |)와 같은 GitHub식 마크다운 문법을 켠다.
+// react-markdown은 원문 속 HTML 태그를 실행하지 않고 글자로만 다루므로, 근거에 이상한 태그가 섞여도 안전하다.
+// 원문의 "# 사례 7" 같은 제목은 화면 제목처럼 크게 보이면 어색하므로 굵은 글씨 한 줄로 바꿔 그린다.
+const sourceHeading: Components["h1"] = ({ children }) => <p className="source-heading"><strong>{children}</strong></p>;
+const SOURCE_MARKDOWN: Components = { h1: sourceHeading, h2: sourceHeading, h3: sourceHeading, h4: sourceHeading, h5: sourceHeading, h6: sourceHeading };
 
 // /api/chapters 응답 모양: 내 역할, 현재 활성 문서, 그 문서의 장 목록
 type Workspace = {
@@ -107,6 +115,17 @@ export default function Home() {
     finally { setBusy(false); }
   };
 
+  // 질문 입력칸에서 Shift+Enter를 누르면 "질문하기" 버튼과 똑같이 전송한다. 그냥 Enter는 기본 동작(줄바꿈) 그대로다.
+  //   - isComposing: 한글처럼 글자를 조합해 입력하는 중에는 Enter가 "조합 확정"에 쓰인다. 이때 전송하면
+  //     마지막 글자가 빠지거나 두 번 들어갈 수 있으므로 조합이 끝난 뒤의 키 입력만 처리한다.
+  //   - busy: 답변을 기다리는 중에 다시 보내지 않는다(버튼이 잠겨 있는 것과 같은 규칙).
+  //   - preventDefault: 전송할 때는 입력칸에 줄바꿈이 추가되지 않게 막는다.
+  const sendOnShiftEnter = (event: KeyboardEvent<HTMLTextAreaElement>) => {
+    if (event.key !== "Enter" || !event.shiftKey || event.nativeEvent.isComposing || busy) return;
+    event.preventDefault();
+    ask();
+  };
+
   // 로그인 전 화면: 학교 메일 입력 → 로그인 링크 받기
   if (!token) {
     return <main className="login-shell"><section className="login-card"><p className="eyebrow">배곧누리초등학교</p><h1>교육공무원<br />인사실무편람</h1><p>등록된 교직원만 이용할 수 있습니다.</p><form onSubmit={requestLogin}><label>학교 이메일<input type="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="name@baegotnuri.es.kr" required /></label><button disabled={busy}>{busy ? "보내는 중…" : "로그인 링크 받기"}</button></form>{message && <p className="notice">{message}</p>}</section></main>;
@@ -121,10 +140,10 @@ export default function Home() {
     {message && <p className="notice">{message}</p>}
     {workspace?.role === "admin" && <p><a className="text-button" href="/admin">관리자 페이지 열기</a></p>}
     <section className="workspace"><div className="document-title"><p className="eyebrow">현재 문서</p><h2>{workspace?.document?.title ?? "아직 활성화된 문서가 없습니다."}</h2></div><div className="chapter-list">{workspace?.chapters.map((item) => <button key={item.id} className={chapter?.id === item.id ? "chapter active" : "chapter"} onClick={() => { setChapter(item); setAnswer(null); }}>{item.chapter_number && `${item.chapter_number} `}{item.title}</button>)}</div>
-      {chapter && <section className="question-card"><p className="eyebrow">선택한 범위 · {chapter.title} · {chapter.page_from}~{chapter.page_to}쪽</p><h2>무엇이 궁금하신가요?</h2><textarea aria-label="질문 입력" value={question} onChange={(event) => setQuestion(event.target.value)} placeholder="예: 승진후보자명부는 어떤 기준으로 작성하나요?" rows={4} /><button onClick={() => ask()} disabled={busy || !question.trim()}>{busy ? "근거를 찾는 중…" : "질문하기"}</button></section>}
+      {chapter && <section className="question-card"><p className="eyebrow">선택한 범위 · {chapter.title} · {chapter.page_from}~{chapter.page_to}쪽</p><h2>무엇이 궁금하신가요?</h2><textarea aria-label="질문 입력" value={question} onChange={(event) => setQuestion(event.target.value)} onKeyDown={sendOnShiftEnter} placeholder="예: 승진후보자명부는 어떤 기준으로 작성하나요? (Shift+Enter로 보내기)" rows={4} /><button onClick={() => ask()} disabled={busy || !question.trim()}>{busy ? "근거를 찾는 중…" : "질문하기"}</button></section>}
       {answer?.type === "suggestion" && <section className="result-card suggestion"><h2>다른 장을 확인해 볼까요?</h2><p>질문의 핵심어 “{answer.keywords.join(", ") || "관련 내용"}”가 <strong>{answer.chapter.chapter_number} {answer.chapter.title}</strong>에 포함된 것으로 보입니다.</p><div className="actions"><button disabled={busy} onClick={() => ask(answer.chapter.id)}>해당 장에서 답변받기</button><button className="secondary" onClick={() => setAnswer(null)}>현재 장 유지</button></div></section>}
       {answer?.type === "not_found" && <section className="result-card"><h2>확인할 수 없습니다</h2><p>{answer.message}</p></section>}
-      {answer?.type === "answer" && <section className="result-card"><p className="eyebrow">답변 · 핵심어 {answer.keywords.join(", ") || "없음"}</p><h2>안내</h2><p className="answer-text">{answer.answer}</p><h3>확인한 근거</h3><ul className="citation-list">{answer.citations.map((citation, index) => <li key={citation.chunkId}><strong>[{index + 1}] {citation.heading || chapter?.title}</strong> · {citation.pageFrom}~{citation.pageTo}쪽<p>{citation.excerpt}</p></li>)}</ul></section>}
+      {answer?.type === "answer" && <section className="result-card"><p className="eyebrow">답변 · 핵심어 {answer.keywords.join(", ") || "없음"}</p><h2>안내</h2><p className="answer-text">{answer.answer}</p><h3>확인한 근거</h3><ul className="citation-list">{answer.citations.map((citation, index) => <li key={citation.chunkId}><strong>[{index + 1}] {citation.heading || chapter?.title}</strong> · {citation.pageFrom}~{citation.pageTo}쪽<div className="source-body"><ReactMarkdown remarkPlugins={[remarkGfm]} components={SOURCE_MARKDOWN}>{citation.excerpt}</ReactMarkdown></div></li>)}</ul></section>}
     </section>
   </main>;
 }

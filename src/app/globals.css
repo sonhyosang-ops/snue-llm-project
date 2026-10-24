@@ -36,5 +36,16 @@ header h1, h2, h3 { margin: .3rem 0; }
 .citation-list { margin: 1rem 0 0; padding: 0; list-style: none; }
 .citation-list li { margin: .7rem 0; }
 .citation-list p { margin: .25rem 0 0; color: var(--muted); font-size: .94rem; }
+/* "확인한 근거" 원문 상자. 마크다운으로 그린 표·글머리표를 담고, 길면 상자 안에서 스크롤한다. */
+.source-body { margin-top: .35rem; max-height: 24rem; overflow: auto; padding: .5rem .85rem; border: 1px solid var(--line); border-radius: 10px; background: #fafbfe; font-size: .9rem; line-height: 1.6; }
+/* 원문의 줄바꿈을 그대로 보여 준다(마크다운은 원래 한 줄 바꿈을 공백으로 합친다). */
+.source-body p { margin: .35rem 0; white-space: pre-line; color: #36445e; font-size: .9rem; }
+.source-body .source-heading { margin-top: .7rem; color: var(--ink); }
+.source-body ul, .source-body ol { margin: .3rem 0; padding-left: 1.3rem; color: #36445e; }
+.source-body table { border-collapse: collapse; margin: .5rem 0; font-size: .85rem; }
+.source-body th, .source-body td { border: 1px solid var(--line); padding: .3rem .55rem; vertical-align: top; text-align: left; }
+.source-body th { background: #eef2fa; }
+/* 청크가 표 중간부터 시작해 머리글이 비어 있는 표(cleanChunk가 넣은 빈 머리글)는 머리글 줄을 숨긴다. */
+.source-body thead:not(:has(th:not(:empty))) { display: none; }
 .actions { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1rem; }
 @media (max-width: 700px) { .app-shell { width: min(100% - 1.25rem, 1120px); } .admin-grid { grid-template-columns: 1fr; } header { align-items: center; } }

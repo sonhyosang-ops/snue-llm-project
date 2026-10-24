@@ -30,9 +30,10 @@ function apiKey() {
   return key;
 }
 
-// HTML 태그를 지우고 공백을 하나로 모은다. 표(table)처럼 HTML로 돌아오는 요소를 평문으로 바꿀 때 쓴다.
+// 글 속의 HTML 태그(표 칸 안의 <br> 등)를 지운다. 띄어쓰기·탭만 하나로 모으고 줄바꿈은 남긴다.
+// 줄바꿈까지 공백으로 합치면 마크다운 표의 행 구분이 사라져 표 전체가 한 줄로 뭉개진다(2026-10-24 이전 색인 데이터의 문제).
 function textFromHtml(value: string) {
-  return value.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+  return value.replace(/<br\s*\/?>/gi, " ").replace(/<[^>]*>/g, " ").replace(/[ \t]+/g, " ").replace(/\n{3,}/g, "\n\n").trim();
 }
 
 // Document Parse가 돌려주는 요소(문단, 제목, 표, 그림 등) 하나에서 글자만 꺼낸다.

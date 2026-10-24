@@ -8,6 +8,7 @@
 //   2) questionKeywords         : 사용자 질문에서 핵심어 1~2개를 뽑는다.
 //   3) chapterKeywordCandidates : 장별 핵심어 사전의 "후보"를 TF-IDF 점수로 뽑는다.
 //   4) chunkPages               : PDF 쪽 본문을 검색 단위(청크)로 자른다.
+//   5) cleanChunk               : 검색된 청크의 잡음을 빼고 표를 다듬는다(답변 생성·근거 표시용).
 //
 // 참고: 핵심어 사전은 답변의 근거가 아니라 "질문이 어느 장에 속하는지" 판단하는 길잡이다.
 //       실제 답변 근거는 임베딩(의미 벡터) 검색으로 찾는다(src/app/api/ask/route.ts 참고).
@@ -133,4 +134,83 @@ export function chunkPages(pages: { page: number; text: string }[], target = 120
   // 마지막에 남은 내용도 청크로 저장한다.
   save();
   return chunks;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 근거 정리 — 검색된 청크를 "사람이 읽고, 모델에 보내기 좋은" 모양으로 다듬는다.
+//
+// PDF 파싱 결과에는 검색에는 큰 해가 없지만 읽기에는 방해가 되는 잡음이 섞여 있다.
+//   - "$$ … $$"가 들어간 줄 : 계산식 그림을 수식으로 잘못 인식한 LaTeX 기호
+//   - 한글 없이 영어 낱말만 이어진 줄 : 그림·화면 캡처를 설명하려고 파서가 덧붙인 영어 문장
+//   - 숫자만 있는 줄 : 쪽 번호
+// 또 일부 표는 파싱 때 줄바꿈이 사라져 "| a | b | | --- | --- | | x | y |"처럼 한 줄로 뭉개져 저장되어 있다.
+//
+// cleanChunk는 잡음 줄을 빼고, 뭉개진 표를 다시 여러 줄의 마크다운 표로 펼친다. 글머리표("- ")와 제목("# ")은 그대로 둔다.
+// 이렇게 정리한 글을 ① 답변 생성 모델에 보내고(토큰 절약) ② 화면의 "확인한 근거"에 마크다운으로 그린다(표는 표로).
+// DB에 저장된 청크와 임베딩은 바꾸지 않는다. 그래서 검색 결과는 그대로이고 다시 색인할 필요가 없다.
+// ─────────────────────────────────────────────────────────────────────────────
+
+// 마크다운 표의 구분 줄. 예) "| --- | :---: |"
+const SEPARATOR_ROW = /^\|(\s*:?-{3,}:?\s*\|)+$/;
+
+// 줄이 마크다운 표의 한 행인지("|"로 시작하고 "|"로 끝나는지) 확인한다.
+function isTableRow(line: string | undefined) {
+  const trimmed = line?.trim() ?? "";
+  return trimmed.startsWith("|") && trimmed.endsWith("|");
+}
+
+// 한 줄로 뭉개진 표를 여러 줄로 펼친다. 뭉개진 표가 아니면 그 줄을 그대로 돌려준다.
+// 원리: 뭉개진 표는 행과 행 사이가 "| |"로 붙어 있다. "|"로 자르면 [칸1, 칸2, …, 칸n, 빈칸(행 경계), 칸1, …] 순서가 되므로,
+//       구분 줄("| --- | --- |")에서 열 수 n을 알아낸 뒤 n+1개씩 묶으면 원래 행을 되찾을 수 있다.
+//       묶음의 마지막(행 경계) 자리에 글자가 있으면 이 규칙에 맞지 않는 줄이므로 손대지 않는다.
+function expandFlatTable(line: string): string[] {
+  const trimmed = line.trim();
+  const separator = trimmed.match(/\|(\s*:?-{3,}:?\s*\|)+/);
+  if (!trimmed.startsWith("|") || !separator || separator[0] === trimmed) return [line];
+  const columns = separator[0].split("|").length - 2;
+  const tokens = trimmed.split("|").slice(1);
+  const rows: string[] = [];
+  for (let index = 0; index < tokens.length; index += columns + 1) {
+    const cells = tokens.slice(index, index + columns);
+    const boundary = tokens[index + columns];
+    if (boundary !== undefined && boundary.trim()) return [line];
+    // 맨 끝의 빈 조각(마지막 "|" 뒤)처럼 칸이 모두 비어 있는 묶음은 행이 아니므로 버린다.
+    if (cells.every((cell) => !cell.trim())) continue;
+    rows.push(`| ${cells.map((cell) => cell.trim()).join(" | ")} |`);
+  }
+  return rows;
+}
+
+// 표의 앞뒤를 마크다운 표 규칙에 맞게 다듬는다.
+//   - 마크다운 표로 그려지려면 "머리글 행 + 구분 줄"로 시작해야 한다. 그런데 청크는 1,200자 단위로 잘리므로
+//     표의 중간부터 시작하는 청크가 많다(머리글은 앞 청크에 있음). 그런 표 앞에는 빈 머리글 행과 구분 줄을 넣는다.
+//   - 문단 바로 뒤에 붙은 표는 표로 인식되지 않을 수 있어, 모든 표 앞에 빈 줄을 넣는다.
+//   - 표 바로 뒤에 빈 줄 없이 문단이 이어지면 그 문단이 표의 한 행으로 빨려 들어가므로, 표 뒤에도 빈 줄을 넣는다.
+function formatTables(lines: string[]) {
+  const output: string[] = [];
+  for (let index = 0; index < lines.length; index += 1) {
+    const startsTable = isTableRow(lines[index]) && !isTableRow(lines[index - 1]);
+    if (startsTable) {
+      output.push("");
+      if (!SEPARATOR_ROW.test((lines[index + 1] ?? "").trim())) {
+        const columns = lines[index].trim().split("|").length - 2;
+        output.push(`|${" |".repeat(columns)}`, `|${" --- |".repeat(columns)}`);
+      }
+    }
+    output.push(lines[index]);
+    const next = lines[index + 1];
+    if (isTableRow(lines[index]) && next !== undefined && next.trim() && !isTableRow(next)) output.push("");
+  }
+  return output;
+}
+
+export function cleanChunk(text: string) {
+  const lines = text
+    .split("\n")
+    .filter((line) => !line.includes("$$"))
+    .filter((line) => !/^\s*\d{1,4}\s*$/.test(line))
+    // 한글이 하나도 없고 영어 낱말이 3개 이상 이어진 줄 = 파서가 덧붙인 그림 설명. 표의 숫자 행이나 "NEIS" 같은 낱말은 남는다.
+    .filter((line) => /[가-힣]/.test(line) || !/[A-Za-z]{2,}(\W+[A-Za-z]{2,}){2,}/.test(line))
+    .flatMap(expandFlatTable);
+  return formatTables(lines).join("\n").replace(/\n{3,}/g, "\n\n").trim();
 }

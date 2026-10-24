@@ -22,7 +22,7 @@ export type Citation = {
   pageFrom: number;
   pageTo: number;
   heading: string;
-  excerpt: string; // 근거 원문 앞부분(최대 240자)
+  excerpt: string; // 근거 원문 전체(cleanChunk로 정리한 마크다운. 표·글머리표 포함)
   score: number;   // 질문과의 유사도(1에 가까울수록 비슷함)
 };
 
