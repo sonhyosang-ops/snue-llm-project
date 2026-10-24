@@ -64,7 +64,7 @@
 Supabase PostgreSQL 하나를 사용하며, 장별로 별도 물리 데이터베이스를 만들지 않는다.
 
 - `allowed_users`: 허용 사용자 이메일과 권한
-- `profiles`: 사용자 프로필
+- `profiles`: 초기 설계에서 만든 사용자 프로필 테이블(현재 미사용)
 - `documents`: 업로드 문서와 처리 상태
 - `chapters`: 문서의 최상위 장
 - `chunks`: 검색 단위 본문 조각

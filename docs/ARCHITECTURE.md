@@ -263,8 +263,8 @@ Upstage는 PDF의 구조와 텍스트 추출을 돕는다. 실제 장 경계와 
 allowed_users
   email, role, enabled
 
-profiles
-  id, email, role, display_name
+profiles  (미사용: 초기 설계 잔여, 앱 코드에서 사용하지 않음)
+  id, email, role, can_upload
 
 documents
   id, title, year, storage_path, status, is_active

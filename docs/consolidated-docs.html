@@ -449,8 +449,8 @@ Upstage는 PDF의 구조와 텍스트 추출을 돕는다. 실제 장 경계와 
 allowed_users
   email, role, enabled
 
-profiles
-  id, email, role, display_name
+profiles  (미사용: 초기 설계 잔여, 앱 코드에서 사용하지 않음)
+  id, email, role, can_upload
 
 documents
   id, title, year, storage_path, status, is_active
@@ -625,7 +625,7 @@ Upstage 학습 자료:
 Supabase 프로젝트는 구성되어 있으며 다음 테이블과 버킷이 있다.
 
 - `allowed_users`
-- `profiles`
+- `profiles` (초기 설계에서 남은 미사용 테이블. 관련 타입·함수와 함께 `supabase/schema.sql` 끝에 기록)
 - `documents`
 - `chapters`
 - `chunks`
@@ -861,7 +861,7 @@ npm run dev
 Supabase PostgreSQL 하나를 사용하며, 장별로 별도 물리 데이터베이스를 만들지 않는다.
 
 - `allowed_users`: 허용 사용자 이메일과 권한
-- `profiles`: 사용자 프로필
+- `profiles`: 초기 설계에서 만든 사용자 프로필 테이블(현재 미사용)
 - `documents`: 업로드 문서와 처리 상태
 - `chapters`: 문서의 최상위 장
 - `chunks`: 검색 단위 본문 조각

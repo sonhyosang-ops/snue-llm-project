@@ -105,3 +105,9 @@ on conflict (id) do nothing;
 
 -- Run this once, then change the email to the first system administrator.
 -- insert into public.allowed_users (email, role) values ('admin@baegotnuri.es.kr', 'admin');
+
+-- Legacy objects (checked 2026-10-24): they exist in the live database from an early design
+-- but are not created by this file and not used by the app. Roles live in allowed_users.role.
+--   table    public.profiles (id, email, role public.school_role, can_upload, created_at, updated_at)
+--   type     public.school_role
+--   function public.is_manager, public.is_allowed_school_email, public.rls_auto_enable

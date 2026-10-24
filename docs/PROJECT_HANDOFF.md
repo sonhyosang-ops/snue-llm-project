@@ -89,7 +89,7 @@ Upstage 학습 자료:
 Supabase 프로젝트는 구성되어 있으며 다음 테이블과 버킷이 있다.
 
 - `allowed_users`
-- `profiles`
+- `profiles` (초기 설계에서 남은 미사용 테이블. 관련 타입·함수와 함께 `supabase/schema.sql` 끝에 기록)
 - `documents`
 - `chapters`
 - `chunks`
@@ -114,6 +114,7 @@ Supabase 프로젝트는 구성되어 있으며 다음 테이블과 버킷이 �
 - 최상위 장: 8개
 - 기존 임베딩 유지
 - 장별 중요낱말 사전 재구성 완료
+- 2026-10-24: 같은 PDF의 실패한 업로드 5건(`status=failed`)과 그 장·청크·임베딩·Storage 파일을 삭제했다. 현재 DB에는 활성 문서 1건(장 8, 청크·임베딩 각 1,148, 질문 기록 10)만 있다.
 
 현재 장 목록:
 
