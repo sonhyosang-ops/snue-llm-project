@@ -1,26 +1,38 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// POST /api/admin/documents/[id]/ingest — 문서 색인(Indexing): RAG의 "준비" 단계 전체
+// POST /api/admin/documents/[id]/ingest — 문서 색인(Indexing): RAG의 "준비" 단계 (관리자 전용)
 //
-// 관리자가 올린 PDF를 검색할 수 있는 형태로 바꿔 DB에 저장한다. 처리 순서:
-//   1) Storage에서 PDF 내려받기
-//   2) 앞 100쪽 파싱 → 목차에서 최상위 장 찾기 (detectChapterHeadings)
-//   3) 장별로 나머지 쪽 파싱 → 청크로 자르기 (chunkPages)
-//   4) 장 저장 → 장마다 청크 저장 → 청크 임베딩 저장 → 장별 핵심어 사전 저장
-//   5) 이 문서를 "활성 문서"로 바꾸고 다른 문서는 비활성으로 돌린다
-// 도중에 하나라도 실패하면 문서 상태를 failed로 바꾸고 오류 메시지를 남긴다(catch 블록).
+// 관리자가 올린 PDF를 검색할 수 있는 형태로 바꿔 DB에 저장한다. 500쪽이 넘는 편람을 한 번의 요청으로 처리하면
+// 서버 함수 시간 제한(maxDuration)을 넘길 수 있으므로, 단계를 나누어 관리자 화면이 차례로 호출한다.
+//   body { step: "outline" }               : PDF 앞부분(목차) 파싱 → 최상위 장과 쪽 범위 저장
+//   body { step: "chapter", chapterId }    : 그 장의 쪽만 파싱 → 청크 → 임베딩 저장
+//   body { step: "keywords", chapterId }   : 그 장의 핵심어 사전 저장(문서 전체 청크가 있어야 IDF를 계산할 수 있어 본문 단계 뒤에 한다)
+//   body { step: "finish" }                : 모든 장에 청크·핵심어가 있는지 확인 → 상태 ready
+// 각 단계는 다시 실행해도 같은 결과가 나오도록(먼저 지우고 다시 넣도록) 만들어, 실패한 단계만 다시 시도할 수 있다.
+//
+// 색인이 끝나도 바로 운영에 쓰이지 않는다(is_active는 그대로 false). 관리자가 결과를 확인한 뒤
+// /api/admin/documents/[id]/activate 로 "운영에 적용"해야 사용자 화면이 새 문서로 바뀐다.
+// 색인이 끝난(ready) 문서는 운영 중이든 아니든 다시 색인할 수 없다. 질문 기록이 그 문서의 장에 연결되어 있고,
+// 이전 판(예: 2025)은 새 판에 문제가 생겼을 때 되돌릴 대상이므로 그대로 보존해야 하기 때문이다.
 // ─────────────────────────────────────────────────────────────────────────────
 import { PDFDocument } from "pdf-lib";
 import { errorResponse, requireAdmin } from "@/lib/auth";
-import { chapterKeywordCandidates, chunkPages } from "@/lib/text";
+import { buildChapterKeywords, loadChapterTexts } from "@/lib/keywords";
 import { serviceSupabase } from "@/lib/supabase";
-import { detectChapterHeadings, embed, parsePdf, selectTopicTerms } from "@/lib/upstage";
+import { chunkPages } from "@/lib/text";
+import { detectChapterHeadings, embed, parsePdf } from "@/lib/upstage";
 
-// Vercel 서버 함수가 실행될 수 있는 최대 시간(초). 500쪽이 넘는 PDF를 파싱·임베딩하려면 기본값보다 길게 잡아야 한다.
+// Vercel 서버 함수가 실행될 수 있는 최대 시간(초). 단계 하나(장 하나)가 이 안에 끝나도록 단계를 나눴다.
 export const maxDuration = 300;
 
 type Params = { params: Promise<{ id: string }> };
+type Step = { step?: "outline" | "chapter" | "keywords" | "finish"; chapterId?: string };
+type Supabase = ReturnType<typeof serviceSupabase>;
+type ChapterRow = { id: string; title: string; chapter_number: string; page_from: number; page_to: number; display_order: number };
+
 // Upstage Document Parse는 한 번에 100쪽까지만 받으므로 PDF를 100쪽 단위로 나누어 보낸다.
 const PARSE_PAGE_LIMIT = 100;
+// 목차를 찾으려고 파싱하는 앞부분 쪽 수. 목차 분석(detectChapterHeadings)은 앞 15쪽만 보므로 20쪽이면 충분하다.
+const TOC_PAGES = 20;
 
 // 장 시작 쪽 목록을 "장별 쪽 범위"로 바꾼다. 각 장은 다음 장 시작 바로 앞 쪽에서 끝나고, 마지막 장은 문서 끝까지다.
 // 목차에서 장을 하나도 찾지 못하면 문서 전체를 "전체"라는 장 하나로 다룬다.
@@ -42,107 +54,130 @@ async function parseRange(source: PDFDocument, pageFrom: number, pageTo: number)
   return parsePdf(new Blob([copy.buffer], { type: "application/pdf" }), `pages-${pageFrom}-${pageTo}.pdf`, pageFrom - 1);
 }
 
+// 업로드 때 Storage에 저장해 둔 PDF를 내려받아 연다. 목차·본문 단계마다 필요하다.
+async function loadPdf(supabase: Supabase, storagePath: string) {
+  const { data: file, error } = await supabase.storage.from("personnel-pdfs").download(storagePath);
+  if (error || !file) throw error ?? new Error("PDF 파일을 읽지 못했습니다.");
+  return PDFDocument.load(await file.arrayBuffer(), { ignoreEncryption: true });
+}
+
+// 문서의 장 목록(목차 순서)
+async function loadChapters(supabase: Supabase, documentId: string) {
+  const { data, error } = await supabase.from("chapters")
+    .select("id, title, chapter_number, page_from, page_to, display_order").eq("document_id", documentId).order("display_order");
+  if (error) throw error;
+  return (data ?? []) as ChapterRow[];
+}
+
+// [1단계] 목차 분석: 앞 20쪽을 파싱해 최상위 장을 찾고, 장과 쪽 범위를 저장한다.
+// 같은 문서를 다시 색인하는 경우를 위해 기존 장을 먼저 지운다(연결된 청크·임베딩·핵심어도 cascade로 함께 지워진다).
+async function outline(supabase: Supabase, documentId: string, storagePath: string) {
+  await supabase.from("documents").update({ status: "processing", error: null }).eq("id", documentId);
+  const source = await loadPdf(supabase, storagePath);
+  const pageCount = source.getPageCount();
+  const tocPages = await parseRange(source, 1, Math.min(TOC_PAGES, pageCount));
+  const ranges = rangesFromHeadings(await detectChapterHeadings(tocPages, pageCount), pageCount);
+  const { error: deleteError } = await supabase.from("chapters").delete().eq("document_id", documentId);
+  if (deleteError) throw deleteError;
+  const { error } = await supabase.from("chapters").insert(ranges.map((range, display_order) => ({
+    document_id: documentId,
+    chapter_number: range.chapterNumber,
+    title: range.title,
+    page_from: range.pageFrom,
+    page_to: range.pageTo,
+    display_order,
+  })));
+  if (error) throw error;
+  return { pageCount, chapters: await loadChapters(supabase, documentId) };
+}
+
+// [2단계] 장 본문: 그 장의 쪽만 100쪽 단위로 파싱 → 청크로 자르기 → 청크 저장 → passage 모델로 임베딩 저장.
+// 다시 실행해도 되도록 그 장의 기존 청크를 먼저 지운다(임베딩은 cascade로 함께 지워진다).
+async function indexChapter(supabase: Supabase, documentId: string, storagePath: string, chapter: ChapterRow) {
+  const { error: deleteError } = await supabase.from("chunks").delete().eq("chapter_id", chapter.id);
+  if (deleteError) throw deleteError;
+  const source = await loadPdf(supabase, storagePath);
+  const pages = [];
+  for (let pageFrom = chapter.page_from; pageFrom <= chapter.page_to; pageFrom += PARSE_PAGE_LIMIT) {
+    pages.push(...await parseRange(source, pageFrom, Math.min(pageFrom + PARSE_PAGE_LIMIT - 1, chapter.page_to)));
+  }
+  const chunks = chunkPages(pages);
+  if (!chunks.length) throw new Error(`'${chapter.title}' 장에서 저장할 본문을 찾지 못했습니다.`);
+  // heading(꼭지 제목)에는 장 제목을 넣어 화면의 "확인한 근거"에 표시한다. ord는 장 안에서의 청크 순서다.
+  const { data: inserted, error: chunkError } = await supabase.from("chunks")
+    .insert(chunks.map((chunk, ord) => ({
+      document_id: documentId,
+      chapter_id: chapter.id,
+      ord,
+      heading: chapter.title,
+      page_from: chunk.pageFrom,
+      page_to: chunk.pageTo,
+      content: chunk.content,
+    })))
+    .select("id, content");
+  if (chunkError || !inserted) throw chunkError ?? new Error("청크를 저장하지 못했습니다.");
+  // 어떤 모델로 만든 벡터인지 model 열에 함께 남긴다(모델을 바꾸면 다시 만들어야 하므로).
+  const model = process.env.UPSTAGE_PASSAGE_MODEL ?? "embedding-passage";
+  const vectors = await embed(inserted.map((chunk) => chunk.content), model);
+  const { error: embeddingError } = await supabase.from("embeddings")
+    .insert(inserted.map((chunk, index) => ({ chunk_id: chunk.id, embedding: vectors[index], model })));
+  if (embeddingError) throw embeddingError;
+  return { chunkCount: inserted.length };
+}
+
+// [3단계] 장 핵심어: 문서 전체 청크로 그 장의 핵심어 사전을 만들어 저장한다(src/lib/keywords.ts).
+async function indexKeywords(supabase: Supabase, documentId: string, chapter: ChapterRow) {
+  const chapters = await loadChapters(supabase, documentId);
+  const allChapterTexts = await loadChapterTexts(supabase, documentId, chapters.map((item) => item.id));
+  const index = chapters.findIndex((item) => item.id === chapter.id);
+  const otherTitles = chapters.filter((item) => item.id !== chapter.id).map((item) => item.title);
+  const keywords = await buildChapterKeywords(chapter.title, otherTitles, allChapterTexts[index], allChapterTexts);
+  if (!keywords.length) throw new Error(`'${chapter.title}' 장의 핵심어를 고르지 못했습니다.`);
+  const { error: deleteError } = await supabase.from("chapter_keywords").delete().eq("chapter_id", chapter.id);
+  if (deleteError) throw deleteError;
+  const { error } = await supabase.from("chapter_keywords").insert(keywords.map((keyword) => ({ ...keyword, chapter_id: chapter.id })));
+  if (error) throw error;
+  return { keywordCount: keywords.length };
+}
+
+// [4단계] 마무리: 모든 장에 청크와 핵심어가 있는지 확인한 뒤 ready로 바꾼다. 운영 적용(활성화)은 하지 않는다.
+async function finish(supabase: Supabase, documentId: string) {
+  const chapters = await loadChapters(supabase, documentId);
+  if (!chapters.length) throw new Error("저장된 장이 없습니다. 목차 분석부터 다시 실행하세요.");
+  for (const chapter of chapters) {
+    const chunks = await supabase.from("chunks").select("id", { count: "exact", head: true }).eq("chapter_id", chapter.id);
+    const keywords = await supabase.from("chapter_keywords").select("id", { count: "exact", head: true }).eq("chapter_id", chapter.id);
+    if (!chunks.count || !keywords.count) throw new Error(`'${chapter.title}' 장의 본문 또는 핵심어가 비어 있습니다.`);
+  }
+  const { error } = await supabase.from("documents").update({ status: "ready", processed_at: new Date().toISOString() }).eq("id", documentId);
+  if (error) throw error;
+  return { chapterCount: chapters.length };
+}
+
 export async function POST(request: Request, { params }: Params) {
   try {
     // 색인은 비용이 드는 작업이므로 관리자만 실행할 수 있다.
     await requireAdmin(request);
     const { id } = await params;
+    const { step, chapterId } = await request.json() as Step;
     const supabase = serviceSupabase();
-    const { data: document, error: documentError } = await supabase.from("documents").select("id, title, storage_path").eq("id", id).single();
+    const { data: document, error: documentError } = await supabase.from("documents").select("id, storage_path, is_active, status").eq("id", id).single();
     if (documentError) throw documentError;
+    if (document.is_active || document.status === "ready") throw new Error("색인이 끝난 문서는 다시 색인할 수 없습니다. 새 PDF로 올려 주세요.");
 
-    // [1] 처리 중 상태로 바꾸고, 업로드 때 Storage에 저장해 둔 PDF를 내려받는다.
-    await supabase.from("documents").update({ status: "processing", error: null }).eq("id", id);
-    const { data: file, error: downloadError } = await supabase.storage.from("personnel-pdfs").download(document.storage_path);
-    if (downloadError || !file) throw downloadError ?? new Error("PDF 파일을 읽지 못했습니다.");
-
-    const source = await PDFDocument.load(await file.arrayBuffer(), { ignoreEncryption: true });
-    const pageCount = source.getPageCount();
-    // [2] 앞 100쪽을 먼저 파싱해 목차에서 장을 찾는다. 이 결과(tocPages)는 앞쪽 장의 본문으로도 다시 쓴다.
-    const tocPages = await parseRange(source, 1, Math.min(PARSE_PAGE_LIMIT, pageCount));
-    const headings = await detectChapterHeadings(tocPages, pageCount);
-    const ranges = rangesFromHeadings(headings, pageCount);
-    const drafts = [] as { title: string; chapterNumber: string; pageFrom: number; pageTo: number; pages: Awaited<ReturnType<typeof parsePdf>> }[];
-    // [3] 장마다 본문 쪽을 모은다. 100쪽 이내는 이미 파싱한 tocPages에서 가져오고,
-    //     그 뒤 쪽은 100쪽 단위로 잘라 추가로 파싱한다(같은 쪽을 두 번 파싱하지 않아 비용을 아낀다).
-    for (const range of ranges) {
-      const chapterPages = tocPages.filter((page) => page.page >= range.pageFrom && page.page <= Math.min(range.pageTo, PARSE_PAGE_LIMIT));
-      for (let pageFrom = Math.max(range.pageFrom, PARSE_PAGE_LIMIT + 1); pageFrom <= range.pageTo; pageFrom += PARSE_PAGE_LIMIT) {
-        chapterPages.push(...await parseRange(source, pageFrom, Math.min(pageFrom + PARSE_PAGE_LIMIT - 1, range.pageTo)));
-      }
-      drafts.push({ ...range, pages: chapterPages });
-    }
-    // 장별 본문을 청크로 자른다. 청크가 하나도 없는 장(빈 장)은 저장하지 않는다.
-    const prepared = drafts.map((draft) => ({ ...draft, chunks: chunkPages(draft.pages) })).filter((draft) => draft.chunks.length);
-    if (!prepared.length) throw new Error("저장할 청크를 만들지 못했습니다.");
-
-    // [4] 같은 문서를 다시 색인하는 경우를 위해 기존 장을 먼저 지운다.
-    //     장을 지우면 연결된 청크·임베딩·핵심어도 DB의 cascade 설정에 따라 함께 지워진다(supabase/schema.sql).
-    await supabase.from("chapters").delete().eq("document_id", id);
-    const { data: chapters, error: chapterError } = await supabase
-      .from("chapters")
-      .insert(prepared.map((draft, display_order) => ({
-        document_id: id,
-        chapter_number: draft.chapterNumber,
-        title: draft.title,
-        page_from: draft.pageFrom,
-        page_to: draft.pageTo,
-        display_order,
-      })))
-      .select("id, display_order, title");
-    if (chapterError || !chapters) throw chapterError ?? new Error("장을 저장하지 못했습니다.");
-
-    // 핵심어 점수(IDF)는 "다른 장과 비교"해야 계산할 수 있으므로 전체 장의 청크 본문을 미리 모아 둔다.
-    const allChapterTexts = prepared.map((draft) => draft.chunks.map((chunk) => chunk.content));
-    for (const chapter of chapters) {
-      const draft = prepared.find((item, index) => index === chapter.display_order);
-      if (!draft) continue;
-      // 청크 저장. heading(꼭지 제목)에는 장 제목을 넣어 화면의 "확인한 근거"에 표시한다.
-      // ord는 장 안에서의 청크 순서다. 저장된 id는 바로 아래 임베딩과 짝을 맞추는 데 쓴다.
-      const { data: insertedChunks, error: chunkError } = await supabase
-        .from("chunks")
-        .insert(draft.chunks.map((chunk, ord) => ({
-          document_id: id,
-          chapter_id: chapter.id,
-          ord,
-          heading: chapter.title,
-          page_from: chunk.pageFrom,
-          page_to: chunk.pageTo,
-          content: chunk.content,
-        })))
-        .select("id, content");
-      if (chunkError || !insertedChunks) throw chunkError ?? new Error("청크를 저장하지 못했습니다.");
-
-      // 청크 본문을 passage 모델로 임베딩해 저장한다. 어떤 모델로 만든 벡터인지 model 열에 함께 남긴다.
-      const vectors = await embed(insertedChunks.map((chunk) => chunk.content), process.env.UPSTAGE_PASSAGE_MODEL ?? "embedding-passage");
-      const { error: embeddingError } = await supabase.from("embeddings").insert(insertedChunks.map((chunk, index) => ({
-        chunk_id: chunk.id,
-        embedding: vectors[index],
-        model: process.env.UPSTAGE_PASSAGE_MODEL ?? "embedding-passage",
-      })));
-      if (embeddingError) throw embeddingError;
-
-      // 장별 핵심어 사전: ① TF-IDF로 본문에서 후보 300개를 뽑고 ② 모델이 장 주제에 속하는 명사만 고른다.
-      // 모델은 후보 중에서 고르기만 하므로 본문에 없는 낱말은 사전에 들어가지 않는다.
-      const candidates = chapterKeywordCandidates(draft.chunks.map((chunk) => chunk.content), allChapterTexts);
-      const otherTitles = chapters.filter((other) => other.id !== chapter.id).map((other) => other.title);
-      const picked = new Set(await selectTopicTerms(chapter.title, otherTitles, candidates.map((candidate) => candidate.term)));
-      if (!picked.size) throw new Error(`'${chapter.title}' 장의 핵심어를 고르지 못했습니다.`);
-      const keywords = candidates.filter((candidate) => picked.has(candidate.term));
-      const { error: keywordError } = await supabase.from("chapter_keywords").insert(keywords.map((keyword) => ({ ...keyword, chapter_id: chapter.id })));
-      if (keywordError) throw keywordError;
-    }
-
-    // [5] 모든 장이 끝나면 이 문서를 활성 문서로 바꾼다. 사용자 화면은 활성 문서 하나만 보여 준다.
-    await supabase.from("documents").update({ status: "ready", is_active: true, processed_at: new Date().toISOString() }).eq("id", id);
-    await supabase.from("documents").update({ is_active: false }).neq("id", id);
-    return Response.json({ ok: true, chapterCount: chapters.length, pageCount });
+    if (step === "outline") return Response.json(await outline(supabase, id, document.storage_path));
+    if (step === "finish") return Response.json(await finish(supabase, id));
+    const chapter = (await loadChapters(supabase, id)).find((item) => item.id === chapterId);
+    if (!chapter) throw new Error("이 문서의 장이 아닙니다.");
+    if (step === "chapter") return Response.json(await indexChapter(supabase, id, document.storage_path, chapter));
+    if (step === "keywords") return Response.json(await indexKeywords(supabase, id, chapter));
+    throw new Error("알 수 없는 색인 단계입니다.");
   } catch (error) {
-    // 실패하면 문서 상태를 failed로 바꾸고 오류 메시지(최대 500자)를 남긴다. 관리자가 원인을 확인할 수 있다.
-    // 주의: 실패 전에 저장된 장·청크는 남는다. 정리가 필요하면 failed 문서를 지우면 cascade로 함께 지워진다.
+    // 실패하면 문서 상태를 failed로 바꾸고 오류 메시지(최대 500자)를 남긴다. 관리자 화면 문서 목록에 표시된다.
+    // 단, 색인이 끝난 문서(운영 중이거나 되돌리기용 이전 판)는 다시 색인하려다 거절된 것이므로 상태를 바꾸지 않는다.
     try {
       const { id } = await params;
-      await serviceSupabase().from("documents").update({ status: "failed", error: error instanceof Error ? error.message.slice(0, 500) : "처리 실패" }).eq("id", id);
+      await serviceSupabase().from("documents").update({ status: "failed", error: error instanceof Error ? error.message.slice(0, 500) : "처리 실패" }).eq("id", id).eq("is_active", false).neq("status", "ready");
     } catch { /* 상태 기록마저 실패해도 원래 오류를 돌려주는 편이 원인 파악에 더 유용하므로 여기서는 무시한다. */ }
     return errorResponse(error);
   }

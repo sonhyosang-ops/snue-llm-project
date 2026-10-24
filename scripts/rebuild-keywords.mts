@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // rebuild-keywords.mts — 활성 문서의 장별 핵심어 사전(chapter_keywords)을 다시 만드는 스크립트
 //
-// 언제 쓰나: 핵심어 뽑는 규칙(text.ts, upstage.ts의 selectTopicTerms)을 고친 뒤, PDF를 다시 올리지 않고
+// 언제 쓰나: 핵심어 뽑는 규칙(src/lib/keywords.ts, keyword-corrections.ts의 검토 결과)을 고친 뒤, PDF를 다시 올리지 않고
 //           이미 DB에 있는 청크만으로 사전을 새로 만들 때. PDF 파싱·임베딩을 다시 하지 않아 비용이 거의 들지 않는다
 //           (Chat 모델 호출만 장마다 5번 정도).
 //
@@ -17,9 +17,8 @@
 // .mts는 ES 모듈로 실행되므로 함수로 감싸지 않고 위에서 아래로 순서대로 읽히는 스크립트로 쓸 수 있다.
 // ─────────────────────────────────────────────────────────────────────────────
 import { readFileSync, writeFileSync } from "node:fs";
+import { buildChapterKeywords, loadChapterTexts } from "@/lib/keywords";
 import { serviceSupabase } from "@/lib/supabase";
-import { chapterKeywordCandidates } from "@/lib/text";
-import { selectTopicTerms } from "@/lib/upstage";
 
 // Next.js 밖에서 실행되므로 .env.local을 직접 읽어 환경 변수로 등록한다(Node 21 이상 기능).
 process.loadEnvFile(".env.local");
@@ -42,28 +41,16 @@ type Result = { chapter: { id: string; chapter_number: string; title: string }; 
 
 if (!apply) {
   // ── 1단계: 미리보기 만들기 ──
-  // 2) 문서의 청크를 모두 불러온다.
-  //    Supabase(PostgREST)는 요청 한 번에 최대 1,000행까지만 돌려주므로 1,000행씩 나눠(range) 끝까지 읽는다.
-  const chunks: { chapter_id: string; ord: number; content: string }[] = [];
-  for (let from = 0; ; from += 1000) {
-    const { data, error } = await supabase
-      .from("chunks").select("chapter_id, ord, content").eq("document_id", document.id).order("ord").range(from, from + 999);
-    if (error) throw error;
-    chunks.push(...data);
-    if (data.length < 1000) break;
-  }
-  // 장 순서대로 청크 본문을 묶는다. 색인 때(ingest/route.ts)와 같은 입력 모양을 만들어 같은 결과가 나오게 한다.
-  const allChapterTexts = chapters.map((chapter) => chunks.filter((chunk) => chunk.chapter_id === chapter.id).map((chunk) => chunk.content));
+  // 2) 문서의 청크를 장 순서대로 모두 불러온다(1,000행씩 나눠 읽기는 loadChapterTexts가 한다).
+  const allChapterTexts = await loadChapterTexts(supabase, document.id, chapters.map((chapter) => chapter.id));
 
-  // 3) 장마다 새 사전을 만든다: TF-IDF 후보 300개 → 모델이 장 주제에 속하는 명사만 고름.
-  //    색인(ingest/route.ts)과 똑같은 함수를 써서, 문서를 새로 올렸을 때와 같은 방식으로 만들어진다.
+  // 3) 장마다 새 사전을 만든다: TF-IDF 후보 → 모델이 장 주제 명사만 고름 → 사람이 검토한 제외·수정 목록 적용.
+  //    색인(ingest/route.ts)과 똑같은 함수(buildChapterKeywords)를 써서, 문서를 새로 올렸을 때와 같은 결과가 나온다.
   const results: Result[] = [];
   for (const [index, chapter] of chapters.entries()) {
-    const candidates = chapterKeywordCandidates(allChapterTexts[index], allChapterTexts);
     const otherTitles = chapters.filter((other) => other.id !== chapter.id).map((other) => other.title);
-    const picked = new Set(await selectTopicTerms(chapter.title, otherTitles, candidates.map((candidate) => candidate.term)));
-    const keywords = candidates.filter((candidate) => picked.has(candidate.term));
-    console.log(`${chapter.chapter_number}장 ${chapter.title}: 후보 ${candidates.length} → ${keywords.length}`);
+    const keywords = await buildChapterKeywords(chapter.title, otherTitles, allChapterTexts[index], allChapterTexts);
+    console.log(`${chapter.chapter_number}장 ${chapter.title}: ${keywords.length}개`);
     results.push({ chapter, keywords });
   }
   // 미리보기 파일: 사람이 장별 목록을 눈으로 확인하고 교체 여부를 정할 수 있게 저장한다.

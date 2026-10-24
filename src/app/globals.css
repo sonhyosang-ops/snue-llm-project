@@ -23,6 +23,16 @@ header h1, h2, h3 { margin: .3rem 0; }
 .user-list { max-height: 8.8rem; overflow: auto; margin: 1rem 0 0; padding: 0; list-style: none; font-size: .85rem; }
 .user-list li { display: flex; justify-content: space-between; gap: .5rem; padding: .35rem 0; border-bottom: 1px solid var(--line); }
 .user-list span { color: var(--muted); white-space: nowrap; }
+/* 관리자 화면: 문서 목록(운영 적용·되돌리기). 운영 중인 문서 줄은 노란 바탕으로 표시하고, 표가 넓으면 가로로 스크롤한다. */
+.admin-hint { margin: .75rem 0 0; color: var(--muted); font-size: .85rem; line-height: 1.55; }
+.document-table { margin-top: .75rem; overflow-x: auto; }
+.document-table table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+.document-table th, .document-table td { padding: .55rem .6rem; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+.document-table th { color: var(--muted); font-size: .8rem; }
+.document-table td span { color: var(--muted); }
+.document-table td small { display: block; margin-top: .2rem; color: #a3341f; font-size: .78rem; }
+.document-table tr.active td { background: #fff6dc; font-weight: 700; }
+.document-table button { min-height: 40px; padding: .45rem .8rem; font-size: .85rem; }
 /* 관리자 화면: CSV 일괄 등록 칸과 결과 */
 .csv-import { margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--line); }
 .csv-import h3 { margin: 0; font-size: 1rem; }

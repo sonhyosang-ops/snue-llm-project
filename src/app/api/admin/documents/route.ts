@@ -1,12 +1,30 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// POST /api/admin/documents — PDF 업로드 (관리자 전용)
+// /api/admin/documents — 문서 목록(GET)과 PDF 업로드(POST) (관리자 전용)
 //
-// 파일을 Supabase Storage에 저장하고 documents 테이블에 행을 하나 만든다.
-// 여기서는 파일만 저장하고, 파싱·청크·임베딩 같은 색인 작업은 이어서 호출하는
-// /api/admin/documents/[id]/ingest 가 맡는다(관리자 화면이 두 API를 차례로 부른다).
+// POST: 파일을 Supabase Storage에 저장하고 documents 테이블에 행을 하나 만든다.
+//       여기서는 파일만 저장하고, 파싱·청크·임베딩 같은 색인 작업은 이어서 단계별로 호출하는
+//       /api/admin/documents/[id]/ingest 가 맡는다(관리자 화면이 차례로 부른다).
+// GET : 올린 문서들의 상태(색인 중 / 준비됨 / 실패 / 운영 중)와 장 수를 돌려준다.
+//       관리자는 이 목록에서 새 판을 "운영에 적용"하거나 이전 판으로 되돌린다.
 // ─────────────────────────────────────────────────────────────────────────────
 import { errorResponse, requireAdmin } from "@/lib/auth";
 import { serviceSupabase } from "@/lib/supabase";
+
+export async function GET(request: Request) {
+  try {
+    await requireAdmin(request);
+    // chapters(count)는 문서마다 연결된 장의 수를 함께 세어 오는 Supabase(PostgREST) 문법이다.
+    const { data, error } = await serviceSupabase()
+      .from("documents")
+      .select("id, title, year, status, error, is_active, created_at, processed_at, chapters(count)")
+      .order("created_at", { ascending: false });
+    if (error) throw error;
+    const documents = (data ?? []).map(({ chapters, ...document }) => ({ ...document, chapterCount: (chapters as unknown as { count: number }[])[0]?.count ?? 0 }));
+    return Response.json({ documents });
+  } catch (error) {
+    return errorResponse(error);
+  }
+}
 
 // 업로드 크기 상한(30MB). 너무 큰 파일은 서버 함수 메모리와 처리 시간을 넘길 수 있다.
 const MAX_FILE_SIZE = 30 * 1024 * 1024;
