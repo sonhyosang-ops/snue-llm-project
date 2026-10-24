@@ -194,13 +194,14 @@ Supabase 프로젝트는 구성되어 있으며 다음 테이블과 버킷이 �
 - Vercel 프로젝트 `snue-llm-project`(운영 주소 `https://snue-llm-project.vercel.app`)가 GitHub `sonhyosang-ops/snue-llm-project`의 `master`에 연결되어 있다.
 - `git push origin main:master`만 하면 Vercel이 자동으로 빌드·배포한다. CLI 배포(`vercel --prod`)는 더 이상 필요 없다.
 - 배포 결과는 Vercel 대시보드 또는 GitHub 커밋 옆 Vercel 상태 표시로 확인한다.
-- 별도 프로젝트 `snue-llm-project-t1zs`도 같은 저장소에 연결되어 있어 푸시마다 함께 배포된다. 운영 주소가 아니므로 정리(삭제 또는 Git 연결 해제) 대상이다.
+- Vercel 프로젝트는 `snue-llm-project` 하나만 쓴다. 중복으로 만들어졌던 `snue-llm-project-t1zs`는 2026-10-24에 설정을 모두 옮긴 뒤 삭제했다.
+- Vercel 환경변수는 `.env.example`의 항목과 같다. 키 값은 sensitive(다시 볼 수 없음), 모델 이름 등 설정값은 대시보드에서 볼 수 있다.
 - Supabase와 Resend SMTP 설정은 각 대시보드에 저장된 설정이라 푸시로 배포되지 않는다.
 
 ### 2026-10-24 장애 기록
 
 - 로컬 로그인 시 `TypeError: fetch failed`: Supabase 무료 플랜이 7일 미사용으로 프로젝트를 일시정지해 주소가 DNS에서 사라졌다. 대시보드에서 Restore 후 약 25분 뒤 복구되었다. 운영을 계속하려면 Pro 플랜이나 주기적 접속이 필요하다.
-- `snue-llm-project-t1zs` 첫 배포 실패(`supabaseUrl is required`): 환경변수가 이름만 있고 값이 비어 있었다. `.env.local` 값으로 덮어써 해결했다. Vercel의 sensitive 값은 저장 후 다시 볼 수 없으므로 값을 바꿀 때는 `.env.local`을 기준으로 덮어쓴다.
+- `snue-llm-project-t1zs`(현재 삭제됨) 첫 배포 실패(`supabaseUrl is required`): 환경변수가 이름만 있고 값이 비어 있었다. `.env.local` 값으로 덮어써 해결했다. Vercel의 sensitive 값은 저장 후 다시 볼 수 없으므로 값을 바꿀 때는 `.env.local`을 기준으로 덮어쓴다.
 - 같은 실패가 빌드를 막지 않도록 `src/lib/browser-supabase.ts`의 대체값 처리를 `??`에서 `||`로 바꿨다(빈 문자열도 대체값 사용).
 - 개발 화면의 hydration 경고는 브라우저 확장(Liner 등)이 `<html>`·`<body>`에 속성을 붙여서 생긴다. `layout.tsx`에 `suppressHydrationWarning`을 추가했다.
 - `next-env.d.ts`는 `next dev`·`next build`가 실행할 때마다 다시 만들어 Git 변경이 계속 생기므로, Next.js 문서 권장대로 Git 추적에서 제외했다.
