@@ -1,0 +1,7 @@
+{
+  // 이 프로젝트를 VS Code로 열면 프로젝트 안의 .venv만 Python 가상환경으로 쓴다.
+  // 사용자(전역) 설정이나 상위 폴더 설정이 다른 프로젝트의 가상환경을 가리켜도, 작업공간 설정인 이 파일이 우선한다.
+  "python.defaultInterpreterPath": "${workspaceFolder}\\.venv\\Scripts\\python.exe",
+  // 새 터미널을 열 때 위 가상환경을 자동으로 활성화한다.
+  "python.terminal.activateEnvironment": true
+}

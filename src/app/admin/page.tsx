@@ -1,9 +1,20 @@
 "use client";
 
+// ─────────────────────────────────────────────────────────────────────────────
+// admin/page.tsx — 관리자 화면 (주소: /admin)
+//
+// 할 수 있는 일
+//   1) 허용 사용자 등록: 학교 메일을 allowed_users에 추가한다.
+//   2) 문서 업로드 및 색인: PDF를 올리고(/api/admin/documents) 바로 색인한다(/api/admin/documents/[id]/ingest).
+//      색인이 끝나면 새 문서가 활성 문서가 되어 사용자 화면에 나타난다.
+// 이 화면은 로그인한 관리자만 쓸 수 있다. 화면에서도 역할을 확인하지만,
+// 진짜 보안은 서버 API의 requireAdmin(src/lib/auth.ts)이 맡는다(화면 확인은 우회될 수 있기 때문).
+// ─────────────────────────────────────────────────────────────────────────────
 import { FormEvent, useEffect, useState } from "react";
 import { browserSupabase } from "@/lib/browser-supabase";
 import type { Role } from "@/lib/types";
 
+// 서버 API 호출 도우미(사용자 화면 page.tsx와 같은 방식). 토큰을 붙여 보내고 실패하면 서버 메시지로 오류를 낸다.
 async function api(path: string, token: string, init?: RequestInit) {
   const headers = new Headers(init?.headers);
   headers.set("Authorization", `Bearer ${token}`);
@@ -23,6 +34,7 @@ export default function AdminPage() {
   const [pdf, setPdf] = useState<File | null>(null);
   const [title, setTitle] = useState("");
 
+  // 관리자인지 확인한 뒤 허용 사용자 목록을 불러온다. 역할은 /api/chapters 응답의 role로 확인한다.
   const loadAdmin = async (accessToken: string) => {
     const workspace = await api("/api/chapters", accessToken) as { role: Role };
     if (workspace.role !== "admin") throw new Error("관리자만 사용할 수 있습니다.");
@@ -30,6 +42,8 @@ export default function AdminPage() {
     setAllowedUsers(users.users);
   };
 
+  // 화면이 열릴 때 현재 로그인 세션을 읽고, 이후 로그인 상태가 바뀔 때마다 다시 불러온다.
+  // 관리자 화면에는 로그인 기능이 없다. 메인 화면에서 로그인한 세션을 같은 브라우저에서 이어 쓴다.
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => {
       const accessToken = data.session?.access_token ?? "";
@@ -45,6 +59,7 @@ export default function AdminPage() {
     return () => listener.subscription.unsubscribe();
   }, [supabase]);
 
+  // 허용 사용자 등록 후 목록을 다시 불러온다.
   const addUser = async (event: FormEvent) => {
     event.preventDefault();
     setBusy(true); setMessage("");
@@ -57,6 +72,9 @@ export default function AdminPage() {
     finally { setBusy(false); }
   };
 
+  // PDF 업로드와 색인을 차례로 실행한다.
+  //   ① /api/admin/documents        : 파일 저장 → 문서 id 받기
+  //   ② /api/admin/documents/{id}/ingest : 파싱·장 분리·청크·임베딩·핵심어 사전 만들기(수 분 걸릴 수 있음)
   const uploadPdf = async (event: FormEvent) => {
     event.preventDefault();
     if (!pdf) return;
@@ -70,8 +88,10 @@ export default function AdminPage() {
     finally { setBusy(false); }
   };
 
+  // 로그인하지 않았으면 메인 화면에서 먼저 로그인하라고 안내한다.
   if (!token) return <main className="login-shell"><section className="login-card"><p className="eyebrow">관리자 페이지</p><h1>관리자 로그인이 필요합니다</h1><p>먼저 메인 화면에서 학교 이메일로 로그인한 뒤 이 페이지를 열어 주세요.</p><a className="text-button" href="/">메인 화면으로 이동</a>{message && <p className="notice">{message}</p>}</section></main>;
 
+  // 관리자 화면 구성: 머리말 → 왼쪽 "허용 사용자" 등록·목록 / 오른쪽 "문서 업로드"
   return <main className="app-shell">
     <header><div><p className="eyebrow">관리자 전용</p><h1>문서와 사용자 관리</h1></div><div><a className="text-button" href="/">사용자 화면</a> <button className="text-button" onClick={() => supabase.auth.signOut()}>로그아웃</button></div></header>
     {message && <p className="notice">{message}</p>}

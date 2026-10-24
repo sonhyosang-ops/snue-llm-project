@@ -1,0 +1,5762 @@
+[
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "관한",
+    "frequency": 81,
+    "score": 56.1449
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "공립특수학교",
+    "frequency": 20,
+    "score": 34.095
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "사항",
+    "frequency": 46,
+    "score": 31.8848
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "고등학교",
+    "frequency": 41,
+    "score": 28.419
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "학교",
+    "frequency": 40,
+    "score": 27.7259
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "이하",
+    "frequency": 40,
+    "score": 27.7259
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "대통령령",
+    "frequency": 32,
+    "score": 24.1207
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "자치법규",
+    "frequency": 14,
+    "score": 23.8665
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "교육공무원",
+    "frequency": 33,
+    "score": 22.8739
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "소속",
+    "frequency": 28,
+    "score": 19.4081
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "정원",
+    "frequency": 23,
+    "score": 19.0136
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "법률",
+    "frequency": 27,
+    "score": 18.715
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "감독",
+    "frequency": 12,
+    "score": 16.6355
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "규정",
+    "frequency": 23,
+    "score": 15.9424
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "the",
+    "frequency": 23,
+    "score": 15.9424
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "특수학교",
+    "frequency": 17,
+    "score": 15.5769
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "교장",
+    "frequency": 20,
+    "score": 15.0754
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "and",
+    "frequency": 21,
+    "score": 14.5561
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "조례",
+    "frequency": 12,
+    "score": 14.1439
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "공립학교",
+    "frequency": 15,
+    "score": 13.7444
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "중학교",
+    "frequency": 13,
+    "score": 13.3851
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "지도",
+    "frequency": 14,
+    "score": 12.8281
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "지방공무원",
+    "frequency": 14,
+    "score": 12.8281
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "제외",
+    "frequency": 18,
+    "score": 12.4766
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "고등공민학교",
+    "frequency": 9,
+    "score": 12.4766
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "교육부령",
+    "frequency": 9,
+    "score": 12.4766
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "허가",
+    "frequency": 12,
+    "score": 12.3554
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "운영",
+    "frequency": 16,
+    "score": 12.0603
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "quota",
+    "frequency": 7,
+    "score": 11.9332
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "교직원",
+    "frequency": 11,
+    "score": 11.3258
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "규칙",
+    "frequency": 15,
+    "score": 11.3066
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "법령",
+    "frequency": 16,
+    "score": 11.0904
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "소관",
+    "frequency": 8,
+    "score": 11.0904
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "법규",
+    "frequency": 9,
+    "score": 10.6079
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "호봉",
+    "frequency": 14,
+    "score": 10.5528
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "정관",
+    "frequency": 8,
+    "score": 9.4292
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "원장",
+    "frequency": 9,
+    "score": 9.2666
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "명령",
+    "frequency": 10,
+    "score": 9.1629
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "각급",
+    "frequency": 10,
+    "score": 9.1629
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "교육장",
+    "frequency": 13,
+    "score": 9.0109
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "학생",
+    "frequency": 13,
+    "score": 9.0109
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "경기도교육청",
+    "frequency": 13,
+    "score": 9.0109
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "수리",
+    "frequency": 5,
+    "score": 8.5237
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "대부",
+    "frequency": 5,
+    "score": 8.5237
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "행정규칙",
+    "frequency": 5,
+    "score": 8.5237
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "고등기술학교",
+    "frequency": 5,
+    "score": 8.5237
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "공립고등학교",
+    "frequency": 5,
+    "score": 8.5237
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "교사",
+    "frequency": 12,
+    "score": 8.3178
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "복직",
+    "frequency": 12,
+    "score": 8.3178
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "원칙",
+    "frequency": 12,
+    "score": 8.3178
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "각종학교",
+    "frequency": 6,
+    "score": 8.3178
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "학칙",
+    "frequency": 6,
+    "score": 8.3178
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "6급",
+    "frequency": 6,
+    "score": 8.3178
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "지정",
+    "frequency": 11,
+    "score": 8.2915
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "100",
+    "frequency": 11,
+    "score": 8.2915
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "유치원",
+    "frequency": 10,
+    "score": 8.2668
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "교원인사",
+    "frequency": 10,
+    "score": 8.2668
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "정기승급",
+    "frequency": 7,
+    "score": 8.2506
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "권한",
+    "frequency": 9,
+    "score": 8.2466
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "준하",
+    "frequency": 8,
+    "score": 8.237
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "관리",
+    "frequency": 11,
+    "score": 7.6246
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "is",
+    "frequency": 11,
+    "score": 7.6246
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "중등교육법",
+    "frequency": 10,
+    "score": 7.5377
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "시행령",
+    "frequency": 10,
+    "score": 7.5377
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "주요",
+    "frequency": 9,
+    "score": 7.4401
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "50",
+    "frequency": 9,
+    "score": 7.4401
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "leave",
+    "frequency": 8,
+    "score": 7.3303
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "teachers",
+    "frequency": 8,
+    "score": 7.3303
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "공립",
+    "frequency": 7,
+    "score": 7.2073
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "의미",
+    "frequency": 7,
+    "score": 7.2073
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "총리령",
+    "frequency": 6,
+    "score": 7.0719
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "검색",
+    "frequency": 6,
+    "score": 7.0719
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "초등학교",
+    "frequency": 10,
+    "score": 6.9315
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "다음",
+    "frequency": 10,
+    "score": 6.9315
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "교육지원청",
+    "frequency": 10,
+    "score": 6.9315
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "포함",
+    "frequency": 10,
+    "score": 6.9315
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "휴직",
+    "frequency": 10,
+    "score": 6.9315
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "등에",
+    "frequency": 10,
+    "score": 6.9315
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "to",
+    "frequency": 10,
+    "score": 6.9315
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "with",
+    "frequency": 10,
+    "score": 6.9315
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "국유재산",
+    "frequency": 5,
+    "score": 6.9315
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "공무국외출장",
+    "frequency": 5,
+    "score": 6.9315
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "헌법",
+    "frequency": 5,
+    "score": 6.9315
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "교육한다",
+    "frequency": 5,
+    "score": 6.9315
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "수익허",
+    "frequency": 4,
+    "score": 6.819
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "재위임한다",
+    "frequency": 4,
+    "score": 6.819
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "교육법규",
+    "frequency": 4,
+    "score": 6.819
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "체계",
+    "frequency": 4,
+    "score": 6.819
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "공무국외여행",
+    "frequency": 4,
+    "score": 6.819
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "http",
+    "frequency": 4,
+    "score": 6.819
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "신법",
+    "frequency": 4,
+    "score": 6.819
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "사립특수학교",
+    "frequency": 4,
+    "score": 6.819
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "문해교육프로그램",
+    "frequency": 4,
+    "score": 6.819
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "해직요구",
+    "frequency": 4,
+    "score": 6.819
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "diagram",
+    "frequency": 9,
+    "score": 6.7839
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "직속기관",
+    "frequency": 7,
+    "score": 6.414
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "특별법",
+    "frequency": 7,
+    "score": 6.414
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "시행규칙",
+    "frequency": 7,
+    "score": 6.414
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "다만",
+    "frequency": 9,
+    "score": 6.2383
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "이에",
+    "frequency": 9,
+    "score": 6.2383
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "따른",
+    "frequency": 9,
+    "score": 6.2383
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "연수",
+    "frequency": 9,
+    "score": 6.2383
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "임용",
+    "frequency": 9,
+    "score": 6.2383
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "따라",
+    "frequency": 9,
+    "score": 6.2383
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "of",
+    "frequency": 9,
+    "score": 6.2383
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "사립",
+    "frequency": 6,
+    "score": 6.1777
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "지급",
+    "frequency": 6,
+    "score": 6.1777
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "위해",
+    "frequency": 8,
+    "score": 6.0302
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "복무",
+    "frequency": 8,
+    "score": 6.0302
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "경기도교육감",
+    "frequency": 8,
+    "score": 6.0302
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "직속기관장",
+    "frequency": 5,
+    "score": 5.8933
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "편람",
+    "frequency": 5,
+    "score": 5.8933
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "둔다",
+    "frequency": 5,
+    "score": 5.8933
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "행정권한",
+    "frequency": 7,
+    "score": 5.7868
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "위임",
+    "frequency": 7,
+    "score": 5.7868
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "11",
+    "frequency": 8,
+    "score": 5.5452
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "사용",
+    "frequency": 8,
+    "score": 5.5452
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "또는",
+    "frequency": 8,
+    "score": 5.5452
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "교육감",
+    "frequency": 8,
+    "score": 5.5452
+  },
+  {
+    "chapter_id": "dfb10118-910a-489f-b8f8-afdc2571c8bc",
+    "term": "인사",
+    "frequency": 8,
+    "score": 5.5452
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "이첩",
+    "frequency": 389,
+    "score": 663.147
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "transfers",
+    "frequency": 388,
+    "score": 661.442
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "교장",
+    "frequency": 485,
+    "score": 365.579
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "principal",
+    "frequency": 398,
+    "score": 364.684
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "department",
+    "frequency": 396,
+    "score": 327.365
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "the",
+    "frequency": 468,
+    "score": 324.393
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "of",
+    "frequency": 453,
+    "score": 313.996
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "education",
+    "frequency": 415,
+    "score": 312.815
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "도교육청",
+    "frequency": 410,
+    "score": 309.046
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "to",
+    "frequency": 407,
+    "score": 282.111
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "또는",
+    "frequency": 142,
+    "score": 98.4269
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "교육공무원",
+    "frequency": 122,
+    "score": 84.564
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "교사",
+    "frequency": 119,
+    "score": 82.4845
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "1부",
+    "frequency": 71,
+    "score": 65.0566
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "인사위원회",
+    "frequency": 54,
+    "score": 63.6474
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "20",
+    "frequency": 90,
+    "score": 62.3832
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "초등학교",
+    "frequency": 84,
+    "score": 58.2244
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "and",
+    "frequency": 75,
+    "score": 51.986
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "공모교장",
+    "frequency": 37,
+    "score": 51.2929
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "임기",
+    "frequency": 53,
+    "score": 48.5634
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "임용",
+    "frequency": 70,
+    "score": 48.5203
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "사람",
+    "frequency": 62,
+    "score": 46.7339
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "이상",
+    "frequency": 67,
+    "score": 46.4409
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "따라",
+    "frequency": 62,
+    "score": 42.9751
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "관한",
+    "frequency": 61,
+    "score": 42.282
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "사항",
+    "frequency": 60,
+    "score": 41.5888
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "다음",
+    "frequency": 57,
+    "score": 39.5094
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "충원",
+    "frequency": 23,
+    "score": 39.2092
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "학교",
+    "frequency": 54,
+    "score": 37.4299
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "교감",
+    "frequency": 49,
+    "score": 36.9348
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "따른",
+    "frequency": 53,
+    "score": 36.7368
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "명예퇴직수당",
+    "frequency": 30,
+    "score": 35.3596
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "보직교사",
+    "frequency": 32,
+    "score": 32.9478
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "교육지원청",
+    "frequency": 46,
+    "score": 31.8848
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "장학",
+    "frequency": 27,
+    "score": 31.8237
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "선고받고",
+    "frequency": 18,
+    "score": 30.6855
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "면직",
+    "frequency": 39,
+    "score": 29.3971
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "사유",
+    "frequency": 42,
+    "score": 29.1122
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "or",
+    "frequency": 42,
+    "score": 29.1122
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "기간",
+    "frequency": 38,
+    "score": 28.6433
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "위원장",
+    "frequency": 27,
+    "score": 27.7997
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "있다",
+    "frequency": 39,
+    "score": 27.0327
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "발령",
+    "frequency": 39,
+    "score": 27.0327
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "같이",
+    "frequency": 35,
+    "score": 26.382
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "교육전문직원",
+    "frequency": 35,
+    "score": 26.382
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "전직",
+    "frequency": 35,
+    "score": 26.382
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "받은",
+    "frequency": 35,
+    "score": 26.382
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "처리",
+    "frequency": 37,
+    "score": 25.6464
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "있는",
+    "frequency": 37,
+    "score": 25.6464
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "직위",
+    "frequency": 34,
+    "score": 25.6282
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "금고",
+    "frequency": 15,
+    "score": 25.5712
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "한다",
+    "frequency": 36,
+    "score": 24.9533
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "명예퇴직",
+    "frequency": 21,
+    "score": 24.7518
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "is",
+    "frequency": 35,
+    "score": 24.2602
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "임용권자",
+    "frequency": 32,
+    "score": 24.1207
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "규정",
+    "frequency": 34,
+    "score": 23.567
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "확정된",
+    "frequency": 19,
+    "score": 22.3944
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "위임",
+    "frequency": 27,
+    "score": 22.3203
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "형의",
+    "frequency": 13,
+    "score": 22.1617
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "자필",
+    "frequency": 13,
+    "score": 22.1617
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "본인",
+    "frequency": 29,
+    "score": 21.8594
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "아니한",
+    "frequency": 26,
+    "score": 21.4936
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "사망",
+    "frequency": 18,
+    "score": 21.2158
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "휴직",
+    "frequency": 30,
+    "score": 20.7944
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "교육공무원법",
+    "frequency": 30,
+    "score": 20.7944
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "서류",
+    "frequency": 25,
+    "score": 20.667
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "전보",
+    "frequency": 25,
+    "score": 20.667
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "형이",
+    "frequency": 12,
+    "score": 20.457
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "중에",
+    "frequency": 24,
+    "score": 19.8403
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "재직기간",
+    "frequency": 26,
+    "score": 19.5981
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "image",
+    "frequency": 28,
+    "score": 19.4081
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "with",
+    "frequency": 28,
+    "score": 19.4081
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "등에",
+    "frequency": 28,
+    "score": 19.4081
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "직을",
+    "frequency": 14,
+    "score": 19.4081
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "결충원",
+    "frequency": 11,
+    "score": 18.7522
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "중임",
+    "frequency": 11,
+    "score": 18.7522
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "소속",
+    "frequency": 27,
+    "score": 18.715
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "의한",
+    "frequency": 27,
+    "score": 18.715
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "연구",
+    "frequency": 27,
+    "score": 18.715
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "지나지",
+    "frequency": 18,
+    "score": 18.5331
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "규칙",
+    "frequency": 24,
+    "score": 18.0905
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "공모",
+    "frequency": 13,
+    "score": 18.0218
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "심의",
+    "frequency": 21,
+    "score": 17.3603
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "인사기록",
+    "frequency": 23,
+    "score": 17.3368
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "집행유예",
+    "frequency": 10,
+    "score": 17.0475
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "작성",
+    "frequency": 24,
+    "score": 16.6355
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "때에",
+    "frequency": 24,
+    "score": 16.6355
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "원로교사",
+    "frequency": 12,
+    "score": 16.6355
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "제출",
+    "frequency": 22,
+    "score": 16.583
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "의원면직",
+    "frequency": 20,
+    "score": 16.5336
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "직권면직",
+    "frequency": 14,
+    "score": 16.5012
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "초등",
+    "frequency": 23,
+    "score": 15.9424
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "집행",
+    "frequency": 21,
+    "score": 15.8292
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "기간제",
+    "frequency": 19,
+    "score": 15.7069
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "내부결재",
+    "frequency": 17,
+    "score": 15.5769
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "위원",
+    "frequency": 17,
+    "score": 15.5769
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "발령대장",
+    "frequency": 15,
+    "score": 15.4443
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "비위",
+    "frequency": 15,
+    "score": 15.4443
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "성폭력범죄",
+    "frequency": 15,
+    "score": 15.4443
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "recruitment",
+    "frequency": 9,
+    "score": 15.3427
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "for",
+    "frequency": 22,
+    "score": 15.2492
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "국가공무원법",
+    "frequency": 22,
+    "score": 15.2492
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "법률",
+    "frequency": 22,
+    "score": 15.2492
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "직무",
+    "frequency": 22,
+    "score": 15.2492
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "채용",
+    "frequency": 11,
+    "score": 15.2492
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "정원외",
+    "frequency": 11,
+    "score": 15.2492
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "면함",
+    "frequency": 11,
+    "score": 15.2492
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "임용할",
+    "frequency": 11,
+    "score": 15.2492
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "서약서",
+    "frequency": 11,
+    "score": 15.2492
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "제목",
+    "frequency": 18,
+    "score": 14.8802
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "경기",
+    "frequency": 21,
+    "score": 14.5561
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "neis",
+    "frequency": 21,
+    "score": 14.5561
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "학급",
+    "frequency": 19,
+    "score": 14.3217
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "신청",
+    "frequency": 19,
+    "score": 14.3217
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "정함",
+    "frequency": 12,
+    "score": 14.1439
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "인사발령",
+    "frequency": 17,
+    "score": 14.0535
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "평가",
+    "frequency": 17,
+    "score": 14.0535
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "중인",
+    "frequency": 17,
+    "score": 14.0535
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "근무",
+    "frequency": 20,
+    "score": 13.8629
+  },
+  {
+    "chapter_id": "347aa471-8daa-4c9a-9838-ac57bc62074c",
+    "term": "계약제",
+    "frequency": 10,
+    "score": 13.8629
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "휴직",
+    "frequency": 653,
+    "score": 452.625
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "20",
+    "frequency": 431,
+    "score": 298.746
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "휴직기간",
+    "frequency": 260,
+    "score": 195.981
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "복직",
+    "frequency": 281,
+    "score": 194.774
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "개월간",
+    "frequency": 114,
+    "score": 194.341
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "1부",
+    "frequency": 199,
+    "score": 182.342
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "사유",
+    "frequency": 231,
+    "score": 160.117
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "교사",
+    "frequency": 216,
+    "score": 149.72
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "초등학교",
+    "frequency": 197,
+    "score": 136.55
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "또는",
+    "frequency": 191,
+    "score": 132.391
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "일까지",
+    "frequency": 92,
+    "score": 127.539
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "복직원",
+    "frequency": 70,
+    "score": 119.332
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "일부터",
+    "frequency": 85,
+    "score": 117.835
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "기간",
+    "frequency": 154,
+    "score": 116.081
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "휴직사유",
+    "frequency": 105,
+    "score": 108.11
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "고용휴직",
+    "frequency": 62,
+    "score": 105.694
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "육아휴직",
+    "frequency": 125,
+    "score": 103.335
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "지급",
+    "frequency": 95,
+    "score": 97.8138
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "교육공무원",
+    "frequency": 135,
+    "score": 93.5749
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "불임",
+    "frequency": 53,
+    "score": 90.3516
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "바랍니다",
+    "frequency": 118,
+    "score": 88.9451
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "휴직원",
+    "frequency": 50,
+    "score": 85.2374
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "소멸",
+    "frequency": 70,
+    "score": 82.5058
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "타당하다고",
+    "frequency": 46,
+    "score": 78.4184
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "배우자",
+    "frequency": 75,
+    "score": 77.2215
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "주시기",
+    "frequency": 93,
+    "score": 76.8811
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "circ",
+    "frequency": 45,
+    "score": 76.7137
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "연장",
+    "frequency": 64,
+    "score": 75.4339
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "회신",
+    "frequency": 54,
+    "score": 74.8599
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "귀하",
+    "frequency": 81,
+    "score": 74.2195
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "허가하여",
+    "frequency": 53,
+    "score": 73.4736
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "제출하오니",
+    "frequency": 52,
+    "score": 72.0873
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "인하여",
+    "frequency": 86,
+    "score": 71.0944
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "유학휴직",
+    "frequency": 50,
+    "score": 69.3147
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "경기",
+    "frequency": 99,
+    "score": 68.6216
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "사료되오니",
+    "frequency": 40,
+    "score": 68.1899
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "교육지원청교육장",
+    "frequency": 82,
+    "score": 67.7876
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "학교장",
+    "frequency": 89,
+    "score": 67.0857
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "교육공무원법",
+    "frequency": 96,
+    "score": 66.5421
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "진단서",
+    "frequency": 55,
+    "score": 64.826
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "허락하여",
+    "frequency": 37,
+    "score": 63.0757
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "제1항",
+    "frequency": 83,
+    "score": 62.5631
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "학교",
+    "frequency": 88,
+    "score": 60.997
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "초등학교장",
+    "frequency": 66,
+    "score": 60.4752
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "만료",
+    "frequency": 66,
+    "score": 60.4752
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "제44조",
+    "frequency": 58,
+    "score": 59.7179
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "질병휴직",
+    "frequency": 65,
+    "score": 59.5589
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "자녀",
+    "frequency": 72,
+    "score": 59.5209
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "명함",
+    "frequency": 72,
+    "score": 59.5209
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "의견서",
+    "frequency": 50,
+    "score": 58.9327
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "이내",
+    "frequency": 85,
+    "score": 58.9175
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "유학",
+    "frequency": 49,
+    "score": 57.7541
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "질의",
+    "frequency": 49,
+    "score": 57.7541
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "가족돌봄휴직",
+    "frequency": 48,
+    "score": 56.5754
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "임용권자",
+    "frequency": 75,
+    "score": 56.5329
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "2025",
+    "frequency": 80,
+    "score": 55.4518
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "휴직자",
+    "frequency": 67,
+    "score": 55.3875
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "복직해야",
+    "frequency": 32,
+    "score": 54.5519
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "안함",
+    "frequency": 32,
+    "score": 54.5519
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "학교장의견서",
+    "frequency": 32,
+    "score": 54.5519
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "있는",
+    "frequency": 78,
+    "score": 54.0655
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "3년",
+    "frequency": 65,
+    "score": 53.7341
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "서류",
+    "frequency": 65,
+    "score": 53.7341
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "발령",
+    "frequency": 76,
+    "score": 52.6792
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "돌봄",
+    "frequency": 50,
+    "score": 51.481
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "이상",
+    "frequency": 74,
+    "score": 51.2929
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "연수",
+    "frequency": 72,
+    "score": 49.9066
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "붙여",
+    "frequency": 29,
+    "score": 49.4377
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "사망",
+    "frequency": 41,
+    "score": 48.3249
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "the",
+    "frequency": 69,
+    "score": 47.8272
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "휴직하고자",
+    "frequency": 28,
+    "score": 47.7329
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "동반휴직",
+    "frequency": 40,
+    "score": 47.1462
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "복직되지",
+    "frequency": 27,
+    "score": 46.0282
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "성명",
+    "frequency": 55,
+    "score": 45.4673
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "횟수",
+    "frequency": 44,
+    "score": 45.3033
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "있음",
+    "frequency": 60,
+    "score": 45.2263
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "결원보충",
+    "frequency": 38,
+    "score": 44.7889
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "직인",
+    "frequency": 54,
+    "score": 44.6406
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "위임",
+    "frequency": 53,
+    "score": 43.814
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "00",
+    "frequency": 52,
+    "score": 42.9873
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "규정",
+    "frequency": 61,
+    "score": 42.282
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "and",
+    "frequency": 61,
+    "score": 42.282
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "수당",
+    "frequency": 45,
+    "score": 41.2331
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "봉급",
+    "frequency": 40,
+    "score": 41.1848
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "유의하시기",
+    "frequency": 24,
+    "score": 40.914
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "1년",
+    "frequency": 59,
+    "score": 40.8957
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "원소속교",
+    "frequency": 29,
+    "score": 40.2025
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "허가",
+    "frequency": 39,
+    "score": 40.1552
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "임신",
+    "frequency": 34,
+    "score": 40.0743
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "하고",
+    "frequency": 53,
+    "score": 39.9499
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "신청",
+    "frequency": 53,
+    "score": 39.9499
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "의거",
+    "frequency": 57,
+    "score": 39.5094
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "같이",
+    "frequency": 52,
+    "score": 39.1961
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "즉시",
+    "frequency": 38,
+    "score": 39.1255
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "출산",
+    "frequency": 33,
+    "score": 38.8956
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "등을",
+    "frequency": 55,
+    "score": 38.1231
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "휴직연장원",
+    "frequency": 22,
+    "score": 37.5045
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "반기별",
+    "frequency": 22,
+    "score": 37.5045
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "난임휴직",
+    "frequency": 22,
+    "score": 37.5045
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "합니다",
+    "frequency": 49,
+    "score": 36.9348
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "제출",
+    "frequency": 48,
+    "score": 36.181
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "관한",
+    "frequency": 52,
+    "score": 36.0437
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "고용",
+    "frequency": 26,
+    "score": 36.0437
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "6월30일",
+    "frequency": 21,
+    "score": 35.7997
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "보고해야",
+    "frequency": 21,
+    "score": 35.7997
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "규칙",
+    "frequency": 47,
+    "score": 35.4273
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "휴직한",
+    "frequency": 34,
+    "score": 35.0071
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "질병",
+    "frequency": 46,
+    "score": 34.6735
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "따라",
+    "frequency": 50,
+    "score": 34.6574
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "따른",
+    "frequency": 50,
+    "score": 34.6574
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "증빙서",
+    "frequency": 25,
+    "score": 34.6574
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "연장하고자",
+    "frequency": 20,
+    "score": 34.095
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "교육지원청",
+    "frequency": 49,
+    "score": 33.9642
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "본인",
+    "frequency": 44,
+    "score": 33.166
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "연수휴직",
+    "frequency": 28,
+    "score": 33.0023
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "결원",
+    "frequency": 32,
+    "score": 32.9478
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "휴직하였던",
+    "frequency": 19,
+    "score": 32.3902
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "호봉승급",
+    "frequency": 19,
+    "score": 32.3902
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "자율연수휴직",
+    "frequency": 19,
+    "score": 32.3902
+  },
+  {
+    "chapter_id": "889f9d2e-8557-43b4-a613-42373f155ca1",
+    "term": "재휴직",
+    "frequency": 19,
+    "score": 32.3902
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "정학사",
+    "frequency": 2215,
+    "score": 2610.72
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "refer",
+    "frequency": 1105,
+    "score": 1883.75
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "may",
+    "frequency": 1101,
+    "score": 1876.93
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "contextually",
+    "frequency": 1094,
+    "score": 1864.99
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "범인미소",
+    "frequency": 971,
+    "score": 1655.31
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "or",
+    "frequency": 1694,
+    "score": 1174.19
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "leave",
+    "frequency": 925,
+    "score": 847.569
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "to",
+    "frequency": 1180,
+    "score": 817.914
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "days",
+    "frequency": 588,
+    "score": 538.779
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "annual",
+    "frequency": 298,
+    "score": 508.015
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "연가차감용",
+    "frequency": 282,
+    "score": 480.739
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "deducted",
+    "frequency": 281,
+    "score": 479.034
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "minutes",
+    "frequency": 280,
+    "score": 477.329
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "연가일수",
+    "frequency": 327,
+    "score": 453.318
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "연도",
+    "frequency": 358,
+    "score": 421.958
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "date",
+    "frequency": 496,
+    "score": 410.033
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "hours",
+    "frequency": 285,
+    "score": 335.917
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "year",
+    "frequency": 316,
+    "score": 289.548
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "for",
+    "frequency": 405,
+    "score": 280.725
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "휴직일자",
+    "frequency": 156,
+    "score": 265.941
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "compensation",
+    "frequency": 151,
+    "score": 257.417
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "intended",
+    "frequency": 241,
+    "score": 248.138
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "또는",
+    "frequency": 331,
+    "score": 229.432
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "겸직",
+    "frequency": 206,
+    "score": 212.102
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "휴직종료일자",
+    "frequency": 152,
+    "score": 210.717
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "복지일자",
+    "frequency": 152,
+    "score": 210.717
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "possibly",
+    "frequency": 252,
+    "score": 208.323
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "연가",
+    "frequency": 218,
+    "score": 199.751
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "as",
+    "frequency": 282,
+    "score": 195.467
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "likely",
+    "frequency": 271,
+    "score": 187.843
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "the",
+    "frequency": 259,
+    "score": 179.525
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "end",
+    "frequency": 158,
+    "score": 162.68
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "and",
+    "frequency": 234,
+    "score": 162.196
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "활동",
+    "frequency": 157,
+    "score": 161.65
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "병가",
+    "frequency": 171,
+    "score": 156.686
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "허가",
+    "frequency": 139,
+    "score": 143.117
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "인터넷",
+    "frequency": 83,
+    "score": 141.494
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "휴가",
+    "frequency": 166,
+    "score": 137.229
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "있는",
+    "frequency": 191,
+    "score": 132.391
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "record",
+    "frequency": 157,
+    "score": 129.788
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "hr",
+    "frequency": 156,
+    "score": 128.962
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "콘텐츠",
+    "frequency": 75,
+    "score": 127.856
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "출장",
+    "frequency": 72,
+    "score": 122.742
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "사례",
+    "frequency": 119,
+    "score": 122.525
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "인사기록",
+    "frequency": 160,
+    "score": 120.604
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "있음",
+    "frequency": 159,
+    "score": 119.85
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "외부강의등",
+    "frequency": 68,
+    "score": 115.923
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "기간",
+    "frequency": 138,
+    "score": 104.021
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "with",
+    "frequency": 146,
+    "score": 101.2
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "직무",
+    "frequency": 146,
+    "score": 101.2
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "따라",
+    "frequency": 144,
+    "score": 99.8132
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "사용할",
+    "frequency": 84,
+    "score": 99.007
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "is",
+    "frequency": 139,
+    "score": 96.3475
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "범위",
+    "frequency": 138,
+    "score": 95.6543
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "사용한",
+    "frequency": 69,
+    "score": 95.6543
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "우려",
+    "frequency": 80,
+    "score": 94.2924
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "겸직허가",
+    "frequency": 67,
+    "score": 92.8817
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "일수",
+    "frequency": 66,
+    "score": 91.4954
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "겸직허",
+    "frequency": 87,
+    "score": 89.5769
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "사용",
+    "frequency": 127,
+    "score": 88.0297
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "사유",
+    "frequency": 126,
+    "score": 87.3365
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "미디어",
+    "frequency": 50,
+    "score": 85.2374
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "복무규정",
+    "frequency": 72,
+    "score": 84.8632
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "소속",
+    "frequency": 121,
+    "score": 83.8708
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "계속성",
+    "frequency": 48,
+    "score": 81.8279
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "사례금",
+    "frequency": 48,
+    "score": 81.8279
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "있는지",
+    "frequency": 89,
+    "score": 81.5499
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "등을",
+    "frequency": 117,
+    "score": 81.0982
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "외부강",
+    "frequency": 58,
+    "score": 80.4051
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "강의",
+    "frequency": 68,
+    "score": 80.1485
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "따른",
+    "frequency": 115,
+    "score": 79.7119
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "학교",
+    "frequency": 114,
+    "score": 79.0188
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "영향",
+    "frequency": 67,
+    "score": 78.9699
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "개인",
+    "frequency": 66,
+    "score": 77.7912
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "해당",
+    "frequency": 110,
+    "score": 76.2462
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "연수",
+    "frequency": 105,
+    "score": 72.7805
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "근무시간",
+    "frequency": 79,
+    "score": 72.387
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "토요일",
+    "frequency": 52,
+    "score": 72.0873
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "진단서",
+    "frequency": 61,
+    "score": 71.898
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "기관",
+    "frequency": 101,
+    "score": 70.0079
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "학교장",
+    "frequency": 92,
+    "score": 69.347
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "신청",
+    "frequency": 91,
+    "score": 68.5932
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "육아시간",
+    "frequency": 40,
+    "score": 68.1899
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "수익",
+    "frequency": 49,
+    "score": 67.9284
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "복무",
+    "frequency": 89,
+    "score": 67.0857
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "공가",
+    "frequency": 55,
+    "score": 64.826
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "목적",
+    "frequency": 86,
+    "score": 64.8244
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "대상",
+    "frequency": 86,
+    "score": 64.8244
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "근무",
+    "frequency": 92,
+    "score": 63.7695
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "이익",
+    "frequency": 46,
+    "score": 63.7695
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "공휴일",
+    "frequency": 46,
+    "score": 63.7695
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "출산",
+    "frequency": 54,
+    "score": 63.6474
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "image",
+    "frequency": 90,
+    "score": 62.3832
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "시간",
+    "frequency": 82,
+    "score": 61.8093
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "제작",
+    "frequency": 36,
+    "score": 61.3709
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "초상권",
+    "frequency": 36,
+    "score": 61.3709
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "form",
+    "frequency": 74,
+    "score": 61.1742
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "이내",
+    "frequency": 88,
+    "score": 60.997
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "영리업무",
+    "frequency": 59,
+    "score": 60.7475
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "20",
+    "frequency": 86,
+    "score": 59.6107
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "금지",
+    "frequency": 72,
+    "score": 59.5209
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "등에",
+    "frequency": 84,
+    "score": 58.2244
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "국가공무원",
+    "frequency": 84,
+    "score": 58.2244
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "공무상",
+    "frequency": 63,
+    "score": 57.7263
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "배우자",
+    "frequency": 56,
+    "score": 57.6587
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "없는",
+    "frequency": 82,
+    "score": 56.8381
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "승인",
+    "frequency": 82,
+    "score": 56.8381
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "table",
+    "frequency": 68,
+    "score": 56.2141
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "다음",
+    "frequency": 80,
+    "score": 55.4518
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "행위",
+    "frequency": 60,
+    "score": 54.9774
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "다만",
+    "frequency": 78,
+    "score": 54.0655
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "등의",
+    "frequency": 77,
+    "score": 53.3723
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "결근",
+    "frequency": 31,
+    "score": 52.8472
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "아니오",
+    "frequency": 38,
+    "score": 52.6792
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "1일",
+    "frequency": 63,
+    "score": 52.0808
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "자녀",
+    "frequency": 63,
+    "score": 52.0808
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "휴직",
+    "frequency": 75,
+    "score": 51.986
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "이상",
+    "frequency": 75,
+    "score": 51.986
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "지장",
+    "frequency": 44,
+    "score": 51.8608
+  },
+  {
+    "chapter_id": "51230b86-30da-43a5-b721-08979d4bc2e8",
+    "term": "조퇴",
+    "frequency": 37,
+    "score": 51.2929
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "평정점",
+    "frequency": 194,
+    "score": 268.941
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "가산점",
+    "frequency": 261,
+    "score": 268.731
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "경력",
+    "frequency": 367,
+    "score": 254.385
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "상한점",
+    "frequency": 142,
+    "score": 196.854
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "합산상한점",
+    "frequency": 83,
+    "score": 141.494
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "상한점임",
+    "frequency": 80,
+    "score": 136.38
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "안은",
+    "frequency": 75,
+    "score": 127.856
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "근무경력",
+    "frequency": 82,
+    "score": 113.676
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "인정",
+    "frequency": 144,
+    "score": 108.543
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "평정",
+    "frequency": 136,
+    "score": 102.513
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "또는",
+    "frequency": 145,
+    "score": 100.506
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "어촌",
+    "frequency": 56,
+    "score": 95.4659
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "00",
+    "frequency": 115,
+    "score": 95.068
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "접경",
+    "frequency": 55,
+    "score": 93.7611
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "12",
+    "frequency": 125,
+    "score": 86.6434
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "지도교사",
+    "frequency": 71,
+    "score": 83.6845
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "교육공무원",
+    "frequency": 114,
+    "score": 79.0188
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "합산한",
+    "frequency": 72,
+    "score": 74.1326
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "교사",
+    "frequency": 104,
+    "score": 72.0873
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "28",
+    "frequency": 102,
+    "score": 70.701
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "교감",
+    "frequency": 90,
+    "score": 67.8395
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "실적",
+    "frequency": 54,
+    "score": 63.6474
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "부여",
+    "frequency": 69,
+    "score": 63.2241
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "교육감지정",
+    "frequency": 37,
+    "score": 63.0757
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "지역",
+    "frequency": 68,
+    "score": 62.3078
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "승진규정",
+    "frequency": 74,
+    "score": 61.1742
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "이상",
+    "frequency": 86,
+    "score": 59.6107
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "부터",
+    "frequency": 71,
+    "score": 58.6942
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "01",
+    "frequency": 73,
+    "score": 55.0253
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "교육특별",
+    "frequency": 32,
+    "score": 54.5519
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "초등돌봄교실",
+    "frequency": 31,
+    "score": 52.8472
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "평정자",
+    "frequency": 38,
+    "score": 52.6792
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "근무성적평정",
+    "frequency": 51,
+    "score": 52.5106
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "31",
+    "frequency": 68,
+    "score": 51.2565
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "90점",
+    "frequency": 29,
+    "score": 49.4377
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "근무",
+    "frequency": 70,
+    "score": 48.5203
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "발명교실",
+    "frequency": 35,
+    "score": 48.5203
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "학교",
+    "frequency": 69,
+    "score": 47.8272
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "있는",
+    "frequency": 67,
+    "score": 46.4409
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "연수",
+    "frequency": 67,
+    "score": 46.4409
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "최근",
+    "frequency": 56,
+    "score": 46.294
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "청소년단체",
+    "frequency": 27,
+    "score": 46.0282
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "연구학교",
+    "frequency": 27,
+    "score": 46.0282
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "31이전",
+    "frequency": 27,
+    "score": 46.0282
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "접경지역",
+    "frequency": 27,
+    "score": 46.0282
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "09",
+    "frequency": 50,
+    "score": 45.8145
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "도지정",
+    "frequency": 33,
+    "score": 45.7477
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "한다",
+    "frequency": 65,
+    "score": 45.0546
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "담임교사",
+    "frequency": 38,
+    "score": 44.7889
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "영재학급담당교사",
+    "frequency": 26,
+    "score": 44.3235
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "평정한다",
+    "frequency": 26,
+    "score": 44.3235
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "이후",
+    "frequency": 58,
+    "score": 43.7188
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "03",
+    "frequency": 58,
+    "score": 43.7188
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "적용",
+    "frequency": 62,
+    "score": 42.9751
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "2025",
+    "frequency": 62,
+    "score": 42.9751
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "95점",
+    "frequency": 25,
+    "score": 42.6187
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "도서벽지",
+    "frequency": 25,
+    "score": 42.6187
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "경기도교육공무원인사위원회",
+    "frequency": 25,
+    "score": 42.6187
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "공단",
+    "frequency": 36,
+    "score": 42.4316
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "기간",
+    "frequency": 56,
+    "score": 42.2112
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "2013",
+    "frequency": 40,
+    "score": 41.1848
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "비율",
+    "frequency": 34,
+    "score": 40.0743
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "이전",
+    "frequency": 53,
+    "score": 39.9499
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "이전경력",
+    "frequency": 23,
+    "score": 39.2092
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "저학년",
+    "frequency": 23,
+    "score": 39.2092
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "97",
+    "frequency": 33,
+    "score": 38.8956
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "85점",
+    "frequency": 28,
+    "score": 38.8162
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "근무성적평정점",
+    "frequency": 32,
+    "score": 37.717
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "진로직업특수교육지원센터",
+    "frequency": 22,
+    "score": 37.5045
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "지역명임",
+    "frequency": 22,
+    "score": 37.5045
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "11",
+    "frequency": 54,
+    "score": 37.4299
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "교감등",
+    "frequency": 27,
+    "score": 37.4299
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "따라",
+    "frequency": 53,
+    "score": 36.7368
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "근무자",
+    "frequency": 26,
+    "score": 36.0437
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "통합형직업교육거점학교",
+    "frequency": 21,
+    "score": 35.7997
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "근무성적",
+    "frequency": 39,
+    "score": 35.7353
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "합산",
+    "frequency": 39,
+    "score": 35.7353
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "2017",
+    "frequency": 39,
+    "score": 35.7353
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "받은",
+    "frequency": 47,
+    "score": 35.4273
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "근무한",
+    "frequency": 46,
+    "score": 34.6735
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "해당",
+    "frequency": 50,
+    "score": 34.6574
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "종일반",
+    "frequency": 20,
+    "score": 34.095
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "등급",
+    "frequency": 20,
+    "score": 34.095
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "방과후교실",
+    "frequency": 20,
+    "score": 34.095
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "초등자율체육활동체험교실운영지도교사",
+    "frequency": 20,
+    "score": 34.095
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "체험학습장",
+    "frequency": 20,
+    "score": 34.095
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "2007",
+    "frequency": 24,
+    "score": 33.2711
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "장학사",
+    "frequency": 40,
+    "score": 33.0671
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "초과",
+    "frequency": 32,
+    "score": 32.9478
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "가산",
+    "frequency": 32,
+    "score": 32.9478
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "활동",
+    "frequency": 31,
+    "score": 31.9182
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "교육연구사",
+    "frequency": 23,
+    "score": 31.8848
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "100점",
+    "frequency": 23,
+    "score": 31.8848
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "만점",
+    "frequency": 23,
+    "score": 31.8848
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "특별학급",
+    "frequency": 23,
+    "score": 31.8848
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "연구대회",
+    "frequency": 27,
+    "score": 31.8237
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "직위",
+    "frequency": 42,
+    "score": 31.6584
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "02",
+    "frequency": 38,
+    "score": 31.4138
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "따른",
+    "frequency": 45,
+    "score": 31.1916
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "교원정책",
+    "frequency": 30,
+    "score": 30.8886
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "불인정",
+    "frequency": 18,
+    "score": 30.6855
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "일평정점",
+    "frequency": 18,
+    "score": 30.6855
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "공단지역",
+    "frequency": 18,
+    "score": 30.6855
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "중복",
+    "frequency": 26,
+    "score": 30.645
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "유공교원",
+    "frequency": 22,
+    "score": 30.4985
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "없는",
+    "frequency": 43,
+    "score": 29.8053
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "때에",
+    "frequency": 43,
+    "score": 29.8053
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "취득한",
+    "frequency": 39,
+    "score": 29.3971
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "다음",
+    "frequency": 42,
+    "score": 29.1122
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "점수",
+    "frequency": 21,
+    "score": 29.1122
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "월평정점",
+    "frequency": 17,
+    "score": 28.9807
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "수업실기우수교사",
+    "frequency": 17,
+    "score": 28.9807
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "확인자",
+    "frequency": 35,
+    "score": 28.9338
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "심의",
+    "frequency": 35,
+    "score": 28.9338
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "종전",
+    "frequency": 35,
+    "score": 28.9338
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "성적",
+    "frequency": 24,
+    "score": 28.2877
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "항목",
+    "frequency": 37,
+    "score": 27.8896
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "2009",
+    "frequency": 27,
+    "score": 27.7997
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "평정방법",
+    "frequency": 16,
+    "score": 27.276
+  },
+  {
+    "chapter_id": "88b480ac-3162-4251-a7ed-9199ebb6724b",
+    "term": "전국장애학생직업기능경진대회",
+    "frequency": 16,
+    "score": 27.276
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "중징계",
+    "frequency": 4770,
+    "score": 5622.18
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "의결",
+    "frequency": 4858,
+    "score": 4451.34
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "요구",
+    "frequency": 4805,
+    "score": 3972.19
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "징계등",
+    "frequency": 112,
+    "score": 190.932
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "또는",
+    "frequency": 219,
+    "score": 151.799
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "따른",
+    "frequency": 191,
+    "score": 132.391
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "파면",
+    "frequency": 134,
+    "score": 122.783
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "비위",
+    "frequency": 117,
+    "score": 120.465
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "해임",
+    "frequency": 140,
+    "score": 115.735
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "교육공무원",
+    "frequency": 145,
+    "score": 100.506
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "징계위원회",
+    "frequency": 89,
+    "score": 91.6361
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "징계",
+    "frequency": 132,
+    "score": 91.4954
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "혐의자",
+    "frequency": 51,
+    "score": 86.9422
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "처분",
+    "frequency": 105,
+    "score": 86.8013
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "정직",
+    "frequency": 93,
+    "score": 85.215
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "징계령",
+    "frequency": 70,
+    "score": 82.5058
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "강등",
+    "frequency": 90,
+    "score": 82.4662
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "감봉",
+    "frequency": 75,
+    "score": 77.2215
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "부정청탁",
+    "frequency": 64,
+    "score": 75.4339
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "말한다",
+    "frequency": 84,
+    "score": 69.441
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "위반",
+    "frequency": 58,
+    "score": 68.362
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "20",
+    "frequency": 96,
+    "score": 66.5421
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "징계부가금",
+    "frequency": 44,
+    "score": 60.997
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "견책",
+    "frequency": 59,
+    "score": 60.7475
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "한다",
+    "frequency": 87,
+    "score": 60.3038
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "이란",
+    "frequency": 50,
+    "score": 58.9327
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "해당하",
+    "frequency": 80,
+    "score": 55.4518
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "직위해제",
+    "frequency": 79,
+    "score": 54.7586
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "징계의결서",
+    "frequency": 32,
+    "score": 54.5519
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "행위",
+    "frequency": 58,
+    "score": 53.1449
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "따라",
+    "frequency": 76,
+    "score": 52.6792
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "징계혐의자",
+    "frequency": 38,
+    "score": 52.6792
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "금품등",
+    "frequency": 44,
+    "score": 51.8608
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "음주운전",
+    "frequency": 48,
+    "score": 49.4217
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "해당",
+    "frequency": 71,
+    "score": 49.2134
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "사유",
+    "frequency": 70,
+    "score": 48.5203
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "1부",
+    "frequency": 51,
+    "score": 46.7308
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "관한",
+    "frequency": 67,
+    "score": 46.4409
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "말소제한기간",
+    "frequency": 27,
+    "score": 46.0282
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "규정",
+    "frequency": 65,
+    "score": 45.0546
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "사본",
+    "frequency": 47,
+    "score": 43.0657
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "처분권자",
+    "frequency": 25,
+    "score": 42.6187
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "경징계",
+    "frequency": 36,
+    "score": 42.4316
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "the",
+    "frequency": 61,
+    "score": 42.282
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "징계처분",
+    "frequency": 51,
+    "score": 42.1606
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "or",
+    "frequency": 60,
+    "score": 41.5888
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "별표",
+    "frequency": 45,
+    "score": 41.2331
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "국가공무원법",
+    "frequency": 58,
+    "score": 40.2025
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "경고",
+    "frequency": 34,
+    "score": 40.0743
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "말소",
+    "frequency": 34,
+    "score": 40.0743
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "피해자",
+    "frequency": 23,
+    "score": 39.2092
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "징계기준",
+    "frequency": 23,
+    "score": 39.2092
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "호의",
+    "frequency": 52,
+    "score": 39.1961
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "소속",
+    "frequency": 55,
+    "score": 38.1231
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "직위",
+    "frequency": 50,
+    "score": 37.6886
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "일반징계위원회",
+    "frequency": 22,
+    "score": 37.5045
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "일징위",
+    "frequency": 22,
+    "score": 37.5045
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "경기",
+    "frequency": 54,
+    "score": 37.4299
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "다음",
+    "frequency": 53,
+    "score": 36.7368
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "부과",
+    "frequency": 29,
+    "score": 34.181
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "수령증",
+    "frequency": 20,
+    "score": 34.095
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "위원장",
+    "frequency": 33,
+    "score": 33.9774
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "때에",
+    "frequency": 49,
+    "score": 33.9642
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "별지",
+    "frequency": 44,
+    "score": 33.166
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "기간",
+    "frequency": 44,
+    "score": 33.166
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "금지",
+    "frequency": 40,
+    "score": 33.0671
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "해당함",
+    "frequency": 36,
+    "score": 32.9865
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "제1항",
+    "frequency": 43,
+    "score": 32.4122
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "출석통지서",
+    "frequency": 19,
+    "score": 32.3902
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "적극행정",
+    "frequency": 19,
+    "score": 32.3902
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "1의2",
+    "frequency": 19,
+    "score": 32.3902
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "기관",
+    "frequency": 46,
+    "score": 31.8848
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "비밀",
+    "frequency": 23,
+    "score": 31.8848
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "있는",
+    "frequency": 45,
+    "score": 31.1916
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "있다",
+    "frequency": 45,
+    "score": 31.1916
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "의무",
+    "frequency": 45,
+    "score": 31.1916
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "성희롱",
+    "frequency": 26,
+    "score": 30.645
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "수수",
+    "frequency": 26,
+    "score": 30.645
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "전송",
+    "frequency": 26,
+    "score": 30.645
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "같은",
+    "frequency": 44,
+    "score": 30.4985
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "등에",
+    "frequency": 44,
+    "score": 30.4985
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "이유",
+    "frequency": 29,
+    "score": 29.859
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "어느",
+    "frequency": 36,
+    "score": 29.7604
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "징계의결",
+    "frequency": 36,
+    "score": 29.7604
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "받은",
+    "frequency": 39,
+    "score": 29.3971
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "이상",
+    "frequency": 42,
+    "score": 29.1122
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "비위행위",
+    "frequency": 21,
+    "score": 29.1122
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "대외문서",
+    "frequency": 17,
+    "score": 28.9807
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "정직3월",
+    "frequency": 17,
+    "score": 28.9807
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "출석",
+    "frequency": 28,
+    "score": 28.8293
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "전화",
+    "frequency": 28,
+    "score": 28.8293
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "없음",
+    "frequency": 38,
+    "score": 28.6433
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "정도",
+    "frequency": 38,
+    "score": 28.6433
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "협조자",
+    "frequency": 24,
+    "score": 28.2877
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "하나",
+    "frequency": 37,
+    "score": 27.8896
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "비공개",
+    "frequency": 27,
+    "score": 27.7997
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "평정점",
+    "frequency": 20,
+    "score": 27.7259
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "직무상",
+    "frequency": 20,
+    "score": 27.7259
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "명부",
+    "frequency": 30,
+    "score": 27.4887
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "말소함",
+    "frequency": 16,
+    "score": 27.276
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "사건",
+    "frequency": 23,
+    "score": 27.1091
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "같이",
+    "frequency": 34,
+    "score": 25.6282
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "모의시험",
+    "frequency": 15,
+    "score": 25.5712
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "성과상여금",
+    "frequency": 15,
+    "score": 25.5712
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "감봉1월",
+    "frequency": 15,
+    "score": 25.5712
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "사항",
+    "frequency": 36,
+    "score": 24.9533
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "교사",
+    "frequency": 36,
+    "score": 24.9533
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "직무수행",
+    "frequency": 27,
+    "score": 24.7398
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "이내",
+    "frequency": 35,
+    "score": 24.2602
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "법률",
+    "frequency": 35,
+    "score": 24.2602
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "비고",
+    "frequency": 32,
+    "score": 24.1207
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "제출",
+    "frequency": 32,
+    "score": 24.1207
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "부작위",
+    "frequency": 14,
+    "score": 23.8665
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "징계결",
+    "frequency": 14,
+    "score": 23.8665
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "징계면제",
+    "frequency": 14,
+    "score": 23.8665
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "교육지원청교육공무원일반징계위원회",
+    "frequency": 14,
+    "score": 23.8665
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "소극행정",
+    "frequency": 17,
+    "score": 23.567
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "주의",
+    "frequency": 25,
+    "score": 22.9073
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "직무",
+    "frequency": 33,
+    "score": 22.8739
+  },
+  {
+    "chapter_id": "42f13217-7f61-4146-a856-5bb4bbd30821",
+    "term": "이용한",
+    "frequency": 19,
+    "score": 22.3944
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "search",
+    "frequency": 1330,
+    "score": 1567.61
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "전입",
+    "frequency": 1322,
+    "score": 1361.16
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "transfer",
+    "frequency": 1307,
+    "score": 1345.71
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "searcher",
+    "frequency": 715,
+    "score": 1218.89
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "조회",
+    "frequency": 1344,
+    "score": 1111.06
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "신청구건",
+    "frequency": 542,
+    "score": 923.974
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "requests",
+    "frequency": 544,
+    "score": 754.144
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "occupation",
+    "frequency": 413,
+    "score": 704.061
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "호경명",
+    "frequency": 395,
+    "score": 673.375
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "working",
+    "frequency": 394,
+    "score": 671.671
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "new",
+    "frequency": 548,
+    "score": 645.903
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "grade",
+    "frequency": 544,
+    "score": 641.188
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "semester",
+    "frequency": 535,
+    "score": 630.58
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "name",
+    "frequency": 586,
+    "score": 603.357
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "비고내용",
+    "frequency": 313,
+    "score": 533.586
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "total",
+    "frequency": 567,
+    "score": 519.537
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "전체",
+    "frequency": 547,
+    "score": 501.211
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "근무일수",
+    "frequency": 409,
+    "score": 482.07
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "학기",
+    "frequency": 543,
+    "score": 448.887
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "학년",
+    "frequency": 540,
+    "score": 446.406
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "remarks",
+    "frequency": 312,
+    "score": 367.74
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "days",
+    "frequency": 394,
+    "score": 361.018
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "field",
+    "frequency": 365,
+    "score": 334.446
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "checkbox",
+    "frequency": 318,
+    "score": 327.419
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "input",
+    "frequency": 356,
+    "score": 294.298
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "text",
+    "frequency": 380,
+    "score": 286.433
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "the",
+    "frequency": 412,
+    "score": 285.577
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "정부",
+    "frequency": 304,
+    "score": 278.552
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "and",
+    "frequency": 383,
+    "score": 265.475
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "government",
+    "frequency": 311,
+    "score": 257.097
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "조회자직위",
+    "frequency": 120,
+    "score": 204.57
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "조회자부서",
+    "frequency": 120,
+    "score": 204.57
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "조회자연락처",
+    "frequency": 120,
+    "score": 204.57
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "조회자이름",
+    "frequency": 119,
+    "score": 202.865
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "조회자이메일",
+    "frequency": 118,
+    "score": 201.16
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "조회자전화",
+    "frequency": 118,
+    "score": 201.16
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "with",
+    "frequency": 264,
+    "score": 182.991
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "email",
+    "frequency": 121,
+    "score": 167.742
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "or",
+    "frequency": 241,
+    "score": 167.048
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "is",
+    "frequency": 233,
+    "score": 161.503
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "phone",
+    "frequency": 129,
+    "score": 152.046
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "contact",
+    "frequency": 125,
+    "score": 147.332
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "경력",
+    "frequency": 204,
+    "score": 141.402
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "position",
+    "frequency": 130,
+    "score": 133.85
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "department",
+    "frequency": 158,
+    "score": 130.615
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "of",
+    "frequency": 171,
+    "score": 118.528
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "for",
+    "frequency": 167,
+    "score": 115.756
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "labeled",
+    "frequency": 157,
+    "score": 108.824
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "image",
+    "frequency": 141,
+    "score": 97.7338
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "interface",
+    "frequency": 129,
+    "score": 97.2366
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "form",
+    "frequency": 106,
+    "score": 87.6279
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "button",
+    "frequency": 85,
+    "score": 87.5177
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "호봉",
+    "frequency": 115,
+    "score": 86.6838
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "red",
+    "frequency": 80,
+    "score": 82.3696
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "blue",
+    "frequency": 98,
+    "score": 73.8696
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "table",
+    "frequency": 88,
+    "score": 72.7477
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "저장",
+    "frequency": 67,
+    "score": 68.9845
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "또는",
+    "frequency": 95,
+    "score": 65.849
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "10할",
+    "frequency": 45,
+    "score": 62.3832
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "screenshot",
+    "frequency": 65,
+    "score": 59.5589
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "in",
+    "frequency": 85,
+    "score": 58.9175
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "근무한",
+    "frequency": 75,
+    "score": 56.5329
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "to",
+    "frequency": 78,
+    "score": 54.0655
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "placeholder",
+    "frequency": 77,
+    "score": 53.3723
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "icon",
+    "frequency": 69,
+    "score": 52.0103
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "가산연수",
+    "frequency": 30,
+    "score": 51.1424
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "information",
+    "frequency": 43,
+    "score": 50.6822
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "dropdown",
+    "frequency": 49,
+    "score": 50.4514
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "type",
+    "frequency": 68,
+    "score": 47.134
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "as",
+    "frequency": 68,
+    "score": 47.134
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "이내",
+    "frequency": 68,
+    "score": 47.134
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "date",
+    "frequency": 57,
+    "score": 47.1207
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "credit",
+    "frequency": 27,
+    "score": 46.0282
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "user",
+    "frequency": 59,
+    "score": 44.4725
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "fields",
+    "frequency": 48,
+    "score": 43.982
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "design",
+    "frequency": 63,
+    "score": 43.6683
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "경력환산율표",
+    "frequency": 37,
+    "score": 43.6102
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "호봉재획정관리",
+    "frequency": 25,
+    "score": 42.6187
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "메뉴",
+    "frequency": 36,
+    "score": 42.4316
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "목록",
+    "frequency": 35,
+    "score": 41.2529
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "administrative",
+    "frequency": 54,
+    "score": 40.7037
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "인정",
+    "frequency": 54,
+    "score": 40.7037
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "section",
+    "frequency": 44,
+    "score": 40.3168
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "figure",
+    "frequency": 58,
+    "score": 40.2025
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "this",
+    "frequency": 58,
+    "score": 40.2025
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "초임호봉관리",
+    "frequency": 23,
+    "score": 39.2092
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "등록된",
+    "frequency": 33,
+    "score": 38.8956
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "학령",
+    "frequency": 28,
+    "score": 38.8162
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "ui",
+    "frequency": 42,
+    "score": 38.4842
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "likely",
+    "frequency": 55,
+    "score": 38.1231
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "web",
+    "frequency": 37,
+    "score": 38.0959
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "content",
+    "frequency": 49,
+    "score": 36.9348
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "such",
+    "frequency": 44,
+    "score": 36.3739
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "info",
+    "frequency": 21,
+    "score": 35.7997
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "element",
+    "frequency": 47,
+    "score": 35.4273
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "초등학교",
+    "frequency": 51,
+    "score": 35.3505
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "top",
+    "frequency": 51,
+    "score": 35.3505
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "titled",
+    "frequency": 38,
+    "score": 34.819
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "기간",
+    "frequency": 46,
+    "score": 34.6735
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "교육공무원",
+    "frequency": 50,
+    "score": 34.6574
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "korean",
+    "frequency": 50,
+    "score": 34.6574
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "버튼",
+    "frequency": 29,
+    "score": 34.181
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "인정한다",
+    "frequency": 29,
+    "score": 34.181
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "호봉재획정대상자관리",
+    "frequency": 20,
+    "score": 34.095
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "행이",
+    "frequency": 20,
+    "score": 34.095
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "추가됨",
+    "frequency": 20,
+    "score": 34.095
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "정보",
+    "frequency": 33,
+    "score": 33.9774
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "menu",
+    "frequency": 33,
+    "score": 33.9774
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "따른",
+    "frequency": 49,
+    "score": 33.9642
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "white",
+    "frequency": 49,
+    "score": 33.9642
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "navigation",
+    "frequency": 37,
+    "score": 33.9028
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "application",
+    "frequency": 44,
+    "score": 33.166
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "data",
+    "frequency": 40,
+    "score": 33.0671
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "main",
+    "frequency": 40,
+    "score": 33.0671
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "generated",
+    "frequency": 40,
+    "score": 33.0671
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "academic",
+    "frequency": 28,
+    "score": 33.0023
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "대상자",
+    "frequency": 43,
+    "score": 32.4122
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "가산정보",
+    "frequency": 19,
+    "score": 32.3902
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "managing",
+    "frequency": 31,
+    "score": 31.9182
+  },
+  {
+    "chapter_id": "6118118b-f3ac-4799-b530-ff5374904242",
+    "term": "buttons",
+    "frequency": 31,
+    "score": 31.9182
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "thirty",
+    "frequency": 641,
+    "score": 1092.74
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "holder",
+    "frequency": 703,
+    "score": 974.565
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "휴직자구분",
+    "frequency": 698,
+    "score": 967.633
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "position",
+    "frequency": 708,
+    "score": 728.971
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "인사기록관리",
+    "frequency": 495,
+    "score": 686.216
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "leave",
+    "frequency": 738,
+    "score": 676.223
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "hundred",
+    "frequency": 365,
+    "score": 622.233
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "로봉",
+    "frequency": 334,
+    "score": 569.386
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "type",
+    "frequency": 813,
+    "score": 563.529
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "red",
+    "frequency": 536,
+    "score": 551.876
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "직위",
+    "frequency": 678,
+    "score": 511.057
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "부서명",
+    "frequency": 339,
+    "score": 469.954
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "name",
+    "frequency": 421,
+    "score": 433.47
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "one",
+    "frequency": 376,
+    "score": 387.137
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "time",
+    "frequency": 489,
+    "score": 368.594
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "title",
+    "frequency": 351,
+    "score": 321.618
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "department",
+    "frequency": 350,
+    "score": 289.337
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "the",
+    "frequency": 343,
+    "score": 237.749
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "and",
+    "frequency": 342,
+    "score": 237.056
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "with",
+    "frequency": 203,
+    "score": 140.709
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "is",
+    "frequency": 177,
+    "score": 122.687
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "interface",
+    "frequency": 159,
+    "score": 119.85
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "for",
+    "frequency": 159,
+    "score": 110.21
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "appointment",
+    "frequency": 108,
+    "score": 98.9594
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "버튼",
+    "frequency": 77,
+    "score": 90.7564
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "form",
+    "frequency": 104,
+    "score": 85.9746
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "table",
+    "frequency": 99,
+    "score": 81.8412
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "button",
+    "frequency": 79,
+    "score": 81.3399
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "eighth",
+    "frequency": 47,
+    "score": 80.1232
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "date",
+    "frequency": 96,
+    "score": 79.3611
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "seventh",
+    "frequency": 46,
+    "score": 78.4184
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "ninth",
+    "frequency": 46,
+    "score": 78.4184
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "to",
+    "frequency": 112,
+    "score": 77.6325
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "image",
+    "frequency": 112,
+    "score": 77.6325
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "screenshot",
+    "frequency": 81,
+    "score": 74.2195
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "buttons",
+    "frequency": 66,
+    "score": 67.9549
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "경력",
+    "frequency": 97,
+    "score": 67.2353
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "권한관리자",
+    "frequency": 38,
+    "score": 64.7804
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "of",
+    "frequency": 93,
+    "score": 64.4627
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "status",
+    "frequency": 85,
+    "score": 64.0706
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "or",
+    "frequency": 92,
+    "score": 63.7695
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "search",
+    "frequency": 54,
+    "score": 63.6474
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "교원인사",
+    "frequency": 76,
+    "score": 62.8276
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "저장",
+    "frequency": 60,
+    "score": 61.7772
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "메뉴",
+    "frequency": 52,
+    "score": 61.2901
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "tenth",
+    "frequency": 34,
+    "score": 57.9614
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "employment",
+    "frequency": 63,
+    "score": 57.7263
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "twelfth",
+    "frequency": 33,
+    "score": 56.2567
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "thirteenth",
+    "frequency": 33,
+    "score": 56.2567
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "row",
+    "frequency": 61,
+    "score": 55.8937
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "labeled",
+    "frequency": 80,
+    "score": 55.4518
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "클릭",
+    "frequency": 47,
+    "score": 55.3968
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "기안문",
+    "frequency": 53,
+    "score": 54.5698
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "2023",
+    "frequency": 66,
+    "score": 54.5608
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "eleventh",
+    "frequency": 32,
+    "score": 54.5519
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "fourteenth",
+    "frequency": 32,
+    "score": 54.5519
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "fifteenth",
+    "frequency": 32,
+    "score": 54.5519
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "sixteenth",
+    "frequency": 32,
+    "score": 54.5519
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "인사기록",
+    "frequency": 72,
+    "score": 54.2716
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "학교",
+    "frequency": 78,
+    "score": 54.0655
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "blue",
+    "frequency": 70,
+    "score": 52.764
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "dropdown",
+    "frequency": 51,
+    "score": 52.5106
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "set",
+    "frequency": 49,
+    "score": 50.4514
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "fields",
+    "frequency": 54,
+    "score": 49.4797
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "성명",
+    "frequency": 56,
+    "score": 46.294
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "twenty",
+    "frequency": 27,
+    "score": 46.0282
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "01",
+    "frequency": 60,
+    "score": 45.2263
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "조회",
+    "frequency": 53,
+    "score": 43.814
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "delete",
+    "frequency": 37,
+    "score": 43.6102
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "web",
+    "frequency": 42,
+    "score": 43.244
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "includes",
+    "frequency": 52,
+    "score": 42.9873
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "임용구분",
+    "frequency": 30,
+    "score": 41.5888
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "korean",
+    "frequency": 58,
+    "score": 40.2025
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "임용발령",
+    "frequency": 39,
+    "score": 40.1552
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "삭제",
+    "frequency": 53,
+    "score": 39.9499
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "placeholder",
+    "frequency": 57,
+    "score": 39.5094
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "교육공무원",
+    "frequency": 56,
+    "score": 38.8162
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "training",
+    "frequency": 28,
+    "score": 38.8162
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "this",
+    "frequency": 55,
+    "score": 38.1231
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "임용일",
+    "frequency": 37,
+    "score": 38.0959
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "제목",
+    "frequency": 45,
+    "score": 37.2005
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "action",
+    "frequency": 31,
+    "score": 36.5383
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "below",
+    "frequency": 44,
+    "score": 36.3739
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "school",
+    "frequency": 44,
+    "score": 36.3739
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "권한부여",
+    "frequency": 26,
+    "score": 36.0437
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "managing",
+    "frequency": 35,
+    "score": 36.0367
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "학력",
+    "frequency": 30,
+    "score": 35.3596
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "figure",
+    "frequency": 51,
+    "score": 35.3505
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "selected",
+    "frequency": 34,
+    "score": 35.0071
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "해당",
+    "frequency": 50,
+    "score": 34.6574
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "입력",
+    "frequency": 41,
+    "score": 33.8938
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "input",
+    "frequency": 41,
+    "score": 33.8938
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "are",
+    "frequency": 48,
+    "score": 33.2711
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "schedule",
+    "frequency": 24,
+    "score": 33.2711
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "target",
+    "frequency": 28,
+    "score": 33.0023
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "titled",
+    "frequency": 36,
+    "score": 32.9865
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "인사담당자",
+    "frequency": 19,
+    "score": 32.3902
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "인사권한",
+    "frequency": 27,
+    "score": 31.8237
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "section",
+    "frequency": 34,
+    "score": 31.1539
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "highlighted",
+    "frequency": 30,
+    "score": 30.8886
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "save",
+    "frequency": 30,
+    "score": 30.8886
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "field",
+    "frequency": 33,
+    "score": 30.2376
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "administrative",
+    "frequency": 40,
+    "score": 30.1509
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "user",
+    "frequency": 40,
+    "score": 30.1509
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "period",
+    "frequency": 29,
+    "score": 29.859
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "교육지원청",
+    "frequency": 43,
+    "score": 29.8053
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "교육공무원법",
+    "frequency": 43,
+    "score": 29.8053
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "in",
+    "frequency": 43,
+    "score": 29.8053
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "등록",
+    "frequency": 39,
+    "score": 29.3971
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "업무그룹",
+    "frequency": 17,
+    "score": 28.9807
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "data",
+    "frequency": 35,
+    "score": 28.9338
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "uses",
+    "frequency": 41,
+    "score": 28.419
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "as",
+    "frequency": 41,
+    "score": 28.419
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "목록",
+    "frequency": 24,
+    "score": 28.2877
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "비고",
+    "frequency": 37,
+    "score": 27.8896
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "20",
+    "frequency": 40,
+    "score": 27.7259
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "group",
+    "frequency": 20,
+    "score": 27.7259
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "public",
+    "frequency": 30,
+    "score": 27.4887
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "teacher",
+    "frequency": 33,
+    "score": 27.2804
+  },
+  {
+    "chapter_id": "605b9ba6-f79d-48ac-9127-102a35af9eef",
+    "term": "선택",
+    "frequency": 33,
+    "score": 27.2804
+  }
+]
