@@ -3,7 +3,8 @@
 //
 // 이 앱의 로그인은 두 겹이다.
 //   1) Supabase Auth : 메일로 받은 로그인 링크(매직 링크)를 눌러 "이 메일의 주인"임을 증명한다.
-//   2) allowed_users : 관리자가 등록하고 활성화한 메일만 실제로 앱을 쓸 수 있다. role로 관리자 여부도 정한다.
+//   2) allowed_users : 관리자가 등록하고 활성화한 메일만 실제로 앱을 쓸 수 있다.
+//                      role로 권한 층위(관리자 / 교장·교감 / 교사)를 정한다(src/lib/types.ts의 Role).
 // 브라우저는 로그인 후 받은 액세스 토큰을 "Authorization: Bearer <토큰>" 헤더로 보내고,
 // 서버는 매 요청마다 이 파일의 함수로 토큰과 허용 목록을 다시 확인한다.
 // ─────────────────────────────────────────────────────────────────────────────
@@ -40,6 +41,14 @@ export async function requireUser(request: Request) {
 export async function requireAdmin(request: Request) {
   const user = await requireUser(request);
   if (user.role !== "admin") throw new Error("관리자만 사용할 수 있습니다.");
+  return user;
+}
+
+// 관리자 또는 교장·교감이 아니면 오류를 낸다. 전체 질문 기록 검색(/api/records)에서 쓴다.
+// 메시지에 "관리자만"이 들어 있어 errorResponse가 403(권한 없음)으로 돌려준다.
+export async function requireRecordViewer(request: Request) {
+  const user = await requireUser(request);
+  if (user.role !== "admin" && user.role !== "leader") throw new Error("교장·교감과 관리자만 볼 수 있습니다.");
   return user;
 }
 

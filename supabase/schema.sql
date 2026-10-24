@@ -16,9 +16,11 @@ create extension if not exists vector;
 
 -- 로그인 허용 목록. 여기 있고 enabled=true인 메일만 로그인 링크를 받고 API를 쓸 수 있다.
 -- 메일은 소문자로만 저장하도록 check 조건을 둔다(대소문자가 달라 같은 사람이 두 번 등록되는 일 방지).
+-- role(권한 층위): admin 관리자 / leader 교장·교감 / user 교사.
+-- (2026-10-24에 leader 추가. 그 전에 만든 DB는 supabase/changes/2026-10-24_add_leader_role.sql을 실행해야 한다.)
 create table if not exists public.allowed_users (
   email text primary key check (email = lower(email)),
-  role text not null default 'user' check (role in ('admin', 'user')),
+  role text not null default 'user' check (role in ('admin', 'leader', 'user')),
   enabled boolean not null default true,
   created_at timestamptz not null default now()
 );

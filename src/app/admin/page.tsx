@@ -4,7 +4,8 @@
 // admin/page.tsx — 관리자 화면 (주소: /admin)
 //
 // 할 수 있는 일
-//   1) 허용 사용자 등록: 학교 메일을 allowed_users에 추가한다.
+//   1) 허용 사용자 등록: 학교 메일을 역할(관리자 / 교장·교감 / 교사)과 함께 allowed_users에 추가한다.
+//      이미 있는 메일을 다른 역할로 다시 등록하면 역할이 바뀐다.
 //   2) 문서 업로드 및 색인: PDF를 올리고(/api/admin/documents) 바로 색인한다(/api/admin/documents/[id]/ingest).
 //      색인이 끝나면 새 문서가 활성 문서가 되어 사용자 화면에 나타난다.
 // 이 화면은 로그인한 관리자만 쓸 수 있다. 화면에서도 역할을 확인하지만,
@@ -12,7 +13,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 import { FormEvent, useEffect, useState } from "react";
 import { browserSupabase } from "@/lib/browser-supabase";
-import type { Role } from "@/lib/types";
+import { ROLE_LABELS, type Role } from "@/lib/types";
 
 // 서버 API 호출 도우미(사용자 화면 page.tsx와 같은 방식). 토큰을 붙여 보내고 실패하면 서버 메시지로 오류를 낸다.
 async function api(path: string, token: string, init?: RequestInit) {
@@ -30,6 +31,7 @@ export default function AdminPage() {
   const [message, setMessage] = useState("");
   const [busy, setBusy] = useState(false);
   const [newUserEmail, setNewUserEmail] = useState("");
+  const [newUserRole, setNewUserRole] = useState<Role>("user");
   const [allowedUsers, setAllowedUsers] = useState<{ email: string; role: Role }[]>([]);
   const [pdf, setPdf] = useState<File | null>(null);
   const [title, setTitle] = useState("");
@@ -59,13 +61,13 @@ export default function AdminPage() {
     return () => listener.subscription.unsubscribe();
   }, [supabase]);
 
-  // 허용 사용자 등록 후 목록을 다시 불러온다.
+  // 허용 사용자를 고른 역할로 등록(또는 역할 변경)한 뒤 목록을 다시 불러온다.
   const addUser = async (event: FormEvent) => {
     event.preventDefault();
     setBusy(true); setMessage("");
     try {
-      await api("/api/admin/users", token, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: newUserEmail }) });
-      setNewUserEmail("");
+      await api("/api/admin/users", token, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: newUserEmail, role: newUserRole }) });
+      setNewUserEmail(""); setNewUserRole("user");
       await loadAdmin(token);
       setMessage("허용 사용자가 등록되었습니다.");
     } catch (error) { setMessage(error instanceof Error ? error.message : "사용자 등록에 실패했습니다."); }
@@ -93,8 +95,8 @@ export default function AdminPage() {
 
   // 관리자 화면 구성: 머리말 → 왼쪽 "허용 사용자" 등록·목록 / 오른쪽 "문서 업로드"
   return <main className="app-shell">
-    <header><div><p className="eyebrow">관리자 전용</p><h1>문서와 사용자 관리</h1></div><div><a className="text-button" href="/">사용자 화면</a> <button className="text-button" onClick={() => supabase.auth.signOut()}>로그아웃</button></div></header>
+    <header><div><p className="eyebrow">관리자 전용</p><h1>문서와 사용자 관리</h1></div><div><a className="text-button" href="/">사용자 화면</a> <a className="text-button" href="/records">질문 기록</a> <button className="text-button" onClick={() => supabase.auth.signOut()}>로그아웃</button></div></header>
     {message && <p className="notice">{message}</p>}
-    <section className="admin-panel"><div className="admin-grid"><div><h2>허용 사용자</h2><form onSubmit={addUser}><label>학교 이메일<input type="email" value={newUserEmail} onChange={(event) => setNewUserEmail(event.target.value)} placeholder="teacher@baegotnuri.es.kr" required /></label><button disabled={busy}>사용자 등록</button></form>{message && <p className="notice">{message}</p>}<ul className="user-list">{allowedUsers.map((allowedUser) => <li key={allowedUser.email}>{allowedUser.email} <span>{allowedUser.role === "admin" ? "관리자" : "사용자"}</span></li>)}</ul></div><div><h2>문서 업로드</h2><form onSubmit={uploadPdf}><label>문서 제목<input value={title} onChange={(event) => setTitle(event.target.value)} placeholder="문서 제목을 입력하세요" required /></label><label>PDF 파일<input type="file" accept="application/pdf" onChange={(event) => setPdf(event.target.files?.[0] ?? null)} required /></label><button disabled={busy}>{busy ? "처리 중…" : "업로드 및 색인"}</button></form></div></div></section>
+    <section className="admin-panel"><div className="admin-grid"><div><h2>허용 사용자</h2><form onSubmit={addUser}><label>학교 이메일<input type="email" value={newUserEmail} onChange={(event) => setNewUserEmail(event.target.value)} placeholder="teacher@baegotnuri.es.kr" required /></label><label>역할<select value={newUserRole} onChange={(event) => setNewUserRole(event.target.value as Role)}>{(Object.keys(ROLE_LABELS) as Role[]).map((role) => <option key={role} value={role}>{ROLE_LABELS[role]}</option>)}</select></label><button disabled={busy}>등록 · 역할 변경</button></form>{message && <p className="notice">{message}</p>}<ul className="user-list">{allowedUsers.map((allowedUser) => <li key={allowedUser.email}>{allowedUser.email} <span>{ROLE_LABELS[allowedUser.role] ?? allowedUser.role}</span></li>)}</ul></div><div><h2>문서 업로드</h2><form onSubmit={uploadPdf}><label>문서 제목<input value={title} onChange={(event) => setTitle(event.target.value)} placeholder="문서 제목을 입력하세요" required /></label><label>PDF 파일<input type="file" accept="application/pdf" onChange={(event) => setPdf(event.target.files?.[0] ?? null)} required /></label><button disabled={busy}>{busy ? "처리 중…" : "업로드 및 색인"}</button></form></div></div></section>
   </main>;
 }
