@@ -192,13 +192,14 @@ export default function Home() {
     finally { setBusy(false); setStreamText(""); }
   };
 
-  // 질문 입력칸에서 Shift+Enter를 누르면 "질문하기" 버튼과 똑같이 전송한다. 그냥 Enter는 기본 동작(줄바꿈) 그대로다.
+  // 질문 입력칸에서 Enter를 누르면 "질문하기" 버튼과 똑같이 전송한다. Shift+Enter는 기본 동작(줄바꿈) 그대로다.
+  //   (2026-11-08: 처음에는 Shift+Enter 전송·Enter 줄바꿈이었으나, 메신저처럼 Enter로 바로 보내는 쪽이 익숙하다는 의견으로 바꿈)
   //   - isComposing: 한글처럼 글자를 조합해 입력하는 중에는 Enter가 "조합 확정"에 쓰인다. 이때 전송하면
   //     마지막 글자가 빠지거나 두 번 들어갈 수 있으므로 조합이 끝난 뒤의 키 입력만 처리한다.
   //   - busy: 답변을 기다리는 중에 다시 보내지 않는다(버튼이 잠겨 있는 것과 같은 규칙).
   //   - preventDefault: 전송할 때는 입력칸에 줄바꿈이 추가되지 않게 막는다.
-  const sendOnShiftEnter = (event: KeyboardEvent<HTMLTextAreaElement>) => {
-    if (event.key !== "Enter" || !event.shiftKey || event.nativeEvent.isComposing || busy) return;
+  const sendOnEnter = (event: KeyboardEvent<HTMLTextAreaElement>) => {
+    if (event.key !== "Enter" || event.shiftKey || event.nativeEvent.isComposing || busy) return;
     event.preventDefault();
     ask();
   };
@@ -268,7 +269,7 @@ export default function Home() {
     <main className="wb-main">
       {message && <p className="notice">{message}</p>}
       {chapter && <div className="wb-title"><div>{currentManual && <p className="eyebrow">{currentManual.title}{currentManual.document.year && ` · ${currentManual.document.year}`}</p>}<h1>{chapter.chapter_number} {chapter.title}</h1></div><span>{chapter.page_from}~{chapter.page_to}쪽 안에서만 근거를 찾습니다</span></div>}
-      {chapter && <section className="question-card"><h2>무엇이 궁금하신가요?</h2><textarea aria-label="질문 입력" value={question} onChange={(event) => setQuestion(event.target.value)} onKeyDown={sendOnShiftEnter} placeholder="예: 승진후보자명부는 어떤 기준으로 작성하나요?" rows={3} /><div className="question-actions"><span>Shift+Enter로 보내기 · Enter는 줄바꿈</span><button onClick={() => ask()} disabled={busy || !question.trim()}>{busy ? (streamText ? "답변 작성 중…" : "근거를 찾는 중…") : "질문하기"}</button></div></section>}
+      {chapter && <section className="question-card"><h2>무엇이 궁금하신가요?</h2><textarea aria-label="질문 입력" value={question} onChange={(event) => setQuestion(event.target.value)} onKeyDown={sendOnEnter} placeholder="예: 승진후보자명부는 어떤 기준으로 작성하나요?" rows={3} /><div className="question-actions"><span>Enter로 보내기 · Shift+Enter는 줄바꿈</span><button onClick={() => ask()} disabled={busy || !question.trim()}>{busy ? (streamText ? "답변 작성 중…" : "근거를 찾는 중…") : "질문하기"}</button></div></section>}
       {busy && streamText && <section className="result-card"><h2>안내</h2><p className="answer-text">{streamText}</p></section>}
       {viewing && <p className="notice">{shortDate(viewing.created_at)}에 한 질문의 기록입니다. 저장된 답변과 근거를 그대로 보여 줍니다.</p>}
       {answer?.type === "suggestion" && <section className="result-card suggestion"><h2>다른 장을 확인해 볼까요?</h2><p>선택한 장에서는 답변할 만큼 가까운 근거를 찾지 못했습니다. 질문과 가장 가까운 내용은 <strong>{answer.chapter.manualTitle} · {answer.chapter.chapter_number} {answer.chapter.title}</strong>에 있는 것으로 보입니다.</p><div className="actions"><button disabled={busy} onClick={() => acceptSuggestion(answer.chapter.id)}>해당 장에서 답변받기</button><button className="secondary" onClick={() => setAnswer(null)}>현재 장 유지</button></div></section>}
