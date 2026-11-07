@@ -11,3 +11,7 @@ dev.log
 .vercel
 .env*
 next-env.d.ts
+
+# 로컬 전용: Claude Code 설정(백업 훅, 로컬 서버 실행 설정)과 개인 백업 서버 주소가 든 스크립트 — 공개 저장소에 올리지 않음
+.claude/
+scripts/backup-to-server.sh

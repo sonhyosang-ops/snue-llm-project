@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// rebuild-keywords.mts — 활성 문서의 장별 핵심어 사전(chapter_keywords)을 다시 만드는 스크립트
+// rebuild-keywords.mts — 운영 중인 판(매뉴얼마다 하나)의 장별 핵심어 사전(chapter_keywords)을 다시 만드는 스크립트
 //
 // 언제 쓰나: 핵심어 뽑는 규칙(src/lib/keywords.ts, keyword-corrections.ts의 검토 결과)을 고친 뒤, PDF를 다시 올리지 않고
 //           이미 DB에 있는 청크만으로 사전을 새로 만들 때. PDF 파싱·임베딩을 다시 하지 않아 비용이 거의 들지 않는다
@@ -28,39 +28,44 @@ const [previewPath, backupPath] = apply ? args.slice(1) : args;
 if (!previewPath || (apply && !backupPath)) throw new Error("사용법은 파일 맨 위 주석을 확인하세요.");
 
 const supabase = serviceSupabase();
-// 1) 활성 문서와 그 장 목록(목차 순서)을 불러온다.
-const { data: document, error: documentError } = await supabase
-  .from("documents").select("id, title").eq("is_active", true).eq("status", "ready").single();
+type Chapter = { id: string; chapter_number: string; title: string; document_id: string };
+// 1) 운영 중인 판들(매뉴얼마다 하나)과 그 장 목록(목차 순서)을 불러온다.
+const { data: documents, error: documentError } = await supabase
+  .from("documents").select("id, title").eq("is_active", true).eq("status", "ready");
 if (documentError) throw documentError;
-const { data: chapters, error: chaptersError } = await supabase
-  .from("chapters").select("id, chapter_number, title").eq("document_id", document.id).order("display_order");
+const { data: chapterRows, error: chaptersError } = await supabase
+  .from("chapters").select("id, chapter_number, title, document_id").in("document_id", documents.map((document) => document.id)).order("display_order");
 if (chaptersError) throw chaptersError;
+const chapters = chapterRows as Chapter[];
 
 type Keyword = { term: string; frequency: number; score: number };
-type Result = { chapter: { id: string; chapter_number: string; title: string }; keywords: Keyword[] };
+type Result = { chapter: Chapter; keywords: Keyword[] };
 
 if (!apply) {
   // ── 1단계: 미리보기 만들기 ──
-  // 2) 문서의 청크를 장 순서대로 모두 불러온다(1,000행씩 나눠 읽기는 loadChapterTexts가 한다).
-  const allChapterTexts = await loadChapterTexts(supabase, document.id, chapters.map((chapter) => chapter.id));
-
-  // 3) 장마다 새 사전을 만든다: TF-IDF 후보 → 모델이 장 주제 명사만 고름 → 사람이 검토한 제외·수정 목록 적용.
-  //    색인(ingest/route.ts)과 똑같은 함수(buildChapterKeywords)를 써서, 문서를 새로 올렸을 때와 같은 결과가 나온다.
+  // 핵심어 점수(IDF)는 "같은 판의 다른 장과 비교"해 계산하므로 판(문서)마다 따로 만든다(색인 때와 같은 방식).
   const results: Result[] = [];
-  for (const [index, chapter] of chapters.entries()) {
-    const otherTitles = chapters.filter((other) => other.id !== chapter.id).map((other) => other.title);
-    const keywords = await buildChapterKeywords(chapter.title, otherTitles, allChapterTexts[index], allChapterTexts);
-    console.log(`${chapter.chapter_number}장 ${chapter.title}: ${keywords.length}개`);
-    results.push({ chapter, keywords });
+  for (const document of documents) {
+    const documentChapters = chapters.filter((chapter) => chapter.document_id === document.id);
+    // 2) 판의 청크를 장 순서대로 모두 불러온다(1,000행씩 나눠 읽기는 loadChapterTexts가 한다).
+    const allChapterTexts = await loadChapterTexts(supabase, document.id, documentChapters.map((chapter) => chapter.id));
+    // 3) 장마다 새 사전을 만든다: TF-IDF 후보 → 모델이 장 주제 명사만 고름 → 사람이 검토한 제외·수정 목록 적용.
+    //    색인(ingest/route.ts)과 똑같은 함수(buildChapterKeywords)를 써서, 문서를 새로 올렸을 때와 같은 결과가 나온다.
+    for (const [index, chapter] of documentChapters.entries()) {
+      const otherTitles = documentChapters.filter((other) => other.id !== chapter.id).map((other) => other.title);
+      const keywords = await buildChapterKeywords(chapter.title, otherTitles, allChapterTexts[index], allChapterTexts);
+      console.log(`${document.title} · ${chapter.chapter_number} ${chapter.title}: ${keywords.length}개`);
+      results.push({ chapter, keywords });
+    }
   }
   // 미리보기 파일: 사람이 장별 목록을 눈으로 확인하고 교체 여부를 정할 수 있게 저장한다.
   writeFileSync(previewPath, JSON.stringify(results, null, 2));
 } else {
   // ── 2단계: 확인한 미리보기를 그대로 저장하기 ──
   const results = JSON.parse(readFileSync(previewPath, "utf8")) as Result[];
-  // 미리보기가 지금 활성 문서의 장으로 만들어졌는지 확인한다(그사이 문서가 바뀌었으면 저장하지 않는다).
+  // 미리보기가 지금 운영 중인 판들의 장으로 만들어졌는지 확인한다(그사이 운영 판이 바뀌었으면 저장하지 않는다).
   const activeIds = new Set(chapters.map((chapter) => chapter.id));
-  if (results.length !== chapters.length || results.some((result) => !activeIds.has(result.chapter.id))) throw new Error("미리보기가 현재 활성 문서의 장과 맞지 않아 교체하지 않았습니다.");
+  if (results.length !== chapters.length || results.some((result) => !activeIds.has(result.chapter.id))) throw new Error("미리보기가 현재 운영 중인 판의 장과 맞지 않아 교체하지 않았습니다.");
   // 핵심어가 하나도 없는 장이 있으면 그 장은 질문 안내가 전혀 되지 않으므로 교체하지 않는다.
   if (results.some((result) => !result.keywords.length)) throw new Error("핵심어가 비어 있는 장이 있어 교체하지 않았습니다.");
   // 4) 기존 사전을 먼저 백업한다. 청크와 마찬가지로 1,000행씩 나눠 읽어야 백업이 잘리지 않는다.

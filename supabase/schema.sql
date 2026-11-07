@@ -3,10 +3,12 @@
 -- 새 Supabase 프로젝트의 SQL Editor에서 한 번 실행하면 이 앱에 필요한 테이블·함수·저장소가 만들어진다.
 --
 -- 데이터 흐름(RAG 기준)
---   documents(업로드한 PDF) ─┬─ chapters(장 = 검색 범위)
---                             │     ├─ chunks(검색 단위 본문) ── embeddings(청크의 의미 벡터)
---                             │     ├─ chapter_keywords(장 안내용 핵심어 사전)
---                             │     └─ messages(질문·답변 기록)
+--   manuals(업무 매뉴얼)
+--     └─ documents(매뉴얼의 판 = 업로드한 PDF)
+--          └─ chapters(장 = 검색 범위)
+--               ├─ chunks(검색 단위 본문) ── embeddings(청크의 의미 벡터)
+--               ├─ chapter_keywords(장 안내용 핵심어 사전)
+--               └─ messages(질문·답변 기록)
 --   allowed_users(로그인 허용 목록), Storage 버킷 personnel-pdfs(원본 PDF)
 -- ─────────────────────────────────────────────────────────────────────────────
 
@@ -25,16 +27,31 @@ create table if not exists public.allowed_users (
   created_at timestamptz not null default now()
 );
 
--- 업로드한 문서(PDF) 하나당 한 행. status는 uploaded → processing → ready(성공) 또는 failed(실패)로 바뀐다.
--- is_active=true인 문서 하나만 사용자 화면에 보이고 검색 대상이 된다. 실패 원인은 error 열에 남는다.
+-- 업무 매뉴얼(예: 인사업무실무편람). 사이드바의 큰 묶음이며, 매뉴얼마다 여러 판(문서)을 가질 수 있다.
+create table if not exists public.manuals (
+  id uuid primary key default gen_random_uuid(),
+  title text not null unique,
+  display_order integer not null default 0,
+  created_at timestamptz not null default now()
+);
+
+-- 업로드한 문서(PDF = 매뉴얼의 한 판) 하나당 한 행.
+-- status: uploaded → review(목차 확인 대기) → processing → ready(성공) 또는 failed(실패)
+-- 매뉴얼마다 is_active=true인 판 하나만 사용자 화면에 보이고 검색 대상이 된다. 실패 원인은 error 열에 남는다.
+-- outline_draft: 목차 분석 초안(관리자가 확인·수정해 확정하기 전까지 보관), page_count: PDF 쪽수
+-- (2026-10-24에 manual_id·outline_draft·page_count·'review' 추가. 그 전에 만든 DB는
+--  supabase/changes/2026-10-24_manuals_and_outline.sql을 실행해야 한다.)
 create table if not exists public.documents (
   id uuid primary key default gen_random_uuid(),
+  manual_id uuid not null references public.manuals(id),
   title text not null,
   year text,
   storage_path text not null,
-  status text not null default 'uploaded' check (status in ('uploaded', 'processing', 'ready', 'failed')),
+  status text not null default 'uploaded' check (status in ('uploaded', 'review', 'processing', 'ready', 'failed')),
   error text,
   is_active boolean not null default false,
+  outline_draft jsonb,
+  page_count integer,
   created_by uuid references auth.users(id),
   created_at timestamptz not null default now(),
   processed_at timestamptz
@@ -116,9 +133,28 @@ as $$
   limit match_count;
 $$;
 
+-- 문서 전체 임베딩 검색 함수: 운영 중인 문서들(target_documents)의 모든 장을 대상으로
+-- 질문 벡터와 가장 가까운 청크 match_count개를 "어느 장(chapter_id)에 있는지"와 함께 돌려준다.
+-- 본문은 돌려주지 않는다. 답변용 근거가 아니라 "이 질문은 제4장에 있는 것 같습니다"라는 장 안내에만 쓰기 때문이다.
+-- 서버(api/ask/route.ts)는 선택한 장에서 근거를 못 찾았을 때만 이 함수를 부른다.
+-- (2026-11-07 추가. 그 전에 만든 DB는 supabase/changes/2026-11-07_match_document_chunks.sql을 실행해야 한다.)
+create or replace function public.match_document_chunks(query_embedding vector, target_documents uuid[], match_count integer default 5)
+returns table (id uuid, chapter_id uuid, similarity real)
+language sql stable
+as $$
+  select c.id, c.chapter_id,
+         (1 - (e.embedding <=> query_embedding))::real as similarity
+  from public.chunks c
+  join public.embeddings e on e.chunk_id = c.id
+  where c.document_id = any(target_documents)
+  order by e.embedding <=> query_embedding
+  limit match_count;
+$$;
+
 -- 행 단위 보안(RLS)을 모든 테이블에 켠다. RLS가 켜진 테이블은 허용 정책(policy)이 없으면
 -- 공개 키(anon)나 로그인 사용자 자격으로는 한 행도 읽거나 쓸 수 없다.
 alter table public.allowed_users enable row level security;
+alter table public.manuals enable row level security;
 alter table public.documents enable row level security;
 alter table public.chapters enable row level security;
 alter table public.chunks enable row level security;

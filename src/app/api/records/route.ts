@@ -14,7 +14,10 @@ import { errorResponse, requireRecordViewer } from "@/lib/auth";
 import { serviceSupabase } from "@/lib/supabase";
 import type { RecordItem } from "@/lib/types";
 
-type Row = { id: string; question: string; answer: string; created_at: string; chapter: RecordItem["chapter"]; user_id?: string };
+type Row = {
+  id: string; question: string; answer: string; created_at: string; user_id?: string;
+  chapter: { title: string; chapter_number: string; document: { manual: { title: string } | null } | null } | null;
+};
 
 export async function GET(request: Request) {
   try {
@@ -43,9 +46,10 @@ export async function GET(request: Request) {
     }
 
     // user_id 열은 관리자일 때만 조회한다. 교장·교감 요청에서는 DB에서부터 읽지 않는다.
+    // 장 정보는 messages → chapters → documents → manuals 를 따라가 매뉴얼 이름까지 함께 가져온다.
     let query = supabase
       .from("messages")
-      .select(`id, question, answer, created_at, chapter:chapters(title, chapter_number)${isAdmin ? ", user_id" : ""}`)
+      .select(`id, question, answer, created_at, chapter:chapters(title, chapter_number, document:documents(manual:manuals(title)))${isAdmin ? ", user_id" : ""}`)
       .order("created_at", { ascending: false })
       .limit(50);
     if (filters.length) query = query.or(filters.join(","));
@@ -59,7 +63,7 @@ export async function GET(request: Request) {
         id: row.id,
         question: row.question,
         answer: row.answer,
-        chapter: row.chapter,
+        chapter: row.chapter ? { title: row.chapter.title, chapter_number: row.chapter.chapter_number, manualTitle: row.chapter.document?.manual?.title ?? "" } : null,
         date: isAdmin ? local.slice(0, 16) : local.slice(0, 10),
         ...(isAdmin ? { questioner: emails.get(row.user_id ?? "") ?? "(알 수 없음)" } : {}),
       };

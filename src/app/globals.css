@@ -33,6 +33,14 @@ header h1, h2, h3 { margin: .3rem 0; }
 .document-table td small { display: block; margin-top: .2rem; color: #a3341f; font-size: .78rem; }
 .document-table tr.active td { background: #fff6dc; font-weight: 700; }
 .document-table button { min-height: 40px; padding: .45rem .8rem; font-size: .85rem; }
+.row-actions { display: flex; flex-wrap: wrap; gap: .4rem; }
+/* 관리자 화면: 목차 확인 표(색인 2단계). 표 안의 입력칸은 좁게, 문제가 있는 행은 빨간 안내 문구가 붙는다. */
+.outline-review { border-color: var(--accent); }
+.outline-controls { display: flex; flex-wrap: wrap; gap: 1rem; margin: .75rem 0; }
+.outline-controls label { flex: 1 1 240px; }
+.outline-review td input { margin-top: 0; padding: .45rem .55rem; min-width: 4rem; }
+.outline-review td:nth-child(2) input { min-width: 14rem; }
+.outline-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; white-space: nowrap; }
 /* 관리자 화면: CSV 일괄 등록 칸과 결과 */
 .csv-import { margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--line); }
 .csv-import h3 { margin: 0; font-size: 1rem; }
@@ -61,15 +69,30 @@ header h1, h2, h3 { margin: .3rem 0; }
 /* ── 메인 화면(C안 3단 작업대): 왼쪽 장·최근 질문 | 가운데 질문·답변 | 오른쪽 근거 ──
    세 단 모두 flex-wrap 안의 항목이라, 화면이 좁으면(휴대폰) 위에서 아래로 차례로 쌓인다.
    flex의 두 번째 값(늘어나는 비율)이 가운데만 999라서 넓은 화면에서는 남는 폭을 가운데가 모두 가져간다. */
-.wb { display: flex; flex-wrap: wrap; align-items: stretch; min-height: 100vh; }
+/* 세 단 배치(grid). 넓은 화면: 장 목록 | 질문·답변 | 답변 출처 가 나란히.
+   중간 너비(700~1100px): 장 목록이 왼쪽 세로 전체를 차지하고 오른쪽에 질문·답변, 그 바로 아래 답변 출처가 온다.
+   (예전 flex-wrap 배치에서는 출처 단이 다음 줄 전체 너비로 내려가면서, 긴 장 목록 높이만큼 답변과 출처 사이가 비었다.)
+   grid-template-rows: auto 1fr — 답변 줄은 내용만큼, 남는 세로 공간은 출처 줄이 가져가므로 둘 사이에 빈 공간이 생기지 않는다. */
+.wb { display: grid; grid-template-columns: minmax(220px, 260px) minmax(0, 1fr); grid-template-rows: auto 1fr; grid-template-areas: "nav main" "nav sources"; min-height: 100vh; }
+.wb-nav { grid-area: nav; } .wb-main { grid-area: main; } .wb-sources { grid-area: sources; }
 .wb-nav { flex: 1 1 240px; display: flex; flex-direction: column; gap: 1.2rem; padding: 1.4rem .9rem; color: white; background: var(--navy); }
-.wb-main { flex: 999 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 1.1rem; padding: 1.6rem 1.5rem 3rem; }
+.wb-main { min-width: 0; display: flex; flex-direction: column; gap: 1.1rem; padding: 1.6rem 1.5rem 1.6rem; }
 .wb-main .question-card, .wb-main .result-card { margin-top: 0; }
-.wb-sources { flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: .9rem; padding: 1.6rem 1.25rem 3rem; border-left: 1px solid var(--line); background: white; }
+.wb-sources { min-width: 0; display: flex; flex-direction: column; gap: .9rem; padding: 1.2rem 1.5rem 3rem; border-top: 1px solid var(--line); background: white; }
+@media (min-width: 1100px) {
+  .wb { grid-template-columns: minmax(220px, 260px) minmax(0, 1fr) minmax(320px, 440px); grid-template-rows: 1fr; grid-template-areas: "nav main sources"; }
+  .wb-sources { padding: 1.6rem 1.25rem 3rem; border-top: 0; border-left: 1px solid var(--line); }
+}
 /* 사이드바: 남색 바탕 위의 흐린 글씨(#AEB9CE)도 대비 4.5:1 이상이 되도록 고른 색이다. */
 .wb-eyebrow { margin: 0 .5rem .3rem; color: #AEB9CE; font-size: .75rem; font-weight: 800; letter-spacing: .06em; }
 .wb-doc { margin: 0 .5rem; font-weight: 700; line-height: 1.45; }
 .wb-list { display: flex; flex-direction: column; gap: .2rem; }
+/* 사이드바의 매뉴얼 묶음. <details>라 매뉴얼 이름을 누르면 장 목록을 접고 펼 수 있다. */
+.wb-manual { display: flex; flex-direction: column; gap: .2rem; }
+.wb-manual summary { display: flex; justify-content: space-between; align-items: center; gap: .5rem; min-height: 40px; padding: .3rem .5rem; border-radius: 8px; cursor: pointer; }
+.wb-manual summary:hover { background: #1c3767; }
+.wb-manual-title { font-weight: 700; }
+.wb-manual .wb-list { margin-top: .2rem; }
 .wb-chapter, .wb-history, .wb-nav-footer a, .wb-nav-footer button { display: flex; width: 100%; min-height: 44px; padding: .5rem .75rem; border-radius: 8px; color: white; background: transparent; text-align: left; text-decoration: none; font-weight: 400; font-size: .92rem; }
 .wb-chapter { justify-content: space-between; align-items: center; gap: .5rem; }
 .wb-chapter:hover, .wb-history:hover, .wb-nav-footer a:hover, .wb-nav-footer button:hover { background: #1c3767; }
@@ -100,7 +123,7 @@ header h1, h2, h3 { margin: .3rem 0; }
 /* 답변 속 인용 번호 버튼 */
 .cite { margin: 0 .1rem; padding: 0 .35rem; border-radius: 6px; color: var(--navy); background: #e8ecf3; font-size: .8rem; font-weight: 800; line-height: 1.6; }
 .cite.active { background: var(--accent); }
-@media (max-width: 700px) { .wb-sources { border-left: 0; border-top: 1px solid var(--line); } }
+@media (max-width: 700px) { .wb { grid-template-columns: 1fr; grid-template-rows: auto auto 1fr; grid-template-areas: "nav" "main" "sources"; } }
 
 /* ── 전체 질문 기록 화면(/records) ── */
 .records-search { display: flex; flex-wrap: wrap; align-items: end; gap: .7rem; margin-top: 1rem; }
@@ -113,3 +136,9 @@ header h1, h2, h3 { margin: .3rem 0; }
 .record-question { font-weight: 700; }
 .record-list .answer-text { margin: .8rem 0 0; padding-top: .8rem; border-top: 1px solid var(--line); line-height: 1.7; }
 @media (max-width: 700px) { .app-shell { width: min(100% - 1.25rem, 1120px); } .admin-grid { grid-template-columns: 1fr; } header { align-items: center; } }
+/* 문답 카드(멀티턴). 카드를 누르면 활성 카드가 되고 오른쪽 근거가 그 카드의 것으로 바뀐다. 활성 카드는 테두리로 표시한다. */
+.result-card.turn { cursor: pointer; }
+.result-card.turn.active { border-color: var(--blue); box-shadow: 0 0 0 2px rgba(31, 78, 160, .12); cursor: default; }
+.result-card.turn + .result-card.turn { margin-top: 1rem; }
+.turn-question { display: flex; flex-direction: column; gap: .3rem; margin: 0 0 .75rem; font-weight: 700; line-height: 1.5; }
+.result-card.turn h2 { margin-top: .25rem; }

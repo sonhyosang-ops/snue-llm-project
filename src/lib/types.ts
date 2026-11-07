@@ -1,5 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // types.ts — 화면과 서버 API가 함께 쓰는 데이터 모양(타입) 정의
+//
+// 자료 구조: 매뉴얼(manuals) → 판(documents, 업로드한 PDF) → 장(chapters, 검색 범위)
+// 매뉴얼마다 운영 중인 판은 하나이며, 사용자 화면에는 매뉴얼별로 그 판의 장 목록이 보인다.
 // ─────────────────────────────────────────────────────────────────────────────
 
 // 사용자 역할(3단계). DB allowed_users.role에 이 값이 저장된다.
@@ -11,7 +14,7 @@ export type Role = "admin" | "leader" | "user";
 // 화면에 보여 줄 역할 이름
 export const ROLE_LABELS: Record<Role, string> = { admin: "관리자", leader: "교장·교감", user: "교사" };
 
-// 장(chapter): 문서의 최상위 단위이자 이 앱의 "검색 범위". DB chapters 테이블의 한 행과 같다.
+// 장(chapter): 판(문서)의 최상위 단위이자 이 앱의 "검색 범위". DB chapters 테이블의 한 행과 같다.
 export type Chapter = {
   id: string;
   title: string;
@@ -20,6 +23,17 @@ export type Chapter = {
   page_to: number;
   display_order: number;
   document_id: string;
+};
+
+// 다른 화면에서 장을 가리킬 때 쓰는 짧은 모양. 어느 매뉴얼의 장인지(manualTitle)를 함께 담는다.
+export type ChapterRef = Pick<Chapter, "id" | "title" | "chapter_number"> & { manualTitle: string };
+
+// 사용자 화면 왼쪽 목록의 매뉴얼 하나: 운영 중인 판과 그 장 목록(/api/chapters)
+export type ManualTree = {
+  id: string;
+  title: string;
+  document: { id: string; title: string; year: string | null };
+  chapters: Chapter[];
 };
 
 // 답변 아래 "확인한 근거" 목록의 한 항목. 답변 속 [1], [2] 번호와 같은 순서로 만들어진다.
@@ -40,7 +54,7 @@ export type HistoryItem = {
   answer: string;
   citations: Citation[];
   created_at: string;
-  chapter: Pick<Chapter, "id" | "title" | "chapter_number"> | null;
+  chapter: ChapterRef | null;
 };
 
 // 전체 질문 기록 검색 결과 한 건(/api/records). 관리자와 교장·교감이 본다.
@@ -51,15 +65,26 @@ export type RecordItem = {
   question: string;
   answer: string;
   date: string;
-  chapter: Pick<Chapter, "title" | "chapter_number"> | null;
+  chapter: Omit<ChapterRef, "id"> | null;
   questioner?: string;
 };
 
 // 질문 API(/api/ask)의 응답. type 값에 따라 화면이 다르게 그려진다.
 //   - answer     : 선택한 장에서 근거를 찾아 답변함
-//   - suggestion : 질문 핵심어가 다른 장에 있어 장 이동을 제안함(사용자가 동의하면 다시 질문)
+//   - suggestion : 질문 핵심어가 다른 장(다른 매뉴얼의 장일 수도 있음)에 있어 장 이동을 제안함(사용자가 동의하면 다시 질문)
 //   - not_found  : 관련 장이나 충분히 가까운 근거를 찾지 못함
+//   rewrittenQuestion: 최근 대화를 참고해 서버가 고쳐 쓴 질문(원문과 다를 때만 있음). 화면에 "이렇게 이해했습니다"로 보여 준다.
 export type AskResult =
-  | { type: "answer"; answer: string; citations: Citation[]; keywords: string[] }
-  | { type: "suggestion"; keywords: string[]; chapter: Pick<Chapter, "id" | "title" | "chapter_number"> }
+  | { type: "answer"; answer: string; citations: Citation[]; keywords: string[]; rewrittenQuestion?: string }
+  | { type: "suggestion"; keywords: string[]; chapter: ChapterRef }
   | { type: "not_found"; keywords: string[]; message: string };
+
+// 목차 분석 초안의 항목 하나(documents.outline_draft). 관리자가 확인·수정한 뒤 확정하면 장이 된다.
+//   - level  : 1이 가장 큰 단위(예: "제 1 장", "Ⅰ."), 2는 그 아래(예: "1.", "가.")
+//   - number : 번호 표기 그대로(예: "제 1 장", "Ⅰ", "1")
+//   - page   : 목차에 인쇄된 쪽 번호(실제 PDF 쪽과 다를 수 있어 보정값 offset을 더해 쓴다)
+export type OutlineItem = { level: number; number: string; title: string; page: number };
+// 목차 분석 초안 전체. offset은 "실제 PDF 쪽 − 목차에 인쇄된 쪽"의 추정값이다.
+export type OutlineDraft = { offset: number; items: OutlineItem[] };
+// 관리자가 확정해 보내는 장 하나. pageFrom은 실제 PDF 쪽 번호다.
+export type ConfirmedChapter = { number: string; title: string; pageFrom: number };

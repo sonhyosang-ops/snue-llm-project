@@ -7,20 +7,31 @@
 // ─────────────────────────────────────────────────────────────────────────────
 import { errorResponse, requireUser } from "@/lib/auth";
 import { serviceSupabase } from "@/lib/supabase";
+import type { Citation, HistoryItem } from "@/lib/types";
+
+type Row = {
+  id: string; question: string; answer: string; citations: Citation[]; created_at: string;
+  chapter: { id: string; title: string; chapter_number: string; document: { manual: { title: string } | null } | null } | null;
+};
 
 export async function GET(request: Request) {
   try {
     const user = await requireUser(request);
-    // chapter:chapters(…) 는 messages.chapter_id 외래 키를 따라 장 정보를 한 번에 묶어 오는 Supabase(PostgREST) 문법이다.
-    // 별도 조회 없이 "7장 호봉획정 및 승급" 같은 표시용 정보를 함께 받는다.
+    // chapter:chapters(… document:documents(manual:manuals(title))) 는 messages → chapters → documents → manuals
+    // 외래 키를 차례로 따라가 "어느 매뉴얼의 몇 장" 정보를 한 번에 묶어 오는 Supabase(PostgREST) 문법이다.
     const { data, error } = await serviceSupabase()
       .from("messages")
-      .select("id, question, answer, citations, created_at, chapter:chapters(id, title, chapter_number)")
+      .select("id, question, answer, citations, created_at, chapter:chapters(id, title, chapter_number, document:documents(manual:manuals(title)))")
       .eq("user_id", user.id)
       .order("created_at", { ascending: false })
       .limit(20);
     if (error) throw error;
-    return Response.json({ messages: data ?? [] });
+    // 화면이 쓰기 쉽게 매뉴얼 이름을 장 정보 안의 manualTitle로 펼친다.
+    const messages: HistoryItem[] = ((data ?? []) as unknown as Row[]).map(({ chapter, ...message }) => ({
+      ...message,
+      chapter: chapter ? { id: chapter.id, title: chapter.title, chapter_number: chapter.chapter_number, manualTitle: chapter.document?.manual?.title ?? "" } : null,
+    }));
+    return Response.json({ messages });
   } catch (error) {
     return errorResponse(error);
   }

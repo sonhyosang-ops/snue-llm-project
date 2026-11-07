@@ -7,8 +7,8 @@ import "./globals.css";
 
 // 브라우저 탭 제목과 검색 결과 설명
 export const metadata: Metadata = {
-  title: "교육공무원 인사실무편람",
-  description: "장 선택형 근거 기반 인사실무편람 안내",
+  title: "학교 업무 매뉴얼 도우미",
+  description: "장 선택형 근거 기반 학교 업무 매뉴얼 안내",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

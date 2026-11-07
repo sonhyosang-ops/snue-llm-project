@@ -62,6 +62,6 @@ export default function RecordsPage() {
     <form className="records-search" onSubmit={submit}><label>검색어<input value={keyword} onChange={(event) => setKeyword(event.target.value)} placeholder={showsQuestioner ? "질문·답변 내용 또는 질문자 메일" : "질문·답변 내용"} /></label><button disabled={busy}>{busy ? "찾는 중…" : "검색"}</button></form>
     {message && <p className="notice">{message}</p>}
     <p className="records-count">{records.length}건{records.length === 50 ? " (최신 50건까지 표시)" : ""}</p>
-    <ul className="record-list">{records.map((record) => <li key={record.id}><details><summary><span className="record-meta">{record.date}{record.chapter ? ` · ${record.chapter.chapter_number}장 ${record.chapter.title}` : ""}{record.questioner ? ` · ${record.questioner}` : ""}</span><span className="record-question">{record.question}</span></summary><p className="answer-text">{record.answer}</p></details></li>)}</ul>
+    <ul className="record-list">{records.map((record) => <li key={record.id}><details><summary><span className="record-meta">{record.date}{record.chapter ? ` · ${record.chapter.manualTitle} ${record.chapter.chapter_number} ${record.chapter.title}` : ""}{record.questioner ? ` · ${record.questioner}` : ""}</span><span className="record-question">{record.question}</span></summary><p className="answer-text">{record.answer}</p></details></li>)}</ul>
   </main>;
 }
