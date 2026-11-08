@@ -153,6 +153,33 @@ $$;
 
 -- 행 단위 보안(RLS)을 모든 테이블에 켠다. RLS가 켜진 테이블은 허용 정책(policy)이 없으면
 -- 공개 키(anon)나 로그인 사용자 자격으로는 한 행도 읽거나 쓸 수 없다.
+-- 문제 풀기(2026-11-08): 자기 문답 근거나 장 원문으로 만든 O/X·4지선다 문제와 풀이 기록. 장별 누적 정답률은 quiz_attempts를 센다.
+create table if not exists public.quiz_questions (
+  id uuid primary key default gen_random_uuid(),
+  user_id uuid not null references auth.users(id),
+  chapter_id uuid not null references public.chapters(id),
+  source text not null check (source in ('recent', 'chapter')),   -- recent: 내 최근 문답의 근거 / chapter: 장 원문 무작위
+  kind text not null check (kind in ('ox', 'choice')),            -- ox: O/X / choice: 4지선다
+  prompt text not null,
+  choices jsonb not null default '[]'::jsonb,                     -- 4지선다 보기 4개(O/X는 빈 배열)
+  answer text not null,                                           -- 정답: 'O'·'X' 또는 '1'~'4'
+  explanation text not null,
+  evidence text not null,                                         -- 근거 원문에서 그대로 옮긴 문장(서버가 원문에 있는지 검사)
+  citation jsonb not null,                                        -- {chunkId, heading, pageFrom, pageTo, excerpt}
+  created_at timestamptz not null default now()
+);
+create index if not exists quiz_questions_user_chapter_idx on public.quiz_questions(user_id, chapter_id, created_at desc);
+create table if not exists public.quiz_attempts (
+  id uuid primary key default gen_random_uuid(),
+  user_id uuid not null references auth.users(id),
+  question_id uuid not null references public.quiz_questions(id) on delete cascade,
+  chapter_id uuid not null references public.chapters(id),
+  answer text not null,
+  correct boolean not null,
+  created_at timestamptz not null default now()
+);
+create index if not exists quiz_attempts_user_chapter_idx on public.quiz_attempts(user_id, chapter_id);
+
 alter table public.allowed_users enable row level security;
 alter table public.manuals enable row level security;
 alter table public.documents enable row level security;
@@ -161,6 +188,8 @@ alter table public.chunks enable row level security;
 alter table public.embeddings enable row level security;
 alter table public.chapter_keywords enable row level security;
 alter table public.messages enable row level security;
+alter table public.quiz_questions enable row level security;
+alter table public.quiz_attempts enable row level security;
 
 -- 이 앱은 데이터를 Vercel 서버 API를 통해서만 읽고 쓴다.
 -- 그래서 브라우저용 허용 정책은 일부러 하나도 만들지 않았다(브라우저에서 테이블에 직접 접근 불가).

@@ -88,3 +88,15 @@ export type OutlineItem = { level: number; number: string; title: string; page: 
 export type OutlineDraft = { offset: number; items: OutlineItem[] };
 // 관리자가 확정해 보내는 장 하나. pageFrom은 실제 PDF 쪽 번호다.
 export type ConfirmedChapter = { number: string; title: string; pageFrom: number };
+
+// ── 문제 풀기(2026-11-08) ──
+// 출제 범위. recent: 이 장에서 내가 한 최근 질문의 근거로 출제 / chapter: 이 장 원문에서 무작위로 골라 출제
+export type QuizScope = "recent" | "chapter";
+// 화면에 보내는 문제 하나. 정답·해설은 들어 있지 않다(채점 뒤 QuizAnswerResult로 받는다).
+//   - kind    : ox(O/X) 또는 choice(4지선다)
+//   - choices : 4지선다 보기 4개. O/X는 빈 배열
+export type QuizQuestion = { id: string; kind: "ox" | "choice"; prompt: string; choices: string[] };
+// 장별 누적 성적(내 풀이 기록을 센 것)
+export type QuizStats = { total: number; correct: number };
+// 채점 결과(/api/quiz/answer). 정답·해설과 함께 근거 원문을 보내 "왜 그런지"를 바로 확인하게 한다.
+export type QuizAnswerResult = { correct: boolean; answer: string; explanation: string; citation: Omit<Citation, "score">; stats: QuizStats };

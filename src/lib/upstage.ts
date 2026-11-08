@@ -8,7 +8,10 @@
 //     embed                 : 청크 본문 → 의미 벡터 (Embedding, passage 모델)
 //   질문 단계(사용자가 질문할 때)
 //     embed                 : 질문 → 의미 벡터 (Embedding, query 모델)
+//     rewriteQuestion       : 최근 문답을 참고해 짧은 후속 질문을 완전한 문장으로 (Chat 모델)
 //     answerWithSources     : 검색된 근거만으로 답변 생성 (Chat 모델 + 퓨샷 예시)
+//   문제 풀기(사용자가 "문제 만들기"를 누를 때)
+//     generateQuiz          : 근거 원문만으로 O/X·4지선다 문제 만들기 (Chat 모델, JSON 스키마)
 //
 // 모델 이름은 환경 변수(UPSTAGE_*_MODEL)로 바꿀 수 있고, 없으면 코드의 기본값을 쓴다.
 // 임베딩 모델을 바꾸면 기존 벡터와 비교할 수 없으므로 문서를 다시 색인해야 한다.
@@ -412,4 +415,131 @@ export async function answerWithSources(question: string, sources: { content: st
     if (delta && extractor.enoughEvidence() !== false) onAnswerDelta(delta);
   });
   return parseAnswer(raw);
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// [문제 풀기] 근거 원문으로 O/X·4지선다 문제를 만든다(2026-11-08).
+//
+// 설계 원칙 — 답변과 같다. 문제·정답·해설은 제공한 원문에 있는 내용으로만 만든다.
+//   모델이 편람에 없는 보기나 "상식"을 섞어 넣을 수 있으므로, 문제마다 근거 문장(evidence)을 원문에서
+//   "글자 그대로" 옮겨 적게 하고, 부르는 쪽(api/quiz)이 그 문장이 실제 원문에 있는지 검사해 없으면 그 문제를 버린다.
+//   핵심어 사전을 만들 때 "후보에 없는 낱말은 못 들어온다"고 한 것과 같은 장치다.
+// "최근 문답" 출제(사용자 요청 2026-11-08) — 두 단계로 나눈다.
+//   ① describeConsultations : 상담(질문·답변)에서 "상황"(누가 어떤 처지에서 무엇을 하려는지)과 "이미 물은 쟁점"을 뽑는다.
+//   ② generateQuiz          : 상황은 문제의 소재로 가져오되, 이미 물은 쟁점은 피하고 같은 상황의 다른 쟁점을 묻는다.
+//   한 번에 시키면 모델이 상담 질문의 쟁점(예: 복직 서류)을 그대로 되묻는 일이 잦았다(실측). 상황과 피할 쟁점을 글로 먼저
+//   적게 하고 그것을 지시문에 박아 넣으면 훨씬 잘 지킨다. 부르는 쪽은 ①의 상황 문장으로 원문을 검색하므로
+//   (상담 질문으로 검색하면 이미 물은 쟁점의 원문만 모인다) 다른 쟁점을 낼 재료도 함께 확보된다.
+// 형식은 JSON 스키마로 고정한다(answerWithSources와 같은 방식). 보기 수(4개), 정답 표기('O'/'X', '1'~'4')가 어긋나면 버린다.
+export type GeneratedQuestion = { kind: "ox" | "choice"; prompt: string; choices: string[]; answer: string; explanation: string; source: number; evidence: string };
+export type Consultation = { question: string; answer: string };
+// 상담 하나에서 뽑은 출제 소재. situation은 검색 문장과 문제 소재로, askedIssue는 "묻지 말 것"으로 쓴다.
+export type Scenario = { situation: string; askedIssue: string };
+
+const SCENARIO_SCHEMA = {
+  type: "json_schema",
+  json_schema: {
+    name: "consultation_scenarios",
+    strict: true,
+    schema: {
+      type: "object",
+      properties: {
+        scenarios: {
+          type: "array",
+          items: {
+            type: "object",
+            properties: {
+              situation: { type: "string", description: "상담의 상황을 한 문장으로. 누가(예: 육아휴직 중인 교사) 어떤 처지에서 무엇을 하려는지(예: 복직하려 함). 질문의 쟁점은 넣지 않는다" },
+              asked_issue: { type: "string", description: "상담에서 이미 물은 쟁점을 명사구로(예: 복직에 필요한 서류)" },
+            },
+            required: ["situation", "asked_issue"],
+            additionalProperties: false,
+          },
+        },
+      },
+      required: ["scenarios"],
+      additionalProperties: false,
+    },
+  },
+};
+
+export async function describeConsultations(consultations: Consultation[]): Promise<Scenario[]> {
+  const raw = await chat([
+    { role: "system", content: "당신은 교육공무원 인사 상담 기록을 읽고, 상담마다 '상황'과 '이미 물은 쟁점'을 나누어 적는 분석기입니다. 상황에는 쟁점을 섞지 않습니다. 예: 질문 '육아휴직에서 복직하려면 어떤 서류가 필요한가요?' → situation '육아휴직 중인 교사가 복직하려는 상황', asked_issue '복직에 필요한 서류'. 상담 순서대로 같은 개수의 항목을 반환합니다." },
+    { role: "user", content: consultations.map((item, index) => `(${index + 1}) 질문: ${item.question}\n    답변: ${item.answer}`).join("\n") },
+  ], SCENARIO_SCHEMA);
+  const match = raw.match(/\{[\s\S]*\}/);
+  let parsed: { scenarios?: { situation?: unknown; asked_issue?: unknown }[] } = {};
+  try { parsed = match ? JSON.parse(match[0]) : {}; } catch { parsed = {}; }
+  const scenarios = (Array.isArray(parsed.scenarios) ? parsed.scenarios : [])
+    .map((item) => ({ situation: String(item.situation ?? "").trim(), askedIssue: String(item.asked_issue ?? "").trim() }))
+    .filter((item) => item.situation);
+  // 모델이 비우거나 실패하면 상담 질문 자체를 상황으로 쓴다(검색은 되고, 피할 쟁점만 비는 안전장치).
+  return scenarios.length ? scenarios : consultations.map((item) => ({ situation: item.question, askedIssue: "" }));
+}
+
+const QUIZ_SCHEMA = {
+  type: "json_schema",
+  json_schema: {
+    name: "manual_quiz",
+    strict: true,
+    schema: {
+      type: "object",
+      properties: {
+        questions: {
+          type: "array",
+          items: {
+            type: "object",
+            properties: {
+              kind: { type: "string", enum: ["ox", "choice"], description: "ox: O/X 문제, choice: 4지선다" },
+              prompt: { type: "string", description: "문항. O/X는 참·거짓을 판단할 서술문, 4지선다는 질문문" },
+              choices: { type: "array", items: { type: "string" }, description: "4지선다 보기 4개(번호 없이 내용만). O/X는 빈 배열" },
+              answer: { type: "string", enum: ["O", "X", "1", "2", "3", "4"], description: "정답. O/X 문제는 O 또는 X, 4지선다는 정답 보기의 번호" },
+              explanation: { type: "string", description: "해설 한두 문장. 근거 원문의 내용으로만 쓴다" },
+              source: { type: "integer", description: "문제를 만든 근거의 번호([1]부터)" },
+              evidence: { type: "string", description: "정답의 근거가 되는 문장을 해당 근거 원문에서 글자 그대로 옮긴 것(고치거나 줄이지 않는다)" },
+            },
+            required: ["kind", "prompt", "choices", "answer", "explanation", "source", "evidence"],
+            additionalProperties: false,
+          },
+        },
+      },
+      required: ["questions"],
+      additionalProperties: false,
+    },
+  },
+};
+
+export async function generateQuiz(sources: { heading: string; content: string }[], manualTitle: string, count: number, scenarios: Scenario[] = []): Promise<GeneratedQuestion[]> {
+  const evidence = sources.map((source, index) => `[${index + 1}] ${source.heading ? `(${source.heading}) ` : ""}${source.content}`).join("\n\n");
+  const commonRules = `- 문제 ${count}개를 만듭니다. O/X와 4지선다를 섞되 4지선다를 더 많이 냅니다.\n- 문제·보기·정답·해설은 모두 근거 원문에 있는 내용으로만 만듭니다. 원문에 없는 숫자·기간·조건·기관을 지어내지 않습니다.\n- 4지선다 오답 보기는 원문의 다른 내용이나 원문과 어긋나는 내용으로 만들고, 정답은 문제마다 고르게 다른 번호에 둡니다.\n- O/X 문제는 원문 내용을 그대로 서술하거나(정답 O) 숫자·조건 하나를 바꿔 서술합니다(정답 X).\n- evidence에는 정답의 근거가 되는 문장을 해당 근거 원문에서 글자 그대로 복사합니다. 요약하거나 고치지 않습니다.\n- 문항과 해설은 존댓말로, 표의 칸이나 쪽 번호 같은 형식 요소를 묻지 않고 실무 지식을 묻습니다.`;
+  // 상담 소재가 있을 때만 붙는 규칙. 상황은 가져오고, 이미 물은 쟁점은 피한다.
+  const scenarioRules = scenarios.length
+    ? `\n- 아래 "출제 소재"의 상황을 문제의 배경으로 삼아 "~하려는 교사가 있습니다. 이때 …" 같은 사례형 문항으로 만듭니다.\n- 각 소재의 "묻지 말 것"에 적힌 쟁점은 문항·보기 어디에도 넣지 않습니다. 대신 같은 상황에서 생기는 다른 쟁점(시기·기간 산정, 경력·호봉 인정, 신청 시한, 요건과 제한, 승인 절차 등)을 근거 원문에서 찾아 묻습니다. 근거 원문에 그런 다른 쟁점이 없으면 상황만 비슷한 다른 사례를 원문에서 골라 묻습니다.`
+    : "";
+  const scenarioText = scenarios.length
+    ? `\n\n출제 소재:\n${scenarios.map((item, index) => `(${index + 1}) 상황: ${item.situation}${item.askedIssue ? `\n    묻지 말 것: ${item.askedIssue}` : ""}`).join("\n")}`
+    : "";
+  const raw = await chat([
+    { role: "system", content: `당신은 「${manualTitle}」로 교육공무원 인사 실무를 공부하는 교사를 위해 확인 문제를 내는 출제자입니다. 제공된 근거 원문만으로 문제를 만듭니다.\n\n규칙\n${commonRules}${scenarioRules}` },
+    { role: "user", content: `근거 원문:\n${evidence}${scenarioText}` },
+  ], QUIZ_SCHEMA);
+  const match = raw.match(/\{[\s\S]*\}/);
+  let parsed: { questions?: Partial<GeneratedQuestion>[] } = {};
+  try { parsed = match ? JSON.parse(match[0]) : {}; } catch { parsed = {}; }
+  // 모델 출력은 그대로 믿지 않고 모양을 검사한다. 근거 번호 범위, 보기 수, 정답 표기가 맞는 문제만 남긴다.
+  return (Array.isArray(parsed.questions) ? parsed.questions : [])
+    .map((item) => ({
+      kind: item.kind === "ox" ? "ox" as const : "choice" as const,
+      prompt: String(item.prompt ?? "").trim(),
+      choices: Array.isArray(item.choices) ? item.choices.map((choice) => String(choice).trim()) : [],
+      answer: String(item.answer ?? "").trim(),
+      explanation: String(item.explanation ?? "").trim(),
+      source: Number(item.source),
+      evidence: String(item.evidence ?? "").trim(),
+    }))
+    .filter((item) => item.prompt && item.explanation && item.evidence && Number.isInteger(item.source) && item.source >= 1 && item.source <= sources.length)
+    .filter((item) => (item.kind === "ox" ? ["O", "X"].includes(item.answer) : item.choices.length === 4 && item.choices.every(Boolean) && ["1", "2", "3", "4"].includes(item.answer)))
+    .map((item) => (item.kind === "ox" ? { ...item, choices: [] } : item))
+    .slice(0, count);
 }

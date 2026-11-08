@@ -142,3 +142,32 @@ header h1, h2, h3 { margin: .3rem 0; }
 .result-card.turn + .result-card.turn { margin-top: 1rem; }
 .turn-question { display: flex; flex-direction: column; gap: .3rem; margin: 0 0 .75rem; font-weight: 700; line-height: 1.5; }
 .result-card.turn h2 { margin-top: .25rem; }
+
+/* ── 문제 풀기 화면(/quiz) ── 메인 화면과 같은 카드(question-card·result-card) 위에 보기 버튼과 채점 표시를 더한다. */
+.quiz-setup { display: grid; gap: 1rem; }
+.quiz-setup select { margin-top: .45rem; }
+.quiz-scope { margin: 0; padding: 0; border: 0; display: grid; gap: .5rem; }
+.quiz-scope legend { padding: 0; margin-bottom: .45rem; font-size: .9rem; font-weight: 700; }
+.quiz-radio { display: flex; align-items: start; gap: .6rem; padding: .7rem .85rem; border: 1px solid var(--line); border-radius: 10px; font-weight: 400; cursor: pointer; }
+.quiz-radio input { width: auto; margin: .2rem 0 0; }
+.quiz-radio span { display: flex; flex-direction: column; gap: .15rem; }
+.quiz-radio small { color: var(--muted); font-size: .82rem; line-height: 1.5; }
+.quiz-stat { color: var(--muted); font-size: .9rem; }
+/* 보기 버튼. 채점 뒤 정답은 초록, 내가 고른 오답은 빨강 테두리·바탕으로 표시한다. */
+.quiz-choices { display: grid; gap: .5rem; margin-top: .5rem; }
+.quiz-choice { display: flex; align-items: start; gap: .6rem; padding: .7rem .85rem; border: 1px solid var(--line); border-radius: 10px; color: var(--ink); background: white; text-align: left; font-weight: 400; line-height: 1.5; }
+.quiz-choice:hover:not(:disabled) { border-color: var(--blue); background: #f3f6fc; }
+.quiz-choice:disabled { opacity: 1; cursor: default; }
+.quiz-choice.correct { border: 2px solid #2e8b57; background: #eef8f1; font-weight: 700; }
+.quiz-choice.wrong { border: 2px solid #c0392b; background: #fdf0ee; }
+.quiz-mark { flex: none; color: var(--blue); font-weight: 800; }
+.quiz-item.correct { border-color: #2e8b57; }
+.quiz-item.wrong { border-color: #c0392b; }
+.quiz-result { margin-top: .9rem; padding-top: .9rem; border-top: 1px solid var(--line); }
+.quiz-verdict { margin: 0 0 .4rem; font-weight: 800; }
+.quiz-item.correct .quiz-verdict { color: #2e8b57; }
+.quiz-item.wrong .quiz-verdict { color: #c0392b; }
+.quiz-source summary { cursor: pointer; color: var(--muted); font-size: .9rem; }
+.quiz-score { border-color: var(--accent); background: #fffdf5; }
+/* 메인 화면 왼쪽 메뉴의 "문제 풀기" 아이콘 링크 */
+.wb-nav-footer .wb-quiz-icon { margin-right: .45rem; font-size: 1.05rem; }
