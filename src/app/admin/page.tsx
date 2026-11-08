@@ -57,7 +57,11 @@ async function api(path: string, token: string, init?: RequestInit) {
   const headers = new Headers(init?.headers);
   headers.set("Authorization", `Bearer ${token}`);
   const response = await fetch(path, { ...init, headers });
-  const body = await response.json();
+  // 서버 API는 JSON을 보내지만, Vercel 같은 중간 서버가 요청을 거절하면 평문("Request Entity Too Large" 등)이 올 수 있다.
+  // 그때 JSON으로 읽으려 하면 "is not valid JSON"이라는 알 수 없는 오류만 보이므로, 먼저 글자로 받고 JSON이 아니면 그 글자와 상태 코드를 그대로 보여 준다.
+  const text = await response.text();
+  let body: { error?: string } & Record<string, unknown>;
+  try { body = JSON.parse(text); } catch { throw new Error(`서버 응답 오류 (${response.status}): ${text.slice(0, 120) || response.statusText}`); }
   if (!response.ok) throw new Error(body.error ?? "요청을 처리하지 못했습니다.");
   return body;
 }
@@ -197,14 +201,24 @@ export default function AdminPage() {
   };
 
   // PDF를 올린 뒤 바로 목차 초안까지 만든다. 장 확정과 본문 처리는 관리자가 목차를 확인한 다음에 한다.
+  // 업로드는 세 단계다(2026-11-08 변경).
+  //   ① 서버에서 서명된 업로드 주소를 받는다(/api/admin/documents/upload-url).
+  //   ② 브라우저가 그 주소로 Supabase Storage에 PDF를 "직접" 올린다. 파일이 Vercel 서버를 거치지 않으므로
+  //      서버 함수의 요청 크기 제한(4.5MB)에 걸리지 않는다. 예전에는 큰 PDF가 "Request Entity Too Large"로 거절됐다.
+  //   ③ 서버에 제목·판·매뉴얼과 Storage 경로를 보내 문서로 등록한다(/api/admin/documents). 서버가 파일이 있는지 확인한다.
   const uploadPdf = (event: FormEvent) => {
     event.preventDefault();
     if (!pdf) return;
     run(async () => {
-      const form = new FormData();
-      form.set("file", pdf); form.set("title", title); form.set("year", year);
-      if (manualChoice === NEW_MANUAL) form.set("newManualTitle", newManualTitle); else form.set("manualId", manualChoice);
-      const upload = await api("/api/admin/documents", token, { method: "POST", body: form }) as { id: string };
+      if (pdf.size > 30 * 1024 * 1024) throw new Error("PDF는 30MB 이하만 업로드할 수 있습니다.");
+      setProgress("업로드 주소를 받는 중…");
+      const target = await api("/api/admin/documents/upload-url", token, { method: "POST" }) as { path: string; token: string };
+      setProgress(`PDF를 올리는 중… (${(pdf.size / 1024 / 1024).toFixed(1)}MB)`);
+      const { error: uploadError } = await supabase.storage.from("personnel-pdfs").uploadToSignedUrl(target.path, target.token, pdf, { contentType: "application/pdf" });
+      if (uploadError) throw new Error(`PDF를 Storage에 올리지 못했습니다: ${uploadError.message}`);
+      setProgress("문서를 등록하는 중…");
+      const body = { title, year, storagePath: target.path, ...(manualChoice === NEW_MANUAL ? { newManualTitle } : { manualId: manualChoice }) };
+      const upload = await api("/api/admin/documents", token, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) }) as { id: string };
       setPdf(null);
       await loadDocuments(token);
       await startOutline(upload.id);

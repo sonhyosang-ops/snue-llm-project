@@ -76,6 +76,13 @@ PDF 원본은 Supabase Storage에, 검색 데이터는 Supabase Database에 저�
 
 ## 4. 관리자 PDF 등록 흐름
 
+**업로드 경로(2026-11-08 변경)**: PDF는 Vercel 서버 함수를 거치지 않고 브라우저에서 Supabase Storage로 직접 올라간다.
+Vercel 서버 함수는 요청 본문을 4.5MB까지만 받아, 예전 흐름(브라우저 → 서버 함수 → Storage)에서는 큰 편람 PDF가
+"Request Entity Too Large"(413)로 거절됐다. 지금 흐름은 ① 서버가 서명된 업로드 주소 발급(`/api/admin/documents/upload-url`,
+경로 `<무작위 uuid>/source.pdf`, 2시간·1회 유효) → ② 브라우저가 anon 키 + 토큰으로 `uploadToSignedUrl` → ③ 서버가
+`/api/admin/documents`(JSON)에서 Storage에 파일이 있는지와 크기(30MB 이하)를 확인한 뒤 문서 행을 만든다. 업로드가 중간에
+실패해도 DB에는 행이 남지 않는다(Storage에 빈 폴더만 남을 수 있음). 색인 단계는 그대로 `storage_path`로 파일을 내려받는다.
+
 관리자가 다음 문서를 업로드한다.
 
 ```text

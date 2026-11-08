@@ -36,7 +36,10 @@ async function api(path: string, token: string, init?: RequestInit) {
   const headers = new Headers(init?.headers);
   headers.set("Authorization", `Bearer ${token}`);
   const response = await fetch(path, { ...init, headers });
-  const body = await response.json();
+  // 중간 서버(Vercel 등)가 거절하면 JSON이 아닌 평문이 올 수 있다. 먼저 글자로 받고 JSON이 아니면 상태 코드와 함께 그대로 보여 준다.
+  const text = await response.text();
+  let body: { error?: string } & Record<string, unknown>;
+  try { body = JSON.parse(text); } catch { throw new Error(`서버 응답 오류 (${response.status}): ${text.slice(0, 120) || response.statusText}`); }
   if (!response.ok) throw new Error(body.error ?? "요청을 처리하지 못했습니다.");
   return body;
 }
