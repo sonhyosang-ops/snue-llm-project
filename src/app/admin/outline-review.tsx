@@ -25,10 +25,27 @@ type Props = {
 };
 
 // 초안에서 고른 수준의 항목만 표의 행으로 만든다. 항목이 하나도 없으면 문서 전체를 장 하나("전체")로 둔다.
+// 2단계 이하를 장으로 쓰면 번호가 상위 항목마다 되풀이된다(예: Ⅰ 아래 1, 2, 3 … Ⅲ 아래 다시 1, 2, 3).
+// 장 번호는 겹치면 안 되므로(서버가 거부한다), 바로 위 수준 항목의 번호를 앞에 붙여 "Ⅰ-1", "Ⅲ-1"처럼 만든다.
+// (2026-11-08: 체육 매뉴얼 목차에서 이 중복 때문에 확정이 거절됐는데 화면에는 그 규칙이 없어 원인을 알기 어려웠다.)
 function rowsForLevel(draft: OutlineDraft, level: number): Row[] {
   const items = draft.items.filter((item) => item.level === level);
   if (!items.length) return [{ key: 0, number: "", title: "전체", page: String(1 - draft.offset) }];
-  return items.map((item, index) => ({ key: index, number: item.number, title: item.title, page: String(item.page) }));
+  // ancestors[k] = 지금 지나가고 있는 k단계 항목의 번호. 상위 항목을 만나면 그 아래 단계의 기억은 지운다.
+  const rows: Row[] = [];
+  const ancestors: string[] = [];
+  for (const item of draft.items) {
+    if (item.level < level) { ancestors[item.level] = item.number; ancestors.length = item.level + 1; continue; }
+    if (item.level !== level) continue;
+    // 가까운 상위부터 차례로 붙인다. 초안 번호가 이미 "1-1"처럼 상위 번호로 시작하면 그 상위는 건너뛴다. 번호가 없는 항목은 그대로 둔다.
+    let number = item.number;
+    for (let depth = level - 1; depth >= 1 && number; depth -= 1) {
+      const ancestor = ancestors[depth];
+      if (ancestor && !number.startsWith(`${ancestor}-`)) number = `${ancestor}-${number}`;
+    }
+    rows.push({ key: rows.length, number, title: item.title, page: String(item.page) });
+  }
+  return rows;
 }
 
 export default function OutlineReview({ title, pageCount, draft, pdfUrl, busy, onConfirm, onClose }: Props) {
@@ -45,6 +62,9 @@ export default function OutlineReview({ title, pageCount, draft, pdfUrl, busy, o
     if (!row.title.trim()) return "제목을 입력하세요";
     if (!Number.isInteger(starts[index]) || starts[index] < 1 || starts[index] > pageCount) return `시작 쪽이 1~${pageCount} 범위를 벗어남`;
     if (index > 0 && starts[index] <= starts[index - 1]) return "앞 장보다 시작 쪽이 앞이거나 같음";
+    // 장 번호는 겹치면 안 된다(서버도 거부). 번호는 자유 형식이라 "1-2", "Ⅲ-1"처럼 고쳐 겹치지 않게 하면 된다.
+    const number = row.number.trim();
+    if (number && rows.some((other, otherIndex) => otherIndex < index && other.number.trim() === number)) return `번호 '${number}'가 앞 장과 겹침`;
     return "";
   });
   const valid = rows.length > 0 && problems.every((problem) => !problem);

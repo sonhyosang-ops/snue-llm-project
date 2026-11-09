@@ -77,6 +77,8 @@ export default function Home() {
   // 답변이 스트리밍으로 흘러오는 동안의 본문(답변이 완성되면 answer로 바꿔 끼우고 비운다)
   const [streamText, setStreamText] = useState("");
   const [history, setHistory] = useState<HistoryItem[]>([]);
+  // showAllHistory: 최근 질문을 3건만 보일지(false), "더 보기"로 전부 펼쳤는지(true)
+  const [showAllHistory, setShowAllHistory] = useState(false);
   const [viewing, setViewing] = useState<HistoryItem | null>(null);
   const [selectedSource, setSelectedSource] = useState(0);
 
@@ -263,9 +265,23 @@ export default function Home() {
   const citations = thread[activeTurn]?.citations ?? [];
   return <div className="wb">
     <nav className="wb-nav" aria-label="장 목록과 최근 질문">
-      <p className="wb-eyebrow">업무 매뉴얼</p>
-      {workspace?.manuals.length ? workspace.manuals.map((manual) => <details key={manual.id} className="wb-manual" open><summary><span className="wb-manual-title">{manual.title}</span>{manual.document.year && <span className="wb-chapter-pages">{manual.document.year}</span>}</summary><div className="wb-list">{manual.chapters.map((item) => <button key={item.id} type="button" className={chapter?.id === item.id ? "wb-chapter active" : "wb-chapter"} aria-current={chapter?.id === item.id ? "true" : undefined} onClick={() => chooseChapter(item)}><span><span className="wb-chapter-number">{item.chapter_number}</span>{item.title}</span><span className="wb-chapter-pages">{item.page_from}~{item.page_to}쪽</span></button>)}</div></details>) : <p className="wb-empty">아직 운영 중인 매뉴얼이 없습니다.</p>}
-      <div className="wb-list"><p className="wb-eyebrow">최근 질문</p>{history.length ? history.map((item) => <button key={item.id} type="button" className={viewing?.id === item.id ? "wb-history active" : "wb-history"} onClick={() => openHistory(item)}><span className="wb-history-meta">{item.chapter ? `${item.chapter.manualTitle} ${item.chapter.chapter_number} · ` : ""}{shortDate(item.created_at)}</span><span className="wb-history-question">{item.question}</span></button>) : <p className="wb-empty">아직 질문 기록이 없습니다.</p>}</div>
+      {/* 매뉴얼 고르기(2026-11-09): 매뉴얼이 둘 이상이면 장 목록이 길어지므로, 매뉴얼은 드롭다운으로 고르고 그 매뉴얼의 장만 아래에 보여 준다.
+          드롭다운의 값은 따로 저장하지 않고 "지금 선택한 장이 속한 매뉴얼"(currentManual)에서 끌어낸다. 그래서 다른 장 안내나 최근 질문으로
+          다른 매뉴얼의 장이 선택되면 드롭다운도 저절로 따라간다. 매뉴얼을 바꾸면 그 매뉴얼의 첫 장을 선택한다. */}
+      {/* 장 목록은 화면 높이에 맞춰 그 안에서만 스크롤된다(wb-chapters). 체육 매뉴얼처럼 장이 24개면 Full HD에서도 한 화면을 넘기 때문이다.
+          사이드바 전체는 화면 높이에 고정(sticky)되어 아래 메뉴(문제 풀기·로그아웃)는 항상 보인다. */}
+      <div className="wb-manual-block">
+        <p className="wb-eyebrow">업무 매뉴얼</p>
+        {workspace?.manuals.length ? <>
+          <select className="wb-manual-select" aria-label="업무 매뉴얼 선택" value={currentManual?.id ?? ""} onChange={(event) => { const next = workspace.manuals.find((manual) => manual.id === event.target.value)?.chapters[0]; if (next) chooseChapter(next); }}>{workspace.manuals.map((manual) => <option key={manual.id} value={manual.id}>{manual.title}{manual.document.year ? ` (${manual.document.year})` : ""}</option>)}</select>
+          <div className="wb-list wb-chapters">{(currentManual?.chapters ?? []).map((item) => <button key={item.id} type="button" className={chapter?.id === item.id ? "wb-chapter active" : "wb-chapter"} aria-current={chapter?.id === item.id ? "true" : undefined} onClick={() => chooseChapter(item)}><span><span className="wb-chapter-number">{item.chapter_number}</span>{item.title}</span><span className="wb-chapter-pages">{item.page_from}~{item.page_to}쪽</span></button>)}</div>
+        </> : <p className="wb-empty">아직 운영 중인 매뉴얼이 없습니다.</p>}
+      </div>
+      {/* 최근 질문(2026-11-09): 기본은 최근 3건만 제목 전체가 보이게 두고, "더 보기"를 누르면 서버가 준 최근 20건이 스크롤 영역(wb-history-list)에 펼쳐진다. */}
+      <div className="wb-list"><p className="wb-eyebrow">최근 질문</p>{history.length ? <>
+        <div className={showAllHistory ? "wb-history-list" : undefined}>{(showAllHistory ? history : history.slice(0, 3)).map((item) => <button key={item.id} type="button" className={viewing?.id === item.id ? "wb-history active" : "wb-history"} onClick={() => openHistory(item)}><span className="wb-history-meta">{item.chapter ? `${item.chapter.manualTitle} ${item.chapter.chapter_number} · ` : ""}{shortDate(item.created_at)}</span><span className="wb-history-question">{item.question}</span></button>)}</div>
+        {history.length > 3 && <button type="button" className="wb-history-more" onClick={() => setShowAllHistory((current) => !current)}>{showAllHistory ? "접기" : `더 보기 (${history.length - 3}건)`}</button>}
+      </> : <p className="wb-empty">아직 질문 기록이 없습니다.</p>}</div>
       {/* 문제 풀기(2026-11-08): 이해도 확인 화면은 별도 창(/quiz)에서 연다. 이 화면의 질문·답변 흐름은 그대로 둔다. */}
       <div className="wb-nav-footer"><a href="/quiz" target="_blank" rel="noopener"><span className="wb-quiz-icon" aria-hidden="true">✎</span>문제 풀기</a>{(workspace?.role === "admin" || workspace?.role === "leader") && <a href="/records">전체 질문 기록</a>}{workspace?.role === "admin" && <a href="/admin">관리자 페이지</a>}<button type="button" onClick={() => { localStorage.removeItem("baegotnuri-login-complete"); supabase.auth.signOut(); }}>로그아웃</button></div>
     </nav>

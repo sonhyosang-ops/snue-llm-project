@@ -196,7 +196,9 @@ export default function AdminPage() {
   const run = async (work: () => Promise<void>) => {
     setBusy(true); setMessage("");
     try { await work(); }
-    catch (error) { setMessage(error instanceof Error ? error.message : "처리하지 못했습니다."); }
+    // 오류 문구는 화면 맨 위에 보이므로, 아래쪽(목차 확인 표)에서 누른 뒤 실패하면 위로 올려 문구가 보이게 한다.
+    // (2026-11-08: 목차 확정이 서버에서 거절됐는데 문구가 화면 밖에 있어 "상태가 안 바뀐다"로만 보였다.)
+    catch (error) { setMessage(error instanceof Error ? error.message : "처리하지 못했습니다."); window.scrollTo({ top: 0, behavior: "smooth" }); }
     finally { setBusy(false); setProgress(""); loadDocuments(token).catch(() => undefined); }
   };
 
